@@ -33,7 +33,7 @@ const Dashboard = () => {
         }
       } else {
         // If not authenticated, redirect to login
-        window.location.href = '/auth';
+        window.location.href = '/login';
       }
     });
 
@@ -49,7 +49,7 @@ const Dashboard = () => {
         {/* Add more dashboard content here */}
         <button
           className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
-          onClick={() => firebase.auth().signOut()}
+          onClick={() => auth.signOut()}
         >
           Logout
         </button>
