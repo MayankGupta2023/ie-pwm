@@ -1,22 +1,36 @@
-// pages/dashboard.js
-
 import { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
-
-
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth } from 'firebase/auth';
 import app from '../firebaseConfig';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 const auth = getAuth(app);
+const firestore = getFirestore(app);
+
 const Dashboard = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    // Check if the user is authenticated
-    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+    const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
       if (authUser) {
-        setUser(authUser);
+        // If authenticated, get the user document from Firestore
+        const userDocRef = doc(firestore, 'users', authUser.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+          // If the user document exists, set the user state with the display name
+          setUser({
+            uid: authUser.uid,
+            email: authUser.email,
+            displayName: userDocSnap.data().name,
+          });
+        } else {
+          // If the user document does not exist, set the user state with basic information
+          setUser({
+            uid: authUser.uid,
+            email: authUser.email,
+          });
+        }
       } else {
         // If not authenticated, redirect to login
         window.location.href = '/auth';
