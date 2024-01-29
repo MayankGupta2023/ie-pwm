@@ -1,0 +1,12 @@
+.nav{
+    background-image: linear-gradient(to right, #f46b45, #eea849);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 2px solid rgb(119, 119, 119);
+}
+
+.logo{
+    box-shadow: rgba(0, 0, 0, 0.5) 0px 50px 90px;
+}
