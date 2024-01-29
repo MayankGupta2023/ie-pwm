@@ -1,10 +1,58 @@
-// pages/auth.js
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { motion } from 'framer-motion';
+import firebase from 'firebase/app';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import app from '../firebaseConfig';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
+
+const auth = getAuth(app);
 
 const AuthPage = () => {
+  const router = useRouter();
+
   const [isLogin, setIsLogin] = useState(true);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+
+  useEffect(() => {
+    // Redirect to dashboard if the user is already logged in
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        router.push('/dashboard');
+      }
+    });
+
+    return () => unsubscribe();
+  }, [router]);
+
+  const handleAuth = async (e) => {
+    e.preventDefault();
+
+    try {
+      if (isLogin) {
+        // Login
+        await signInWithEmailAndPassword(auth, email, password);
+        router.push('/dashboard');
+      } else {
+        // Sign Up
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
+
+        // Store user details in Firestore collection "users"
+        const db = getFirestore(app);
+        await setDoc(doc(db, 'users', user.uid), {
+          name,
+          email,
+        });
+
+        router.push('/dashboard');
+      }
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-r from-purple-400 via-pink-500 to-red-500">
@@ -50,6 +98,10 @@ const AuthPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          onSubmit={(e) => {
+            e.preventDefault();
+            handleAuth(e); // Pass event to handleAuth function
+          }}
         >
           {isLogin ? (
             <>
@@ -61,6 +113,8 @@ const AuthPage = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={email} // Bind value to state
+                  onChange={(e) => setEmail(e.target.value)} // Handle input change
                   className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                   placeholder="Enter your email"
                 />
@@ -73,6 +127,8 @@ const AuthPage = () => {
                   type="password"
                   id="password"
                   name="password"
+                  value={password} // Bind value to state
+                  onChange={(e) => setPassword(e.target.value)} // Handle input change
                   className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                   placeholder="Enter your password"
                 />
@@ -107,6 +163,8 @@ const AuthPage = () => {
                   type="text"
                   id="name"
                   name="name"
+                  value={name} // Bind value to state
+                  onChange={(e) => setName(e.target.value)} // Handle input change
                   className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                   placeholder="Enter your name"
                 />
@@ -119,6 +177,8 @@ const AuthPage = () => {
                   type="email"
                   id="email"
                   name="email"
+                  value={email} // Bind value to state
+                  onChange={(e) => setEmail(e.target.value)} // Handle input change
                   className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                   placeholder="Enter your email"
                 />
@@ -131,6 +191,8 @@ const AuthPage = () => {
                   type="password"
                   id="password"
                   name="password"
+                  value={password} // Bind value to state
+                  onChange={(e) => setPassword(e.target.value)} // Handle input change
                   className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
                   placeholder="Enter your password"
                 />
@@ -163,5 +225,3 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
-
-
