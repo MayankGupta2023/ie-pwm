@@ -4,6 +4,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import Navbar from '@/components/navbar';
 import MakePaymentComponent from '@/components/MakePaymentComponent';
+import Footer from '@/components/footer';
 
 const cardVariants = {
   initial: { scale: 1, boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)' },
@@ -30,7 +31,7 @@ const buttonVariants = {
 };
 
 const containerStyle = {
-  backgroundColor: '#FFA07A', // Orangish-reddish-yellowish color
+  backgroundColor: 'white', // Orangish-reddish-yellowish color
 };
 
 const Pricing = () => {
@@ -51,15 +52,33 @@ const Pricing = () => {
       <div className='h-20'>
         <Navbar />
       </div>
-      <div className="flex justify-center py-12 h-screen " style={containerStyle}>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="flex flex-col items-center py-12 h-screen " style={containerStyle}>
+         {/* Catchy Heading */}
+         <motion.div
+          initial="initial"
+          animate="animate"
+          variants={headingVariants}
+          className="mb-8"
+        >
+          <h2 className="text-4xl font-semibold text-purple-800 mb-5">
+            Explore Our Exciting Pricing Plans
+            <motion.span
+              style={{ display: 'inline-block' }}
+              animate={{ rotate: [0, 360] }}
+              transition={headingColorTransition}
+            >
+              🚀
+            </motion.span>
+          </h2>
+        </motion.div>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 ">
           {monthlyPlans.map((plan, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
               initial="initial"
               whileHover="hover"
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="bg-white p-6 rounded-lg shadow-md border-2 border-purple-600"
             >
               <h3 className="text-xl font-semibold mb-4">{plan.title}</h3>
               <p className="text-gray-600">Lorem ipsum dolor sit amet...</p>
@@ -76,17 +95,20 @@ const Pricing = () => {
               variants={cardVariants}
               initial="initial"
               whileHover="hover"
-              className="bg-white p-6 rounded-lg shadow-md"
+              className="bg-white p-6 rounded-lg shadow-md border-2 border-purple-600"
             >
               <h3 className="text-xl font-semibold mb-4">{plan.title}</h3>
               <p className="text-gray-600">Lorem ipsum dolor sit amet...</p>
               <div className="mt-4">
-                <p className="text-2xl font-bold text-purple-600">₹{plan.price}</p>
+                <p className="text-2xl font-bold text-black-600">₹{plan.price}</p>
               </div>
               <MakePaymentComponent amount={plan.price} description={plan.title} />
             </motion.div>
           ))}
         </div>
+      </div>
+      <div>
+        <Footer/>
       </div>
     </div>
   );

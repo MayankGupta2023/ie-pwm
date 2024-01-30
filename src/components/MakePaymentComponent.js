@@ -70,9 +70,9 @@ const MakePaymentComponent = ({ amount, description }) => {
         <div>
           <button
             onClick={() => makePayment()}
-            className="bg-purple-600 text-white px-6 py-3 rounded-full mt-4 hover:bg-purple-700 focus:outline-none focus:ring focus:border-blue-300"
+            className="bg-purple-600 text-white px-6 py-3 rounded-md mt-4 hover:bg-purple-700 focus:outline-none focus:ring focus:border-blue-300"
           >
-            Pay {amount} Now
+            Pay {amount} 
           </button>
         </div>
       );
