@@ -8,8 +8,9 @@ import Link from 'next/link';
 const Navbar = () => {
     return (
         <div className={`h-full flex justify-between px-4 items-center text-xl ${styles.nav}`}>
-            <div>
+            <div className='flex text-white gap-4 items-center text-3xl'>
                 <img src={logo.src} alt='logo' className={`h-12 ${styles.logo}`} />
+                Instant EduDoc
             </div>
 
             <div className='flex justify-around min-w-96 p-2 '>
@@ -17,6 +18,7 @@ const Navbar = () => {
 
                 <Link href="/">Home</Link>
                 <Link href="/pricing">Pricing</Link>
+                <Link href="/dashboard">Get Notes</Link>
                 <Link href="/login">Login</Link>
 
             </div>

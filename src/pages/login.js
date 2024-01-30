@@ -98,9 +98,9 @@ const AuthPage = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          onSubmit={(e) => {
+          onSubmit={async (e) => {
             e.preventDefault();
-            handleAuth(e); // Pass event to handleAuth function
+          await  handleAuth(e); // Pass event to handleAuth function
           }}
         >
           {isLogin ? (
