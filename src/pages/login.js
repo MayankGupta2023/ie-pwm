@@ -8,7 +8,14 @@ import 'firebase/auth';
 
 import { getAuth, signInWithPhoneNumber,RecaptchaVerifier ,  createUserWithEmailAndPassword } from 'firebase/auth';
 import app from '../firebaseConfig';
-import { getFirestore, doc, setDoc } from 'firebase/firestore';
+import { getFirestore,
+  collection,
+  query,
+  where,
+  getDocs,
+  setDoc,
+  doc,
+  getDoc,} from 'firebase/firestore';
 import styles from "../styles/landing.module.css"
 import Navbar from '@/components/navbar';
 import Footer from '@/components/footer';
@@ -22,7 +29,7 @@ const AuthPage = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [countryCode, setCountryCode] = useState('+');
   const [verificationCode, setVerificationCode] = useState('');
-  const [verificationId, setVerificationId] = useState(null);
+  const [confirmationResult, setConfirmationResult] = useState(null);
   const [otpSent, setOtpSent] = useState(false); // New state to track OTP status
 
   const handleSendOtp = async () => {
@@ -33,36 +40,55 @@ const AuthPage = () => {
     console.log(totphoneNumber)
       const confirmation = await signInWithPhoneNumber(auth, totphoneNumber, recaptcha);
       console.log(confirmation)
-      setVerificationId(confirmation);
+      setConfirmationResult(confirmation);
       setOtpSent(true);
     } catch (error) {
       console.error('Error sending OTP:', error);
     }
   };
 
+
+
+
+
+
   const handleVerifyOtp = async () => {
     try {
-
-      const data = await  verificationId.confirm(verificationCode)
-
-
+      await confirmationResult.confirm(verificationCode);
+    //  setVerificationCode('');
+  
       // Check if the user exists in the database
       const db = getFirestore(app);
-      const userDoc = await getDoc(doc(db, 'users', auth.currentUser.uid));
-
-      if (userDoc.exists()) {
-        // User exists, redirect to dashboard
-        router.push('/dashboard');
+      const user = auth.currentUser;
+  
+      if (user) {
+        // Get the entered phone number
+        const enteredPhoneNumber = phoneNumber;
+  
+        // Check if a user document with the entered phone number exists
+        const querySnapshot = await getDocs(
+          query(collection(db, 'users'), where('phoneNumber', '==', enteredPhoneNumber))
+        );
+  
+        if (querySnapshot.size > 0) {
+          // User with the entered phone number exists in the database
+          router.push('/dashboard');
+        } else {
+          // User with the entered phone number does not exist in the database
+          router.push('/signup');
+        }
       } else {
-        // User doesn't exist, redirect to signup page
-        router.push('/signup');
+        console.error('No user is currently signed in.');
       }
-
-      console.log('User logged in successfully!');
     } catch (error) {
       console.error('Error verifying OTP:', error);
     }
   };
+  
+  
+    
+
+   
 
 
   
@@ -112,11 +138,11 @@ const AuthPage = () => {
           />
         </div>
        
-      
-        <div  id='recaptcha' >
+      {
+        (!otpSent ? <div id='recaptcha'>
 
-        </div>
-
+        </div> : null)
+      }
         {/* Button to Get OTP or Verify OTP based on the OTP status */}
         {otpSent ? (
           // OTP Sent, show OTP input field and Verify OTP button
