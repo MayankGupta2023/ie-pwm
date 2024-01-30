@@ -18,9 +18,9 @@ export default function Home() {
 
 
   return (
-    <div className={`h-screen flex flex-col ${styles.landing}`}>
+    <div className={`h-auto flex flex-col ${styles.landing}`}>
 
-      <div className={`${styles.navbar}`}>
+      <div className={`h-64 ${styles.navbar}`}>
         <Navbar />
       </div>
 
@@ -31,7 +31,7 @@ export default function Home() {
           <SquarePattern />
         </div>
 
-        <div className={` h-72 w-1/2 m-auto relative bottom-20 text-center text-xl pt-4 ${styles.head}`}>
+        <div className={` h-72 w-full m-auto relative bottom-10 text-center text-xl pt-4 ${styles.head}`}>
           <div className="flex justify-center text-3xl pt-8 mb-6 font-bold">
             Get a&nbsp;<span className={styles.kickstart}>Kickstart</span> &nbsp;boost with our&nbsp;<span className={styles.ai}>AI</span>&nbsp;note Generator
           </div>
@@ -49,6 +49,29 @@ export default function Home() {
         </div>
 
 
+
+      </div>
+
+      <div className="h-screen bg-red-400 flex ">
+
+        <div className="h-64 w-96 bg-red-500">
+
+        </div>
+
+
+        <div className="h-64 w-96 bg-red-500">
+
+        </div>
+
+
+        <div className="h-64 w-96 bg-red-500">
+
+        </div>
+
+
+        <div className="h-64 w-96 bg-red-500">
+
+        </div>
 
       </div>
 

@@ -7,8 +7,8 @@ import Link from 'next/link';
 
 const Navbar = () => {
     return (
-        <div className={`h-full flex justify-between px-4 items-center text-xl ${styles.nav}`}>
-            <div className='flex text-white gap-4 items-center text-3xl'>
+        <div className={`h-full flex justify-between px-4 items-center text-xl rounded-xl ${styles.nav}`}>
+            <div className='flex text-black gap-4 items-center text-3xl'>
                 <img src={logo.src} alt='logo' className={`h-12 ${styles.logo}`} />
                 Instant EduDoc
             </div>
