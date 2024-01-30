@@ -3,7 +3,7 @@ import Form from '../components/Form';
 
 const signup = () => {
     return (
-        <div>
+        <div className='h-screen pt-4'>
             <Form />
         </div>
     )
