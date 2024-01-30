@@ -17,7 +17,7 @@ const MakePaymentComponent = ({ amount, description }) => {
                 'Content-Type': 'application/json',
             },
              body: JSON.stringify({
-                taxAmt:100
+                taxAmt:amount
              })
          }
         )
@@ -29,7 +29,7 @@ const MakePaymentComponent = ({ amount, description }) => {
           key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
           name: "Instant PayDoc",
           currency: data.currency,
-          amount: data.amount,
+          amount: amount,
           order_id: data.id,
           description: description,
           image: ".././assets/logo.png",

@@ -47,11 +47,11 @@ const Pricing = () => {
   ];
 
   return (
-    <div>
+    <div className='h-screen  '>
       <div className='h-20'>
         <Navbar />
       </div>
-      <div className="flex justify-center pt-12" style={containerStyle}>
+      <div className="flex justify-center py-12 h-screen " style={containerStyle}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {monthlyPlans.map((plan, index) => (
             <motion.div
@@ -64,7 +64,7 @@ const Pricing = () => {
               <h3 className="text-xl font-semibold mb-4">{plan.title}</h3>
               <p className="text-gray-600">Lorem ipsum dolor sit amet...</p>
               <div className="mt-4">
-                <p className="text-2xl font-bold text-purple-600">${plan.price}</p>
+                <p className="text-2xl font-bold text-purple-600">₹{plan.price}</p>
               </div>
               <MakePaymentComponent amount={plan.price} description={plan.title} />
             </motion.div>
@@ -81,7 +81,7 @@ const Pricing = () => {
               <h3 className="text-xl font-semibold mb-4">{plan.title}</h3>
               <p className="text-gray-600">Lorem ipsum dolor sit amet...</p>
               <div className="mt-4">
-                <p className="text-2xl font-bold text-purple-600">${plan.price}</p>
+                <p className="text-2xl font-bold text-purple-600">₹{plan.price}</p>
               </div>
               <MakePaymentComponent amount={plan.price} description={plan.title} />
             </motion.div>
