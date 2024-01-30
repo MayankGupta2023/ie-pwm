@@ -1,29 +1,58 @@
 import React from "react";
 import Navbar from "../components/navbar";
+import notes from "../assets/notes.png"
+import Link from "next/link";
+import styles from "../styles/landing.module.css"
 
 export default function Home() {
+
+  const SquarePattern = () => {
+    return (
+      <div className={`grid overflow-hidden ${styles.gridd}`}>
+        {Array.from({ length: 120 }, (_, index) => (
+          <div key={index} className={`h-16 w-16 relative right-8 ${styles.grid_items}`}></div>
+        ))}
+      </div>
+    );
+  };
+
+
   return (
-    <div className="h-screen overflow-hidden">
-      <div className="h-20">
+    <div className={`h-screen flex flex-col ${styles.landing}`}>
+
+      <div className={`${styles.navbar}`}>
         <Navbar />
       </div>
 
-      <div className="bg-red-600 h-full p-8 flex">
+      <div className={`${styles.page}`}>
 
-        <div className="bg-red-200 w-1/2">
 
-          <div>
+        <div className="">
+          <SquarePattern />
+        </div>
 
+        <div className={` h-72 w-1/2 m-auto relative bottom-20 text-center text-xl pt-4 ${styles.head}`}>
+          <div className="flex justify-center text-3xl pt-8 mb-6 font-bold">
+            Get a&nbsp;<span className={styles.kickstart}>Kickstart</span> &nbsp;boost with our&nbsp;<span className={styles.ai}>AI</span>&nbsp;note Generator
+          </div>
+
+          Block build with a modular web design concept will easily kickstart your project, and build website & marketing site faster.
+
+          <div className="h-12 flex items-center justify-center mt-6">
+            <button className={` border-green border-2 px-12 py-2 text-2xl rounded ${styles.buttons}`}>Get started</button>
           </div>
 
         </div>
 
-        <div className="bg-red-400 w-1/2">
+        <div>
 
         </div>
 
 
+
       </div>
+
+
     </div>
   );
 }
