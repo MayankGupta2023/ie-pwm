@@ -1,6 +1,6 @@
 import React from 'react';
-import logo from '@/assets/logo.png';
-import styles from '@/styles/navbar.module.css';
+import logo  from '../assets/logo.png';
+import styles from '../styles/navbar.module.css';
 import Link from 'next/link';
 
 // console.log(logo);   
