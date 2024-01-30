@@ -61,27 +61,39 @@ export default function Home() {
 
         <div className="flex flex-wrap justify-around gap-8">
 
-          <div className="h-64 w-96 border-2 border-black">
+          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+
+            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
           </div>
 
-          <div className="h-64 w-96 border-2 border-black">
+          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+
+            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
           </div>
 
-          <div className="h-64 w-96 border-2 border-black">
+          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+
+            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
           </div>
 
-          <div className="h-64 w-96 border-2 border-black">
+          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+
+            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
           </div>
 
-          <div className="h-64 w-96 border-2 border-black">
+          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+
+            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
           </div>
 
-          <div className="h-64 w-96 border-2 border-black">
+          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+
+            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
           </div>
 
@@ -94,20 +106,26 @@ export default function Home() {
       <div className='bg-white pb-12'>
 
         <div className="text-center text-5xl font-semibold pb-8  pt-12">
-          <span className={`${styles.ai}`}>Personalised Learning</span>
+          <span className={``}>Personalised Learning</span>
         </div>
 
         <div className="flex flex-wrap justify-around gap-8">
 
-          <div className="h-64 w-96 border-2 border-black">
+          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+
+            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
           </div>
 
-          <div className="h-64 w-96 border-2 border-black">
+          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+
+            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
           </div>
 
-          <div className="h-64 w-96 border-2 border-black">
+          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+
+            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
           </div>
 
