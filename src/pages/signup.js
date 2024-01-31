@@ -25,7 +25,7 @@ import styles from "../styles/landing.module.css"
 
 const auth = getAuth(app);
 
-const Signup = ({phoneNumber }) => {
+const Signup = ({ phoneNumber }) => {
   const router = useRouter();
 
   const [formData, setFormData] = useState({
@@ -35,7 +35,7 @@ const Signup = ({phoneNumber }) => {
     whereyouheardaboutus: 'social',
     bday: '',
     agreeTerms: true,
-    
+
   });
 
 
@@ -46,13 +46,13 @@ const Signup = ({phoneNumber }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-    
+
       setCurrentUser(user);
     });
 
     return () => unsubscribe();
   }, []);
-  
+
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
@@ -67,20 +67,20 @@ const Signup = ({phoneNumber }) => {
 
     if (!currentUser) {
       console.error('User is not authenticated.');
-     
+
       return;
     }
-console.log(router.query.phoneNumber);
-const  phoneNumber = router.query.phoneNumber;
+    console.log(router.query.phoneNumber);
+    const phoneNumber = router.query.phoneNumber;
     const db = getFirestore(app);
     const userRef = doc(db, 'users', currentUser.uid);
 
     try {
-   
-      await setDoc(userRef, formData ,{ merge: true });
+
+      await setDoc(userRef, formData, { merge: true });
       await setDoc(userRef, { phoneNumber }, { merge: true });
       console.log('Form data submitted successfully!');
-      router.push('/dashboard');
+      router.push('/Working');
     } catch (error) {
       console.error('Error submitting form data:', error);
     }
