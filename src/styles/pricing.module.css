@@ -1,0 +1,6 @@
+/* switch-custom.css */
+
+.custom-switch .react-switch-bg {
+    border-radius: 50% !important; /* Adjust the border-radius for the circle */
+  }
+  

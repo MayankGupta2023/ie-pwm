@@ -36,7 +36,7 @@ const Navbar = () => {
       <div className='flex justify-around min-w-96 p-2 '>
         <Link href="/">Home</Link>
         <Link href="/pricing">Pricing</Link>
-        <Link href="/dashboard">Get Notes</Link>
+        <Link href="/Working">Get Notes</Link>
 
         {isLoggedIn ? (
           // If the user is logged in, show "Logout" option
