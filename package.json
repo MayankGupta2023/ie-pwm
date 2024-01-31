@@ -16,7 +16,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-scripts": "^3.0.1",
-    "react-spring": "^9.7.3"
+    "react-spring": "^9.7.3",
+    "shortid": "^2.2.16"
   },
   "devDependencies": {
     "autoprefixer": "^10.0.1",
