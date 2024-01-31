@@ -1,6 +1,6 @@
-// Navbar.js
-import React, { useState, useEffect } from 'react';
-import { getAuth, signOut } from 'firebase/auth';
+import React from 'react';
+import logo  from '../assets/logo.png';
+import styles from '../styles/navbar.module.css';
 import Link from 'next/link';
 
 const Navbar = () => {
@@ -31,6 +31,20 @@ const Navbar = () => {
         Instant EduDoc
       </div>
 
+            <div className='flex justify-around min-w-96 p-2 '>
+
+
+                <Link href="/">Home</Link>
+                <Link href="/pricing">Pricing</Link>
+                <Link href="/Working">Get Notes</Link>
+                <Link href="/login">Login</Link>
+
+            </div>
+
+
+        </div>
+    )
+}
       <div className='flex justify-around min-w-96 p-2 '>
         <Link href="/">Home</Link>
         <Link href="/pricing">Pricing</Link>
