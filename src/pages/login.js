@@ -6,16 +6,18 @@ import { motion } from 'framer-motion';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-import { getAuth, signInWithPhoneNumber,RecaptchaVerifier  } from 'firebase/auth';
+import { getAuth, signInWithPhoneNumber, RecaptchaVerifier } from 'firebase/auth';
 import app from '../firebaseConfig';
-import { getFirestore,
+import {
+  getFirestore,
   collection,
   query,
   where,
   getDocs,
   setDoc,
   doc,
-  getDoc,} from 'firebase/firestore';
+  getDoc,
+} from 'firebase/firestore';
 import styles from "../styles/landing.module.css"
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
@@ -34,10 +36,10 @@ const AuthPage = () => {
 
   const handleSendOtp = async () => {
     try {
-    const recaptcha = new RecaptchaVerifier(auth, 'recaptcha', {});
-    console.log("jere");
-    const totphoneNumber = '+' +countryCode + phoneNumber;
-    console.log(totphoneNumber)
+      const recaptcha = new RecaptchaVerifier(auth, 'recaptcha', {});
+      console.log("jere");
+      const totphoneNumber = '+' + countryCode + phoneNumber;
+      console.log(totphoneNumber)
       const confirmation = await signInWithPhoneNumber(auth, totphoneNumber, recaptcha);
       console.log(confirmation)
       setConfirmationResult(confirmation);
@@ -55,34 +57,34 @@ const AuthPage = () => {
   const handleVerifyOtp = async () => {
     try {
       await confirmationResult.confirm(verificationCode);
-    //  setVerificationCode('');
-  
+      //  setVerificationCode('');
+
       // Check if the user exists in the database
       const db = getFirestore(app);
       const user = auth.currentUser;
-  
+
       if (user) {
         // Get the entered phone number
         const enteredPhoneNumber = phoneNumber;
-  
+
         // Check if a user document with the entered phone number exists
         const querySnapshot = await getDocs(
           query(collection(db, 'users'), where('phoneNumber', '==', enteredPhoneNumber))
         );
         const userRef = doc(db, 'users', user.uid);
-      //  await setDoc(userRef, { phoneNumber }, { merge: true });
+        //  await setDoc(userRef, { phoneNumber }, { merge: true });
         if (querySnapshot.size > 0) {
           // User with the entered phone number exists in the database
-          router.push('/dashboard');
+          router.push('/Working');
         } else {
           // User with the entered phone number does not exist in the database
-      
-          router.push({
-    pathname: '/signup',
- query: { phoneNumber: enteredPhoneNumber },
-  });
 
-  
+          router.push({
+            pathname: '/signup',
+            query: { phoneNumber: enteredPhoneNumber },
+          });
+
+
         }
       } else {
         console.error('No user is currently signed in.');
@@ -91,14 +93,14 @@ const AuthPage = () => {
       console.error('Error verifying OTP:', error);
     }
   };
-  
-  
-    
-
-   
 
 
-  
+
+
+
+
+
+
   return (
     <div className="flex flex-col justify-center h-full bg-white">
       <div className={`h-64 ${styles.navbar}`}>
@@ -111,8 +113,8 @@ const AuthPage = () => {
         transition={{ duration: 0.5, delay: 0.2 }}
         className="bg-white mt-10 m-auto p-10 rounded-md shadow-md shadow-black max-w-md h-full w-full items-center"
       >
-           {/* Country Code Selection */}
-           <div className="mb-6">
+        {/* Country Code Selection */}
+        <div className="mb-6">
           <label htmlFor="countryCode" className="block text-gray-600 mb-2">
             Country Code
           </label>
@@ -144,12 +146,12 @@ const AuthPage = () => {
             placeholder="Enter your phone number"
           />
         </div>
-       
-      {
-        (!otpSent ? <div id='recaptcha'>
 
-        </div> : null)
-      }
+        {
+          (!otpSent ? <div id='recaptcha'>
+
+          </div> : null)
+        }
         {/* Button to Get OTP or Verify OTP based on the OTP status */}
         {otpSent ? (
           // OTP Sent, show OTP input field and Verify OTP button

@@ -1,28 +1,73 @@
 import React from 'react'
 import Navbar from '../components/navbar'
 import DropdownButton from '../components/dropdown_button'
+import { useEffect, useState } from 'react';
+import firebase from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import app from '../firebaseConfig';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
+const auth = getAuth(app);
+const firestore = getFirestore(app);
 const Working = () => {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
+            if (authUser) {
+                // If authenticated, get the user document from Firestore
+                const userDocRef = doc(firestore, 'users', authUser.uid);
+                const userDocSnap = await getDoc(userDocRef);
+
+                if (userDocSnap.exists()) {
+                    // If the user document exists, set the user state with the display name
+                    setUser({
+                        uid: authUser.uid,
+                        email: authUser.email,
+                        displayName: userDocSnap.data().name,
+                    });
+                } else {
+                    // If the user document does not exist, set the user state with basic information
+                    setUser({
+                        uid: authUser.uid,
+                        email: authUser.email,
+                    });
+                }
+            } else {
+                // If not authenticated, redirect to login
+                window.location.href = '/login';
+            }
+        });
+
+        return () => unsubscribe();
+    }, []);
+
+
+
     return (
         <div>
-            <div className='h-20 fixed l-0 t-0 w-full'>
+            <div className='h-20 fixed l-0 t-0 w-full '>
                 <Navbar />
             </div>
 
-            <div className='h-screen  flex justify-center items-center'>
+            <div className='h-screen  flex justify-center items-center pt-8'>
 
 
 
-                <div className='h-2/3 bg-red-600 w-2/3 p-4 flex relative'>
+                <div className='h-4/5 bg-red-600 w-2/3 p-4 flex relative'>
 
                     <div className='absolute right-10 top-0'>
                         <button className='p-2 font-medium text-xl '>Upgrade</button>
                         <button className='p-2 ml-4 text-2xl'>&#9733;</button>
                     </div>
 
-                    <div className='w-2/5 bg-yellow-400 pt-8'>
+                    <div className='w-2/5 bg-yellow-400 pt-1'>
 
-                        <div className='w-full h-fit gap-1 flex'>
+                        <h2 className="text-xl font-semibold mb-2 text-gray-800">
+                            Welcome, {user ? user.displayName || user.email : 'Guest'}!
+                        </h2>
+
+                        <div className='w-full h-fit gap-1 flex pt-4'>
                             <DropdownButton />
                             <DropdownButton />
                             <DropdownButton />

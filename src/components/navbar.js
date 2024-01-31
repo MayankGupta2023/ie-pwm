@@ -1,5 +1,5 @@
 import React from 'react';
-import logo  from '../assets/logo.png';
+import logo from '../assets/logo.png';
 import styles from '../styles/navbar.module.css';
 import Link from 'next/link';
 
@@ -18,7 +18,7 @@ const Navbar = () => {
 
                 <Link href="/">Home</Link>
                 <Link href="/pricing">Pricing</Link>
-                <Link href="/dashboard">Get Notes</Link>
+                <Link href="/Working">Get Notes</Link>
                 <Link href="/login">Login</Link>
 
             </div>
