@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import Navbar from '@/components/navbar';
-import MakePaymentComponent from '@/components/MakePaymentComponent';
-import Footer from '@/components/footer';
+import Navbar from '../components/navbar';
+import MakePaymentComponent from '../components/MakePaymentComponent';
+import Footer from '../components/footer';
 
 const cardVariants = {
   initial: { scale: 1, boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)' },
