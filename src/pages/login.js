@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-import { getAuth, signInWithPhoneNumber,RecaptchaVerifier ,  createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithPhoneNumber,RecaptchaVerifier  } from 'firebase/auth';
 import app from '../firebaseConfig';
 import { getFirestore,
   collection,
@@ -17,8 +17,8 @@ import { getFirestore,
   doc,
   getDoc,} from 'firebase/firestore';
 import styles from "../styles/landing.module.css"
-import Navbar from '@/components/navbar';
-import Footer from '@/components/footer';
+import Navbar from '../components/navbar';
+import Footer from '../components/footer';
 
 
 const auth = getAuth(app);
@@ -69,13 +69,20 @@ const AuthPage = () => {
         const querySnapshot = await getDocs(
           query(collection(db, 'users'), where('phoneNumber', '==', enteredPhoneNumber))
         );
-  
+        const userRef = doc(db, 'users', user.uid);
+      //  await setDoc(userRef, { phoneNumber }, { merge: true });
         if (querySnapshot.size > 0) {
           // User with the entered phone number exists in the database
           router.push('/dashboard');
         } else {
           // User with the entered phone number does not exist in the database
-          router.push('/signup');
+      
+          router.push({
+    pathname: '/signup',
+ query: { phoneNumber: enteredPhoneNumber },
+  });
+
+  
         }
       } else {
         console.error('No user is currently signed in.');
