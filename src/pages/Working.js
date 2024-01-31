@@ -67,7 +67,7 @@ const Working = () => {
                             Welcome, {user ? user.displayName || user.email : 'Guest'}!
                         </h2>
 
-                        <div className='w-full h-fit gap-1 flex pt-4 wrap-wrap'>
+                        <div className='w-full h-fit gap-1 flex pt-4 flex-wrap'>
                             <DropdownButton />
                             <DropdownButton />
                             <DropdownButton />
