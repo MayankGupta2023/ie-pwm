@@ -102,7 +102,7 @@ const AuthPage = () => {
 
 
   return (
-    <div className="flex flex-col justify-center h-full bg-white">
+    <div className="flex flex-col justify-center h-screen  bg-white">
       <div className={`h-64 ${styles.navbar}`}>
         <Navbar />
       </div>
