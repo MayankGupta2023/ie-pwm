@@ -68,12 +68,14 @@ const MakePaymentComponent = ({ amount, description }) => {
       }
       return (
         <div>
-          <button
-            onClick={() => makePayment()}
-            className= "font-medium bg-neutral-400	 text-neutral-200 px-6 py-3 rounded-md mt-4 hover:bg-neutral-600 focus:outline-none focus:ring focus:border-blue-300"
-          >
-            Buy Now
-          </button>
+  <button
+  onClick={() => makePayment()}
+  className="font-medium bg-teal-500 border border-teal-500 text-slate-50 px-6 py-3 rounded-md mt-4 hover:bg-teal-500 hover:text-slate-50 focus:outline-none focus:ring focus:border-blue-300"
+>
+  Buy Now
+</button>
+
+
         </div>
       );
     };
