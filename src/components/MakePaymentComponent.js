@@ -70,7 +70,8 @@ const MakePaymentComponent = ({ amount, description }) => {
         <div>
   <button
   onClick={() => makePayment()}
-  className="font-medium bg-teal-500 border border-teal-500 text-slate-50 px-6 py-3 rounded-md mt-4 hover:bg-teal-500 hover:text-slate-50 focus:outline-none focus:ring focus:border-blue-300"
+  className="font-medium bg-white border border-teal-500
+   text-teal-500 px-6 py-3 rounded-md mt-4 hover:bg-teal-500 hover:text-white focus:outline-none focus:ring focus:border-blue-300"
 >
   Buy Now
 </button>

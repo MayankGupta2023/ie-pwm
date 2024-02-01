@@ -60,7 +60,7 @@ const Pricing = () => {
       <div className='h-20'>
         <Navbar />
       </div>
-      <div className="flex-grow flex flex-col items-center py-12" style={containerStyle}>
+      <div className="flex-grow ml-10 mr-10 flex flex-col items-center py-12" style={containerStyle}>
         <motion.div
           initial="initial"
           animate="animate"
@@ -78,10 +78,53 @@ const Pricing = () => {
             </motion.span>
           </h1>
         </motion.div>
-        <p className='text-xl text-sky-900 mb-8'>
-          You can explore the pricing plans according to your needs. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          Sed do eiusmod tempor .
+        <p className='text-xl text-sky-900  text-center mb-8 pl-10  pr-10'>
+        Unlock Boundless Possibilities with Our Flexible Pricing Plans.
+         Tailored for Every Individual and Needs , Our Plans Provide Unrivaled Value, 
+         Ensuring Seamless Access to Premium Features and Unprecedented Learning
+          Opportunities.
         </p>
+
+<motion.div className='mb-10 mt-5'
+variants={cardVariants}initial="initial"
+whileHover="hover">
+<div className='pt-2 h-10 bg-teal-950 font-serif rounded-t-2xl text-xl font-bold text-white text-center text-semibold'>
+Recommended
+</div>
+<motion.div >
+        <div
+             
+              //variants={cardVariants}
+              initial="initial"
+              whileHover="hover"
+              className="bg-white p-8 rounded-b-2xl shadow-md border-2 border-teal-600 border-t-black flex flex-col justify-between w-96 h-96"
+            >
+              
+              <h3 className="text-2xl font-bold text-slate-500 mb-0 flex items-center justify-center">One Time </h3>
+              <h3 className="text-3xl font-bold  text-slate-800 mb-0 flex items-center justify-center">$ 2500</h3>
+              <hr className="mb-2"></hr>
+              <div className="text-gray-900 mb-4">
+                <ul className="list-disc list-inside">
+                  <li style={{ color: '#71717a' }}>
+                    <span style={{ color: 'grey' }}>Bullet Point 1</span>
+                  </li>
+                  <li style={{ color: '#71717a' }}>
+                    <span style={{ color: 'grey' }}>Bullet Point 2</span>
+                  </li>
+                  <li style={{ color: '#71717a' }}>
+                    <span style={{ color: 'grey' }}>Bullet Point 3</span>
+                  </li>
+                  <li style={{ color: '#71717a' }}>
+                    <span style={{ color: 'grey' }}>Bullet Point 4</span>
+                  </li>
+                </ul>
+                <div className="mt-6 mb-2 flex items-center justify-center">
+                  <MakePaymentComponent amount="2000" description="One Time" />
+                </div>
+              </div>
+            </div>
+            </motion.div>
+</motion.div>
 
         <div className="toggle-switch-container mb-12">
           <span className='mr-4 text-3xl'>Yearly</span>
