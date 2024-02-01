@@ -63,7 +63,7 @@ const Footer = () => {
    <p className='text-red-100 text-lg ' > © PWM Group 2023</p>
     <p className='text-red-100 text-lg ' > © PWM Group 2023</p>
     <p className=' text-zinc-950 text-lg ' > © PWM Group 2023</p>
-    <p className='text-red-100 text-lg ' > © PWM Group 2023</p>
+    <p className='text-red-100 text-lg ' > © PWM Group 2023 icons to be added</p>
 
    </div>
 
