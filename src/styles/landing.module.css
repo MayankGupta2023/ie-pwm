@@ -75,3 +75,8 @@
 .head{
     color: #333333;
 }
+
+.back{
+    background-image: url('https://framerusercontent.com/images/eLwUK0KEINGeeA0tyUaDIYLYtwQ.jpg?scale-down-to=2048');
+    background-size: cover;
+}

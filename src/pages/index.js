@@ -83,12 +83,85 @@ export default function Home() {
         </div>
 
         <div className="h-3/5 w-full flex justify-center items-center flex-col">
-          <p className="text-2xl w-1/2 text-center" style={{ color: "#888888" }}>Block build with a modular web design concept will easily kickstart your project, and build website & marketing site faster.</p>
+          <p className="text-2xl w-1/2 text-center font-semibold" style={{ color: "#888888" }}>Block build with a modular web design concept will easily kickstart your project, and build website & marketing site faster.</p>
           <div>
             <button className="text-white bg-black py-2 font-semibold px-4 shadow-2xl rounded-lg">Get Started</button>
             <button className=" ml-4 bg-slate-100  px-4 py-2 rounded-lg mt-10 font-semibold text-black">Learn More</button>
           </div>
         </div>
+
+      </div>
+
+      <div className=" h-fit pt-16" >
+
+        <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center">Trusted By Many Learners</div>
+
+        <div className={`flex h-5/6  py-12 px-32 flex-wrap justify-around items-center  ${styles.b1}`}>
+
+          <div style={{ height: '370px' }} className="  mt-6 w-80 shadow-xl overflow-hidden border-2 rounded-2xl ">
+
+            <div className="h-1/4 w-full p-8">
+              Name
+
+            </div>
+
+            <div style={{ color: '#666' }} className="h-3/4 w-full p-8">
+              Thank You for developing this best platform for learning purpose.
+            </div>
+
+
+
+          </div>
+
+          <div style={{ height: '370px' }} className=" w-80 mt-6 shadow-xl overflow-hidden border-2 rounded-2xl ">
+
+            <div className="h-1/4 w-full p-8">
+              Name
+
+            </div>
+
+            <div style={{ color: '#666' }} className="h-3/4 w-full p-8">
+              Thank You for developing this best platform for learning purpose.
+            </div>
+
+
+          </div>
+
+          <div style={{ height: '370px' }} className="  w-80 mt-6 shadow-xl overflow-hidden border-2 rounded-2xl ">
+
+
+            <div className="h-1/4 w-full p-8">
+              Name
+
+            </div>
+
+            <div style={{ color: '#666' }} className="h-3/4 w-full p-8">
+              Thank You for developing this best platform for learning purpose.
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div style={{ backgroundColor: '#fff6f3' }} className="h-screen ">
+
+        <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center">Key Features</div>
+
+
+      </div>
+
+      <div className="h-80">
+
+        <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center">Trusted by</div>
+
+
+      </div>
+
+
+      <div className={`h-screen ${styles.back}`}>
 
       </div>
 
