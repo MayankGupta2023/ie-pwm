@@ -153,7 +153,7 @@ export default function Home() {
 
       </div>
 
-      <div className="h-80">
+      <div className="h-60">
 
         <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center">Trusted by</div>
 
@@ -162,6 +162,40 @@ export default function Home() {
 
 
       <div className={`h-screen ${styles.back}`}>
+
+        <div style={{ color: '#333' }} className={`font-bold text-5xl p-8 text-center`}>Enhance Learning Beyond Tradition with Innovative Features</div>
+
+        <div className="grid grid-cols-3 grid-rows-2 h-5/6">
+
+          <div className="   flex flex-col px-20 justify-center">
+            <div className="text-3xl font-bold">Answered Notes</div>
+            <div>Top-notch chapter summeries comming to your needs</div>
+          </div>
+          <div className="   flex flex-col px-20 justify-center">
+            <div className="text-3xl font-bold">Answered Notes</div>
+            <div>Top-notch chapter summeries comming to your needs</div>
+          </div>
+          <div className="   flex flex-col px-20 justify-center">
+            <div className="text-3xl font-bold">Answered Notes</div>
+            <div>Top-notch chapter summeries comming to your needs</div>
+          </div>
+          <div className="   flex flex-col px-20 justify-center">
+            <div className="text-3xl font-bold">Answered Notes</div>
+            <div>Top-notch chapter summeries comming to your needs</div>
+          </div>
+          <div className="   flex flex-col px-20 justify-center">
+            <div className="text-3xl font-bold">Answered Notes</div>
+            <div>Top-notch chapter summeries comming to your needs</div>
+          </div>
+          <div className="   flex flex-col px-20 justify-center">
+            <div className="text-3xl font-bold">Answered Notes</div>
+            <div>Top-notch chapter summeries comming to your needs</div>
+          </div>
+
+
+
+
+        </div>
 
       </div>
 
