@@ -27,24 +27,24 @@ const Navbar = () => {
   };
 
   return (
-    <div className={`h-full flex justify-between px-4 items-center text-xl rounded-l`}>
+    <div className={`h-full flex justify-between px-4 items-center text-xl rounded-l   ${styles.b1}`}>
       <div className='flex text-black gap-4 items-center text-3xl'>
-      <img src={logo.src} alt='logo' className={`h-12 ${styles.logo}`} />
-        Instant EduDoc
+        <img src={logo.src} alt='logo' className={`h-12 ${styles.logo}`} />
+
       </div>
 
-      <div className='flex justify-around min-w-96 p-2 '>
-        <Link href="/">Home</Link>
+      <div className='text-base flex justify-around min-w-80 '>
+        <Link href="/">Features</Link>
         <Link href="/pricing">Pricing</Link>
+        <Link href="/pricing">Contact</Link>
+
         <Link href="/Working">Get Notes</Link>
 
-        {isLoggedIn ? (
-          // If the user is logged in, show "Logout" option
+        {/* {isLoggedIn ? (
           <button onClick={handleLogout}>Logout</button>
         ) : (
-          // If the user is not logged in, show "Login" option
           <Link href="/login">Login</Link>
-        )}
+        )} */}
       </div>
     </div>
   );

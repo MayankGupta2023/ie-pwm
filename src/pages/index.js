@@ -1,11 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/navbar";
 import notes from "../assets/notes.png"
 import Link from "next/link";
 import styles from "../styles/landing.module.css"
 import Footer from "../components/footer";
 
+
 export default function Home() {
+
+  const [drop1, setDrop1] = useState(false);
+  const [drop2, setDrop2] = useState(false);
+  const [drop3, setDrop3] = useState(false);
+
+  const handleDrop1 = () => {
+    setDrop1(!drop1);
+  }
+
+  const handleDrop2 = () => {
+    setDrop2(!drop2);
+  }
+
+  const handleDrop3 = () => {
+    setDrop3(!drop3);
+  }
+
+
 
   const SquarePattern = () => {
     return (
@@ -21,11 +40,11 @@ export default function Home() {
   return (
     <div className={`h-auto flex flex-col ${styles.landing}`}>
 
-      <div className={`h-64 ${styles.navbar}`}>
+      <div className={`h-64 fixed top-0 left-0 z-50 bg-white w-full ${styles.navbar}`}>
         <Navbar />
       </div>
 
-      <div className={`${styles.page}`}>
+      {/* <div className={`${styles.page}`}>
 
 
         <div className="">
@@ -51,49 +70,41 @@ export default function Home() {
 
 
 
-      </div>
+      </div> */}
 
-      <div className={`${styles.grey} pb-12`}>
+      <div className={`h-screen pt-20 ${styles.orange_grad}`}>
 
-        <div className="text-center text-5xl font-semibold py-8">
-          Key Features
+        <div className="h-2/5 flex w-full justify-center items-end font-extrabold text-5xl text-center px-24">
+
+          <p className={styles.head}>
+            Explore AI-driven <span style={{ color: '#bf5252' }}>enhancement</span> through our Note Builder Kickstart
+
+          </p>
         </div>
 
-        <div className="flex flex-wrap justify-around gap-8">
-
-          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
-
-            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
-
+        <div className="h-3/5 w-full flex justify-center items-center flex-col">
+          <p className="text-2xl w-1/2 text-center" style={{ color: "#888888" }}>Block build with a modular web design concept will easily kickstart your project, and build website & marketing site faster.</p>
+          <div>
+            <button className="text-white bg-black py-2 font-semibold px-4 shadow-2xl rounded-lg">Get Started</button>
+            <button className=" ml-4 bg-slate-100  px-4 py-2 rounded-lg mt-10 font-semibold text-black">Learn More</button>
           </div>
+        </div>
 
-          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+      </div>
 
-            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
-          </div>
 
-          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
 
-            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
 
-          </div>
 
-          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
+      <div className="h-screen w-full flex px-12 py-16 ">
 
-            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
-
-          </div>
-
-          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
-
-            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
-
-          </div>
-
-          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
-
-            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
+        <div className="w-1/2 flex flex-col justify-center items-center gap-8">
+          <div className="py-4 w-96 font-bold text-5xl">Get your notes via WhatsApp</div>
+          <div className="w-3/5 text-xl text-stone-500">
+            Never hesitate to ask questions, even if you're not on a web browser, whenever it suits you.
+            <button className="text-white bg-black py-2 font-semibold px-4 shadow-2xl rounded-lg">Get Started</button>
+            <button className=" ml-4 bg-slate-100  px-4 py-2 rounded-lg mt-10 font-semibold text-black">Learn More</button>
 
           </div>
 
@@ -101,64 +112,119 @@ export default function Home() {
 
         </div>
 
-      </div>
-
-      <div className='bg-white pb-12'>
-
-        <div className="text-center text-5xl font-semibold pb-8  pt-12">
-          <span className={``}>Personalised Learning</span>
-        </div>
-
-        <div className="flex flex-wrap justify-around gap-8">
-
-          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
-
-            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
-
-          </div>
-
-          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
-
-            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
-
-          </div>
-
-          <div className="h-64 w-96 border-2 border-black rounded-3xl flex justify-center items-center text-center">
-
-            loremm ippsum idor sit A paragraph is a series of sentences that are organized and coherent, and are all related to a single topic. Almost every piece of writing you do that is longer than a few sentences should be organized into paragraphs.
-
-          </div>
-
+        <div className="w-1/2  h-screen ">
+          <img className="h-full w-full" src="https://framerusercontent.com/images/dAJW9yDkvqMtYUWnpXJiJ2wKsA.jpg?scale-down-to=1024" />
         </div>
 
       </div>
 
-      <div className={`${styles.grey} h-64 flex justify-center items-center px-12`}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget fermentum ultricies, nunc nisl ultricies nunc, eget aliquam nisl nisl quis nunc. Donec euismod, nisl eget fermentum ultricies, nunc nisl ultricies nunc, eget aliquam nisl nisl quis nunc. Donec euismod, nisl eget fermentum ultricies, nunc nisl ultricies nunc, eget aliquam nisl nisl quis nunc. Donec euismod, nisl eget fermentum ultricies, nunc nisl ultricies nunc, eget aliquam nisl nisl quis nunc. Donec euismod, nisl eget fermentum ultricies, nunc nisl ultricies nunc, eget aliquam nisl nisl quis nunc. Donec euismod, nisl eget fermentum ultricies, nunc nisl ultricies nunc, eget aliquam nisl nisl quis nunc.
-      </div>
 
-      <div className="h-96 w-4/5 m-auto flex px-12 py-16 bg-orange-100 my-4">
 
-        <div className="w-1/2">
-          <div className="py-4 font-semibold text-3xl">Get Notes On Whatsapp!!</div>
-          <div>Lorem ipsum idor sit agrah vagarah ho Lorem ipsum idor
-            sit agrah vagarah horem ipsum idor sit agrah vagarah ho Loregarah ho Lorem
-            ipsum idor sit agrah vagarah ho Lorem ipsum idor sit agrah vagarah ho
+      <div className=" h-fit pt-16" >
+
+        <div className="font-bold text-5xl p-4">Latest Updates</div>
+
+        <div className={`flex h-5/6  py-12 px-32 flex-wrap justify-around items-center  ${styles.b1}`}>
+
+          <div style={{ height: '430px' }} className="  mt-6 w-80 shadow-xl overflow-hidden border-2 rounded-2xl ">
+            <div className="h-1/2 w-full">
+              <img className="h-full w-full" />
+            </div>
+            <div className="flex flex-col justify-around align-start px-12 h-1/2  ">
+
+              <div className="text-2xl font-semibold">Blogs</div>
+              <div className="text-stone-500">Learn about hosting build scale and reliability.</div>
+              <button className="w-fit px-4 py-2 bg-black text-white rounded-lg">Read More</button>
+
+            </div>
+
+
           </div>
 
-          <button className="border-2 border-black px-4 py-2 rounded mt-10">Get On</button>
+          <div style={{ height: '430px' }} className=" w-80 mt-6 shadow-xl overflow-hidden border-2 rounded-2xl ">
+            <div className="h-1/2 w-full">
+              <img className="h-full w-full" />
+            </div>
+            <div className="flex flex-col justify-around align-start px-12 h-1/2  ">
+
+              <div className="text-2xl font-semibold">Blogs</div>
+              <div className="text-stone-500">Learn about hosting build scale and reliability.</div>
+              <button className="w-fit px-4 py-2 bg-black text-white rounded-lg">Read More</button>
+
+            </div>
+
+
+          </div>
+
+          <div style={{ height: '430px' }} className="  w-80 mt-6 shadow-xl overflow-hidden border-2 rounded-2xl ">
+            <div className="h-1/2 w-full">
+              <img className="h-full w-full" />
+            </div>
+            <div className="flex flex-col justify-around align-start px-12 h-1/2  ">
+
+              <div className="text-2xl font-semibold">Blogs</div>
+              <div className="text-stone-500">Learn about hosting build scale and reliability.</div>
+              <button className="w-fit px-4 py-2 bg-black text-white rounded-lg">Read More</button>
+
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+      </div>
+
+      <div className="h-screen w-full flex flex-col gap-32 pt-30 items-center justify-center">
+
+        <div className="font-bold text-5xl text-zinc-800">Frequently Asked Questions</div>
+
+        <div className="max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ">
+          <div className="h-fit p-4 text-lg font-semibold flex justify-center flex-col ">
+            <div className="h-fit" onClick={() => { handleDrop1() }}>+ What is Framer?</div>
+            {drop1 ? <div className="h-16 px-4 text-lg font-semibold flex items-center">
+              Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
+            </div> : null}
+          </div>
+          <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
+            <div className="h-fit" onClick={() => { handleDrop2() }}>+ Is it easy to learn?</div>
+            {drop2 ? <div className="h-16 px-4 text-lg font-semibold flex items-center">
+              Framer is fastest tool to build sites with, because you can ship your design immidiatly,insted of rebuilding it in code or second tool.
+            </div> : null}
+          </div>
+          <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
+            <div className="h-fit" onClick={() => { handleDrop3() }}>+ Do i need to code?</div>
+            {drop3 ? <div className="h-16 px-4 text-lg font-semibold flex items-center">
+              Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
+            </div> : null}
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+      <div className={` h-64 ${styles.orange_grad}`}>
+
+        <div className="h-full flex flex-col items-center justify-center gap-8">
+
+          <div className="text-white text-6xl font-bold">Sign up today.</div>
+
+          <div className="flex gap-6">
+            <button className="text-black bg-slate-100 font-semibold py-2 px-4 shadow-2xl rounded-lg">Learn more</button>
+            <button className="text-white bg-black py-2 font-semibold px-4 shadow-2xl rounded-lg">Get Stared</button>
+
+          </div>
+
 
 
         </div>
 
-        <div className="w-1/2 ">Get Notes On Whatsapp!!</div>
-
-
-
-
       </div>
 
-      <div>
+      <div className="h-96">
         <Footer />
       </div>
 

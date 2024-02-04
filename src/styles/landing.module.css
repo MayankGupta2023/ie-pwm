@@ -3,11 +3,6 @@
    
 }
 
-.landing{
-   /* background: radial-gradient(circle, #747578,#2d3037 ); */
-   
-    
-}
 
 .page{
     height: auto;
@@ -48,10 +43,6 @@
     /* border: 1px solid rgba(255, 145, 48, 0.799); */
 }
 
-.head {
-    /* box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 48px; */
-    background-color: white;
-}
 
 .kickstart{
     color: #ff4917;
@@ -70,4 +61,17 @@
 
 .grey{
     background-color: #f8f9fa;
+}
+
+
+.orange_grad{
+    background: linear-gradient(180deg, #ffffff 0%, rgba(254, 210, 194, 1) 45.94594594594595%, rgb(253, 141, 75) 100%);
+}
+
+.b1{
+    border-bottom: 1px solid #ebebeb;
+}
+
+.head{
+    color: #333333;
 }
