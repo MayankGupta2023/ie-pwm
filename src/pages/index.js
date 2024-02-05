@@ -147,11 +147,11 @@ export default function Home() {
 
       </div>
 
-      <div style={{ backgroundColor: '#fff6f3' }} className="h-screen ">
+      <div style={{ backgroundColor: '#fff6f3' }} className="min-h-fit h-screen ">
 
-        <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center">Key Features</div>
+        <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center pt-8">Key Features</div>
 
-        <div className="mt-8 h-fit  py-12 px-8 flex items-center justify-center gap-8 flex-wrap">
+        <div className="mt-8 min-h-fit  py-12 px-8 flex items-center justify-center gap-8 flex-wrap ">
 
           <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fd3c34' }}>
 
