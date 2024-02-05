@@ -4,6 +4,7 @@ import notes from "../assets/notes.png"
 import Link from "next/link";
 import styles from "../styles/landing.module.css"
 import Footer from "../components/footer";
+import { motion, useAnimation } from "framer-motion";
 
 
 export default function Home() {
@@ -38,9 +39,9 @@ export default function Home() {
 
 
   return (
-    <div className={`h-auto flex flex-col ${styles.landing}`}>
+    <div className={`font-inter`}>
 
-      <div className={`h-64 fixed top-0 left-0 z-50 bg-white w-full ${styles.navbar}`}>
+      <div className={`h-16 fixed top-0 left-0 z-50 bg-white w-full `}>
         <Navbar />
       </div>
 
@@ -74,7 +75,7 @@ export default function Home() {
 
       <div className={`h-screen pt-20 ${styles.orange_grad_top}`}>
 
-        <div className="h-2/5 flex w-full justify-center items-end font-extrabold text-5xl text-center px-24">
+        <div className="h-2/5 flex w-full justify-center items-end font-black text-5xl text-center px-24">
 
           <p className={styles.head}>
             Explore AI-driven <span style={{ color: '#bf5252' }}>enhancement</span> through our Note Builder Kickstart
@@ -207,11 +208,13 @@ export default function Home() {
       <div className="h-screen w-full flex px-12 py-16 ">
 
         <div className="w-1/2 flex flex-col justify-center items-center gap-8">
-          <div className="py-4 w-96 font-bold text-5xl">Get your notes via WhatsApp</div>
-          <div className="w-3/5 text-xl text-stone-500">
-            Never hesitate to ask questions, even if you're not on a web browser, whenever it suits you.
-            <button className="text-white bg-black py-2 font-semibold px-4 shadow-2xl rounded-lg">Get Started</button>
-            <button className=" ml-4 bg-slate-100  px-4 py-2 rounded-lg mt-10 font-semibold text-black">Learn More</button>
+          <div className=" w-96 font-bold text-5xl">Get your notes via WhatsApp</div>
+          <div className="   text-xl text-stone-500 font-semibold">
+            <p className="w-96">
+              Never hesitate to ask questions, even if you're not on a web browser, whenever it suits you.
+            </p>
+            <button className="text-white bg-black py-2 font-semibold px-4 shadow-2xl rounded-lg text-base">Get Started</button>
+            <button className=" ml-4 bg-slate-100  px-4 py-2 rounded-lg mt-10 font-semibold text-black text-base">Learn More</button>
 
           </div>
 
@@ -219,7 +222,7 @@ export default function Home() {
 
         </div>
 
-        <div className="w-1/2  h-screen ">
+        <div className="w-1/2 h-screen ">
           <img className="h-full w-full" src="https://framerusercontent.com/images/dAJW9yDkvqMtYUWnpXJiJ2wKsA.jpg?scale-down-to=1024" />
         </div>
 
@@ -231,9 +234,9 @@ export default function Home() {
 
         <div className="font-bold text-5xl p-4">Latest Updates</div>
 
-        <div className={`flex h-5/6  py-12 px-32 flex-wrap justify-around items-center  ${styles.b1}`}>
+        <div className={`flex h-5/6  py-12 px-32 flex-wrap justify-center items-center  ${styles.b1}`}>
 
-          <div style={{ height: '430px' }} className="  mt-6 w-80 shadow-xl overflow-hidden border-2 rounded-2xl ">
+          <div style={{ height: '430px' }} className="  my-6  w-80 shadow-xl overflow-hidden border-2 rounded-2xl ">
             <div className="h-1/2 w-full">
               <img className="h-full w-full" />
             </div>
@@ -248,7 +251,7 @@ export default function Home() {
 
           </div>
 
-          <div style={{ height: '430px' }} className=" w-80 mt-6 shadow-xl overflow-hidden border-2 rounded-2xl ">
+          <div style={{ height: '430px' }} className=" w-80 my-6 mx-4  shadow-xl overflow-hidden border-2 rounded-2xl ">
             <div className="h-1/2 w-full">
               <img className="h-full w-full" />
             </div>
@@ -263,7 +266,7 @@ export default function Home() {
 
           </div>
 
-          <div style={{ height: '430px' }} className="  w-80 mt-6 shadow-xl overflow-hidden border-2 rounded-2xl ">
+          <div style={{ height: '430px' }} className="  w-80 my-6  shadow-xl overflow-hidden border-2 rounded-2xl ">
             <div className="h-1/2 w-full">
               <img className="h-full w-full" />
             </div>
@@ -287,27 +290,31 @@ export default function Home() {
 
         <div className="font-bold text-5xl text-zinc-800">Frequently Asked Questions</div>
 
-        <div className="max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ">
+        <motion.div
+          className="max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ">
           <div className="h-fit p-4 text-lg font-semibold flex justify-center flex-col ">
             <div className="h-fit" onClick={() => { handleDrop1() }}>+ What is Framer?</div>
-            {drop1 ? <div className="h-16 px-4 text-lg font-semibold flex items-center">
+            {drop1 ? <motion.div className="h-fit px-4 text-lg font-semibold flex items-center">
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
-            </div> : null}
+            </motion.div> : null}
           </div>
           <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
             <div className="h-fit" onClick={() => { handleDrop2() }}>+ Is it easy to learn?</div>
-            {drop2 ? <div className="h-16 px-4 text-lg font-semibold flex items-center">
+            {drop2 ? <motion.div
+              className="h-fit px-4 text-lg font-semibold flex items-center">
               Framer is fastest tool to build sites with, because you can ship your design immidiatly,insted of rebuilding it in code or second tool.
-            </div> : null}
+            </motion.div> : null}
           </div>
           <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
             <div className="h-fit" onClick={() => { handleDrop3() }}>+ Do i need to code?</div>
-            {drop3 ? <div className="h-16 px-4 text-lg font-semibold flex items-center">
+            {drop3 ? <motion.div
+
+              className="h-fit px-4 text-lg font-semibold flex items-center">
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
-            </div> : null}
+            </motion.div> : null}
           </div>
 
-        </div>
+        </motion.div>
 
 
 
