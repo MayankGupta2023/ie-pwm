@@ -68,6 +68,10 @@
   background:  linear-gradient(180deg, #fd3c34 0%, rgb(254, 140, 75) 100%);
 }
 
+.orange_grad_top{
+    background: linear-gradient(180deg,#ffffff 0%,rgba(254,210,194,1) 45.94594594594595%,rgb(253,141,75) 100%);
+}
+
 .b1{
     border-bottom: 1px solid #ebebeb;
 }

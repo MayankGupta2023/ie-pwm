@@ -72,7 +72,7 @@ export default function Home() {
 
       </div> */}
 
-      <div className={`h-screen pt-20 ${styles.orange_grad}`}>
+      <div className={`h-screen pt-20 ${styles.orange_grad_top}`}>
 
         <div className="h-2/5 flex w-full justify-center items-end font-extrabold text-5xl text-center px-24">
 
