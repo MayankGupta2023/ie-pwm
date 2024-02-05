@@ -30,11 +30,11 @@ const Footer = () => {
                     <div className='text-2xl font-bold w-32 '>Company</div>
 
                     <div className='text-gray-500 flex flex-col gap-4 w-32'>
-                        <div>Home</div>
-                        <div>How it Works</div>
-                        <div>Pricing</div>
-                        <div>Features</div>
-                        <div>About Us</div>
+                        <div className='hover:cursor-pointer'>Home</div>
+                        <div className='hover:cursor-pointer'>How it Works</div>
+                        <div className='hover:cursor-pointer'>Pricing</div>
+                        <div className='hover:cursor-pointer'>Features</div>
+                        <div className='hover:cursor-pointer'>About Us</div>
 
 
                     </div>
@@ -46,10 +46,10 @@ const Footer = () => {
                     <div className='text-2xl font-bold w-42'>Useful Links</div>
 
                     <div className='text-gray-500 flex flex-col gap-4 w-32'>
-                        <div>Licenses</div>
-                        <div>Privacy Policy</div>
-                        <div>Terms & Conditions</div>
-                        <div>Security Updates</div>
+                        <div className='hover:cursor-pointer'>Licenses</div>
+                        <div className='hover:cursor-pointer'>Privacy Policy</div>
+                        <div className='hover:cursor-pointer'>Terms & Conditions</div>
+                        <div className='hover:cursor-pointer'>Security Updates</div>
 
 
 
@@ -64,9 +64,9 @@ const Footer = () => {
                 <div className='text-2xl font-bold  w-32'>Support</div>
 
                 <div className='text-gray-500 flex flex-col gap-4  w-32'>
-                    <div>Contact Us</div>
-                    <div>Help Center</div>
-                    <div>Support Ticket</div>
+                    <div className='hover:cursor-pointer'>Contact Us</div>
+                    <div className='hover:cursor-pointer'>Help Center</div>
+                    <div className='hover:cursor-pointer'>Support Ticket</div>
 
 
 
