@@ -42,15 +42,15 @@ const Pricing = () => {
   };
 
   const monthlyPlans = [
-    { title: 'Monthly Plan 1', price: 1.0,credits:50 },
-    { title: 'Monthly Plan 2', price: 29.99,credits:190 },
-    { title: 'Monthly Plan 3', price: 39.99,credits : 250 },
+    { title: 'Monthly Plan 1', price: 1.0,credits:50 ,questions:100 },
+    { title: 'Monthly Plan 2', price: 29.99,credits:190,questions:370 },
+    { title: 'Monthly Plan 3', price: 39.99,credits : 250,questions:500 },
   ];
 
   const yearlyPlans = [
-    { title: 'Yearly Plan 1', price: 199.99,credits:50 },
-    { title: 'Yearly Plan 2', price: 249.99,credits:190 },
-    { title: 'Yearly Plan 3', price: 299.99 ,credits:250},
+    { title: 'Yearly Plan 1', price: 199.99,credits:50,questions:100 },
+    { title: 'Yearly Plan 2', price: 249.99,credits:190,questions:370 },
+    { title: 'Yearly Plan 3', price: 299.99 ,credits:500},
   ];
 
   const selectedPlans = showMonthlyPlans ? monthlyPlans : yearlyPlans;
@@ -106,10 +106,10 @@ Recommended
               <div className="text-gray-900 mb-4">
                 <ul className="list-disc list-inside">
                   <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Bullet Point 1</span>
+                    <span style={{ color: 'grey' }}> Credits : 60 </span>
                   </li>
                   <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Bullet Point 2</span>
+                    <span style={{ color: 'grey' }}>Questions :120</span>
                   </li>
                   <li style={{ color: '#71717a' }}>
                     <span style={{ color: 'grey' }}>Bullet Point 3</span>
@@ -157,10 +157,10 @@ Recommended
               <div className="text-gray-900 mb-4">
                 <ul className="list-disc list-inside">
                   <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Bullet Point 1</span>
+                    <span style={{ color: 'grey' }}>Credits : {plan.credits}</span>
                   </li>
                   <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Bullet Point 2</span>
+                    <span style={{ color: 'grey' }}>Questions : {plan.questions}</span>
                   </li>
                   <li style={{ color: '#71717a' }}>
                     <span style={{ color: 'grey' }}>Bullet Point 3</span>
