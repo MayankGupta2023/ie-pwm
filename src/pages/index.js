@@ -202,24 +202,24 @@ export default function Home() {
             <div>Top-notch chapter summeries comming to your needs</div>
           </div>
           <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Answered Notes</div>
-            <div>Top-notch chapter summeries comming to your needs</div>
+            <div className="text-3xl font-bold">Interactive Content</div>
+            <div>Interective elements to make learning fun and effective</div>
           </div>
           <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Answered Notes</div>
-            <div>Top-notch chapter summeries comming to your needs</div>
+            <div className="text-3xl font-bold">Offline Access</div>
+            <div>Access your learning material without an internet connection</div>
           </div>
           <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Answered Notes</div>
-            <div>Top-notch chapter summeries comming to your needs</div>
+            <div className="text-3xl font-bold">Language Support</div>
+            <div>Break language barrier and learn it. Opt language you're comfortable with.</div>
           </div>
           <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Answered Notes</div>
-            <div>Top-notch chapter summeries comming to your needs</div>
+            <div className="text-3xl font-bold">Custom Notes</div>
+            <div>Ypur notes ypur way. Customise your learning with us.</div>
           </div>
           <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Answered Notes</div>
-            <div>Top-notch chapter summeries comming to your needs</div>
+            <div className="text-3xl font-bold">Subject Specific Content</div>
+            <div>Dive into extensive database connection business studies and progeamm.</div>
           </div>
 
 
