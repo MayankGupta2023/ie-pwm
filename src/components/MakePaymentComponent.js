@@ -1,7 +1,52 @@
 //components->MakePaymentComponent.js
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import firebase from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import app from '../firebaseConfig';
+import { getFirestore, doc, getDoc,setDoc } from 'firebase/firestore';
 
-const MakePaymentComponent = ({ amount, description }) => {
+const auth = getAuth(app);
+const firestore = getFirestore(app);
+const MakePaymentComponent = ({ amount, description,plan,credits }) => {
+  const [user, setUser] = useState(null);
+  const router = useRouter();
+const [authid , setAuthid] = useState(null);
+  useEffect(() => {
+  const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
+    if (authUser) {
+        // If authenticated, get the user document from Firestore
+        const userDocRef = doc(firestore, 'users', authUser.uid);
+        const userDocSnap = await getDoc(userDocRef);
+
+        if (userDocSnap.exists()) {
+            // If the user document exists, set the user state with the display name
+            setAuthid(authUser.uid);
+            setUser({
+                uid: authUser.uid,
+                email: authUser.email,
+                displayName: userDocSnap.data().name,
+            });
+        } else {
+            // If the user document does not exist, set the user state with basic information
+            setUser({
+                uid: authUser.uid,
+                email: authUser.email,
+            });
+        }
+    } else {
+        // If not authenticated, redirect to login
+        window.location.href = '/login';
+    }
+});
+
+return () => unsubscribe();
+}, []);
+
+
+
+
+
     const makePayment = async () => {
         //console.log("here...");
         const res = await initializeRazorpay();
@@ -17,7 +62,7 @@ const MakePaymentComponent = ({ amount, description }) => {
                 'Content-Type': 'application/json',
             },
              body: JSON.stringify({
-                taxAmt:amount
+                taxAmt: parseInt(amount)
              })
          }
         )
@@ -32,10 +77,27 @@ const MakePaymentComponent = ({ amount, description }) => {
           amount: amount,
           order_id: data.id,
           description: description,
-          image: ".././assets/logo.png",
-          handler: function (response) {
+          image: "../assets/logo.png",
+          handler: async function (response) {
             // Validate payment at server - using webhooks is a better idea.
-            alert("Razorpay Response: "+response.razorpay_payment_id);
+          
+            if (response.razorpay_payment_id) {
+              alert("Payment Successful! Payment ID: " + response.razorpay_payment_id);
+              const db = getFirestore(app);
+              const paycurrentDate = new Date();
+
+
+
+              const userRef = doc(db, 'users', authid);
+              await setDoc(userRef, { plan,credits,paycurrentDate }, { merge: true });
+              router.push({
+                pathname: '/Working',
+              });
+              // You can perform additional actions here, such as updating the UI, sending a confirmation email, etc.
+          } else {
+              alert("Payment Failed!");
+              // Handle payment failure scenario, you might want to redirect the user to a different page or display an error message.
+          }
             //alert(response.razorpay_order_id);
             //alert(response.razorpay_signature);
           },
@@ -49,6 +111,12 @@ const MakePaymentComponent = ({ amount, description }) => {
 
         const paymentObject = new window.Razorpay(options);
         paymentObject.open();
+    
+        paymentObject.on("payment.captured", (_) => {
+          toast.success("Order Placed Successfully");
+          cart[1]([]);
+          router.push("../pages/Working");
+        });
       };
       const initializeRazorpay = () => {
         return new Promise((resolve) => {

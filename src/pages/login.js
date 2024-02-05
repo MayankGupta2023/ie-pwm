@@ -183,7 +183,7 @@ const AuthPage = () => {
             onClick={handleSendOtp}
             className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
           >
-            Get OTP hello
+            Get OTP 
           </button>
         )}
       </motion.div>

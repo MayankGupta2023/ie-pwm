@@ -42,15 +42,15 @@ const Pricing = () => {
   };
 
   const monthlyPlans = [
-    { title: 'Monthly Plan 1', price: 19.99 },
-    { title: 'Monthly Plan 2', price: 29.99 },
-    { title: 'Monthly Plan 3', price: 39.99 },
+    { title: 'Monthly Plan 1', price: 1.0,credits:50 },
+    { title: 'Monthly Plan 2', price: 29.99,credits:190 },
+    { title: 'Monthly Plan 3', price: 39.99,credits : 250 },
   ];
 
   const yearlyPlans = [
-    { title: 'Yearly Plan 1', price: 199.99 },
-    { title: 'Yearly Plan 2', price: 249.99 },
-    { title: 'Yearly Plan 3', price: 299.99 },
+    { title: 'Yearly Plan 1', price: 199.99,credits:50 },
+    { title: 'Yearly Plan 2', price: 249.99,credits:190 },
+    { title: 'Yearly Plan 3', price: 299.99 ,credits:250},
   ];
 
   const selectedPlans = showMonthlyPlans ? monthlyPlans : yearlyPlans;
@@ -101,7 +101,7 @@ Recommended
             >
               
               <h3 className="text-2xl font-bold text-slate-500 mb-0 flex items-center justify-center">One Time </h3>
-              <h3 className="text-3xl font-bold  text-slate-800 mb-0 flex items-center justify-center">$ 2500</h3>
+              <h3 className="text-3xl font-bold  text-slate-800 mb-0 flex items-center justify-center">₹ 2500</h3>
               <hr className="mb-2"></hr>
               <div className="text-gray-900 mb-4">
                 <ul className="list-disc list-inside">
@@ -119,7 +119,7 @@ Recommended
                   </li>
                 </ul>
                 <div className="mt-6 mb-2 flex items-center justify-center">
-                  <MakePaymentComponent amount="2000" description="One Time" />
+                  <MakePaymentComponent amount="2000" description="One Time" credits={60} plan={"One-Time"} />
                 </div>
               </div>
             </div>
@@ -152,7 +152,7 @@ Recommended
               className="bg-white p-8 rounded-2xl shadow-md border-2 border-teal-600 flex flex-col justify-between w-80 h-96"
             >
               <h3 className="text-2xl font-bold text-slate-500 mb-0 flex items-center justify-center">{plan.title}</h3>
-              <h3 className="text-3xl font-bold  text-slate-800 mb-0 flex items-center justify-center">$ {plan.price}</h3>
+              <h3 className="text-3xl font-bold  text-slate-800 mb-0 flex items-center justify-center">₹ {plan.price}</h3>
               <hr className="mb-2"></hr>
               <div className="text-gray-900 mb-4">
                 <ul className="list-disc list-inside">
@@ -170,7 +170,8 @@ Recommended
                   </li>
                 </ul>
                 <div className="mt-6 mb-2 flex items-center justify-center">
-                  <MakePaymentComponent amount={plan.price} description={plan.title} />
+                  <MakePaymentComponent amount={plan.price} description={plan.title} 
+                  credits={plan.credits} plan={plan.title} />
                 </div>
               </div>
             </motion.div>

@@ -79,6 +79,9 @@ const Signup = ({ phoneNumber }) => {
 
       await setDoc(userRef, formData, { merge: true });
       await setDoc(userRef, { phoneNumber }, { merge: true });
+      const plan = "None"
+      const  credits = 0;
+      await setDoc(userRef, { phoneNumber,plan,credits }, { merge: true });
       console.log('Form data submitted successfully!');
       router.push('/Working');
     } catch (error) {
