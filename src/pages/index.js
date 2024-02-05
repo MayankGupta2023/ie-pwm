@@ -321,21 +321,21 @@ export default function Home() {
         <motion.div
           className="max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ">
           <div className="h-fit p-4 text-lg font-semibold flex justify-center flex-col ">
-            <div className="h-fit" onClick={() => { handleDrop1() }}>+ What is Framer?</div>
-            {drop1 ? <motion.div className="h-fit px-4 text-lg font-semibold flex items-center">
+            <div style={{ color: '#333333' }} className="h-fit" onClick={() => { handleDrop1() }}>+ What is Framer?</div>
+            {drop1 ? <motion.div style={{ color: '#666666' }} className="h-fit px-4 text-lg font-semibold flex items-center">
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
             </motion.div> : null}
           </div>
           <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
-            <div className="h-fit" onClick={() => { handleDrop2() }}>+ Is it easy to learn?</div>
-            {drop2 ? <motion.div
+            <div style={{ color: '#333333' }} className="h-fit" onClick={() => { handleDrop2() }}>+ Is it easy to learn?</div>
+            {drop2 ? <motion.div style={{ color: '#666666' }}
               className="h-fit px-4 text-lg font-semibold flex items-center">
               Framer is fastest tool to build sites with, because you can ship your design immidiatly,insted of rebuilding it in code or second tool.
             </motion.div> : null}
           </div>
-          <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
+          <div style={{ color: '#333333' }} className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
             <div className="h-fit" onClick={() => { handleDrop3() }}>+ Do i need to code?</div>
-            {drop3 ? <motion.div
+            {drop3 ? <motion.div style={{ color: '#666666' }}
 
               className="h-fit px-4 text-lg font-semibold flex items-center">
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
