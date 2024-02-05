@@ -151,6 +151,34 @@ export default function Home() {
 
         <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center">Key Features</div>
 
+        <div className="mt-8 h-fit  py-12 px-8 flex items-center justify-center gap-8 flex-wrap">
+
+          <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fd3c34' }}>
+
+            Live
+
+          </div>
+
+          <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe6641' }}>
+
+            Will be launched by end of March
+
+          </div>
+
+          <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe8c4b' }}>
+
+            Will be launched by end of April
+
+          </div>
+
+          <div className="text-center  w-80 h-80  bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#2e180b' }}>
+
+            Will be launched by end of June
+
+          </div>
+
+        </div>
+
 
       </div>
 
