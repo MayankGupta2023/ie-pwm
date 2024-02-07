@@ -5,6 +5,13 @@ import MakePaymentComponent from '../components/MakePaymentComponent';
 import Footer from '../components/footer';
 import Switch from 'react-switch';
 import '../styles/pricing.module.css'; // Import any additional styles for styling the switch
+import tick from '../assets/tick.svg';
+import plus from "../assets/plus.svg"
+
+
+
+
+
 
 const cardVariants = {
   initial: { scale: 1, boxShadow: '0px 8px 16px rgba(0, 0, 0, 0.1)' },
@@ -42,141 +49,142 @@ const Pricing = () => {
   };
 
   const monthlyPlans = [
-    { title: 'Monthly Plan 1', price: 1.0,credits:50 ,questions:100 },
-    { title: 'Monthly Plan 2', price: 29.99,credits:190,questions:370 },
-    { title: 'Monthly Plan 3', price: 39.99,credits : 250,questions:500 },
+    { title: 'Monthly Plan 1', price: 129, credits: 50, questions: 100 },
+    { title: 'Monthly Plan 2', price: 479, credits: 190, questions: 370 },
+    { title: 'Monthly Plan 3', price: 649, credits: 250, questions: 500 },
   ];
 
   const yearlyPlans = [
-    { title: 'Yearly Plan 1', price: 199.99,credits:50,questions:100 },
-    { title: 'Yearly Plan 2', price: 249.99,credits:190,questions:370 },
-    { title: 'Yearly Plan 3', price: 299.99 ,credits:500},
+
+    { title: 'Yearly Plan 1', price: 129, credits: 50, questions: 100 },
+    { title: 'Yearly Plan 2', price: 479, credits: 190, questions: 370 },
+    { title: 'Yearly Plan 3', price: 649, credits: 250, questions: 500 },
   ];
 
   const selectedPlans = showMonthlyPlans ? monthlyPlans : yearlyPlans;
+
+  const [drop1, setDrop1] = useState(false);
+  const [drop2, setDrop2] = useState(false);
+  const [drop3, setDrop3] = useState(false);
+
+  const handleDrop1 = () => {
+    setDrop1(!drop1);
+  }
+
+  const handleDrop2 = () => {
+    setDrop2(!drop2);
+  }
+
+  const handleDrop3 = () => {
+    setDrop3(!drop3);
+  }
+
 
   return (
     <div className='flex flex-col min-h-screen'>
       <div className='h-20'>
         <Navbar />
       </div>
-      <div className="flex-grow ml-10 mr-10 flex flex-col items-center py-12" style={containerStyle}>
-        <motion.div
-          initial="initial"
-          animate="animate"
-          variants={headingVariants}
-          className="mb-8"
-        >
-          <h1 className="text-5xl font-semibold text-sky-950 mb-0">
-            Explore our Exciting Pricing Plans
-            <motion.span
-              style={{ display: 'inline-block' }}
-              animate={{ rotate: [0, 360] }}
-              transition={headingColorTransition}
-            >
-              🚀
-            </motion.span>
-          </h1>
-        </motion.div>
-        <p className='text-xl text-sky-900  text-center mb-8 pl-10  pr-10'>
-        Unlock Boundless Possibilities with Our Flexible Pricing Plans.
-         Tailored for Every Individual and Needs , Our Plans Provide Unrivaled Value, 
-         Ensuring Seamless Access to Premium Features and Unprecedented Learning
-          Opportunities.
-        </p>
+      <div className="flex-grow ml-10 mr-10 flex flex-col items-center pt-4 " style={containerStyle}>
 
-<motion.div className='mb-10 mt-5'
-variants={cardVariants}initial="initial"
-whileHover="hover">
-<div className='pt-2 h-10 bg-teal-950 font-serif rounded-t-2xl text-xl font-bold text-white text-center text-semibold'>
-Recommended
-</div>
-<motion.div >
-        <div
-             
-              //variants={cardVariants}
-              initial="initial"
-              whileHover="hover"
-              className="bg-white p-8 rounded-b-2xl shadow-md border-2 border-teal-600 border-t-black flex flex-col justify-between w-96 h-96"
-            >
-              
-              <h3 className="text-2xl font-bold text-slate-500 mb-0 flex items-center justify-center">One Time </h3>
-              <h3 className="text-3xl font-bold  text-slate-800 mb-0 flex items-center justify-center">₹ 2500</h3>
-              <hr className="mb-2"></hr>
-              <div className="text-gray-900 mb-4">
-                <ul className="list-disc list-inside">
-                  <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}> Credits : 60 </span>
-                  </li>
-                  <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Questions :120</span>
-                  </li>
-                  <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Bullet Point 3</span>
-                  </li>
-                  <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Bullet Point 4</span>
-                  </li>
-                </ul>
-                <div className="mt-6 mb-2 flex items-center justify-center">
-                  <MakePaymentComponent amount="2000" description="One Time" credits={60} plan={"One-Time"} />
-                </div>
-              </div>
-            </div>
-            </motion.div>
-</motion.div>
-
-        <div className="toggle-switch-container mb-12">
-          <span className='mr-4 text-3xl'>Yearly</span>
-          <Switch
-            className="custom-switch"
-            onChange={handleToggleSwitch}
-            checked={showMonthlyPlans}
-            onColor="#047857"
-            offColor="#047857"
-            checkedIcon={false}
-            uncheckedIcon={false}
-            height={20}
-            width={40}
-          />
-          <span className='ml-2 text-3xl'>Monthly</span>
+        <div style={{ color: "#333333" }} className="text-5xl font-semibold text-center w-full mb-6 text-sky-950">
+          Choose the right plan for your learning
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 ml-10 flex-grow">
+
+
+        <div className="w-full toggle-switch-container px-6 py-2 mb-8 mr-40 flex justify-end">
+          <div>                                                 {  /* this additional div might cause problem in functioning Rohit Tripathi*/}
+            <span className='mr-4 text-3xl'>Yearly</span>
+            <Switch
+              className="custom-switch"
+              onChange={handleToggleSwitch}
+              checked={showMonthlyPlans}
+              onColor="#047857"
+              offColor="#047857"
+              checkedIcon={false}
+              uncheckedIcon={false}
+              height={20}
+              width={40}
+            />
+            <span className='ml-2 text-3xl'>Monthly</span>
+          </div>
+        </div>
+
+        <div className=" flex flex-wrap items-center w-4/5 justify-around h-fit">
           {selectedPlans.map((plan, index) => (
             <motion.div
               key={index}
               variants={cardVariants}
               initial="initial"
               whileHover="hover"
-              className="bg-white p-8 rounded-2xl shadow-md border-2 border-teal-600 flex flex-col justify-between w-80 h-96"
+              className="bg-white px-8 py-4 my-4 mx-2 rounded-3xl shadow-md flex flex-col py-6 w-80 h-80 min-h-fit"
             >
-              <h3 className="text-2xl font-bold text-slate-500 mb-0 flex items-center justify-center">{plan.title}</h3>
-              <h3 className="text-3xl font-bold  text-slate-800 mb-0 flex items-center justify-center">₹ {plan.price}</h3>
-              <hr className="mb-2"></hr>
+              <h3 style={{ color: "#6e4245" }} className="text-lg font-bold text-slate-500 mb-0 flex  items-center justify-start">{plan.title}</h3>
+              <h3 style={{ color: "#333333" }} className="text-5xl font-bold  text-slate-800 mb-0 flex mt-6 mb-6 items-end justify-start">₹ {plan.price} <span style={{ color: "#666666" }} className='text-lg'> &nbsp;  /month</span> </h3>
               <div className="text-gray-900 mb-4">
-                <ul className="list-disc list-inside">
-                  <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Credits : {plan.credits}</span>
+                <ul className="list-disc list-inside ">
+                  <li className='list-none mb-2 ' style={{ color: '#71717a' }}>
+                    <span className='flex gap-4' style={{ color: 'grey' }}> <img src={tick.src} />Credits : {plan.credits}</span>
                   </li>
-                  <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Questions : {plan.questions}</span>
+                  <li className='list-none' style={{ color: '#71717a' }}>
+                    <span className='flex gap-4' style={{ color: 'grey' }}><img src={tick.src} /> Questions : {plan.questions}</span>
                   </li>
-                  <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Bullet Point 3</span>
-                  </li>
-                  <li style={{ color: '#71717a' }}>
-                    <span style={{ color: 'grey' }}>Bullet Point 4</span>
-                  </li>
+
                 </ul>
-                <div className="mt-6 mb-2 flex items-center justify-center">
-                  <MakePaymentComponent amount={plan.price} description={plan.title} 
-                  credits={plan.credits} plan={plan.title} />
+                <div className="mt-6 mb-2 flex items-center justify-left">
+                  <MakePaymentComponent amount={plan.price} description={plan.title}
+                    credits={plan.credits} plan={plan.title} />
                 </div>
+
               </div>
             </motion.div>
           ))}
         </div>
+      </div>
+      <div className='flex justify-center items-center my-8 gap-4'>
+        <p>
+          Uncertaing about your selection? Direct messgae us, and we will assist you in making choice.
+
+        </p>
+        <button style={{ backgroundColor: "#3cba81" }} className='py-2 px-4 bg-green-400 text-white rounded-lg'>
+          Chat Now
+        </button>
+      </div>
+
+
+      <div className="h-5/6 py-32 w-full flex flex-col gap-32  items-center justify-center">
+
+        <div className="font-bold text-5xl text-zinc-800">Frequently Asked Questions</div>
+
+        <motion.div
+          className="max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ">
+          <div className="h-fit p-4 text-lg font-semibold flex justify-center flex-col ">
+            <div style={{ color: '#333333' }} className="h-fit flex gap-6 hover:cursor-pointer" onClick={() => { handleDrop1() }}> <img src={plus.src} />  What is Framer?</div>
+            {drop1 ? <motion.div style={{ color: '#666666' }} className="  h-fit px-10 text-lg font-semibold flex items-center">
+              Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
+            </motion.div> : null}
+          </div>
+          <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
+            <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit flex gap-6" onClick={() => { handleDrop2() }}> <img src={plus.src} />  Is it easy to learn?</div>
+            {drop2 ? <motion.div style={{ color: '#666666' }}
+              className="h-fit px-10 text-lg font-semibold flex items-center">
+              Framer is fastest tool to build sites with, because you can ship your design immidiatly,insted of rebuilding it in code or second tool.
+            </motion.div> : null}
+          </div>
+          <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
+            <div className="h-fit flex gap-6" onClick={() => { handleDrop3() }}> <img src={plus.src} />  Do i need to code?</div>
+            {drop3 ? <motion.div style={{ color: '#666666' }}
+
+              className="h-fit px-10 text-lg font-semibold flex items-center">
+              Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
+            </motion.div> : null}
+          </div>
+
+        </motion.div>
+
+
+
       </div>
       <div className="mt-auto">
         <Footer />

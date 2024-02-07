@@ -34,15 +34,15 @@ export default function Home() {
 
 
 
-  const SquarePattern = () => {
-    return (
-      <div className={`grid overflow-hidden ${styles.gridd}`}>
-        {Array.from({ length: 120 }, (_, index) => (
-          <div key={index} className={`h-16 w-16 relative right-8 ${styles.grid_items}`}></div>
-        ))}
-      </div>
-    );
-  };
+  // const SquarePattern = () => {
+  //   return (
+  //     <div className={`grid overflow-hidden ${styles.gridd}`}>
+  //       {Array.from({ length: 120 }, (_, index) => (
+  //         <div key={index} className={`h-16 w-16 relative right-8 ${styles.grid_items}`}></div>
+  //       ))}
+  //     </div>
+  //   );
+  // };
 
 
   return (
@@ -159,26 +159,25 @@ export default function Home() {
         <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center pt-8">Key Features</div>
 
         <div className="mt-8 min-h-fit  py-12 px-8 flex items-center justify-center gap-8 flex-wrap ">
-        <div
-      className={`text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white transition duration-500 transform ${
-        isHovered ? "rotate-360" : ""
-      }`}
-      style={{
-        borderRadius: "3.5rem",
-        backgroundColor: "#fd3c34",
-        transition: "transform 2s",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "rotateY(360deg)";
-        handleHover();
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "rotateY(0deg)";
-        handleHover();
-      }}
-    >
-      {isHovered ? "Live" : "Absent"}
-    </div>
+          <div
+            className={`text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white transition duration-500 transform ${isHovered ? "rotate-360" : ""
+              }`}
+            style={{
+              borderRadius: "3.5rem",
+              backgroundColor: "#fd3c34",
+              transition: "transform 2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "rotateY(360deg)";
+              handleHover();
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "rotateY(0deg)";
+              handleHover();
+            }}
+          >
+            {isHovered ? "Live" : "Absent"}
+          </div>
           <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe6641' }}>
 
             Will be launched by end of March
