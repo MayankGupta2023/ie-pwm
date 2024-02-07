@@ -10,15 +10,12 @@ import plus from "../assets/plus.svg"
 
 export default function Home() {
 
-
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleHover = () => {
-    setIsHovered(!isHovered);
-  }
   const [drop1, setDrop1] = useState(false);
   const [drop2, setDrop2] = useState(false);
   const [drop3, setDrop3] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+
 
   const handleDrop1 = () => {
     setDrop1(!drop1);
@@ -33,8 +30,10 @@ export default function Home() {
   }
 
 
-
+  const FlippableCard = () => {
+  }
   const SquarePattern = () => {
+  
     return (
       <div className={`grid overflow-hidden ${styles.gridd}`}>
         {Array.from({ length: 120 }, (_, index) => (
@@ -158,27 +157,66 @@ export default function Home() {
 
         <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center pt-8">Key Features</div>
 
+     
         <div className="mt-8 min-h-fit  py-12 px-8 flex items-center justify-center gap-8 flex-wrap ">
-        <div
-      className={`text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white transition duration-500 transform ${
-        isHovered ? "rotate-360" : ""
-      }`}
-      style={{
-        borderRadius: "3.5rem",
-        backgroundColor: "#fd3c34",
-        transition: "transform 2s",
-      }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.transform = "rotateY(360deg)";
-        handleHover();
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.transform = "rotateY(0deg)";
-        handleHover();
-      }}
-    >
-      {isHovered ? "Live" : "Absent"}
-    </div>
+     
+
+  
+
+
+{/* <div 
+  className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white"
+  style={{ 
+    borderRadius: '3.5rem', 
+    backgroundColor: '#fd3c34',
+    transition: 'transform 2s ease' // Add transition for smoother animation
+  }}
+  onMouseEnter={(e) => {
+    e.target.style.transform = 'rotateY(0deg)';
+    e.target.textContent = 'Absent'; // Change text content on hover
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.transform = 'rotateY(360deg)';
+    e.target.textContent = 'Live'; // Restore original text content on mouse leave
+  }}
+>
+  Live
+</div>  */}
+
+
+<div 
+  className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white"
+  style={{ 
+    borderRadius: '3.5rem', 
+    backgroundColor: '#fd3c34',
+    transition: 'transform 2s ease' // Add transition for smoother animation
+  }}
+  onMouseEnter={(e) => {
+    e.target.style.transform = 'rotateY(360deg)';
+    e.target.textContent = 'After Content'; // Change text content on hover
+  }}
+  onMouseLeave={(e) => {
+    e.target.style.transform = 'rotateY(0deg)';
+    e.target.textContent = 'Before Content'; // Restore original text content on mouse leave
+  }}
+>
+  Live
+</div> 
+
+
+
+
+
+
+
+
+
+
+      
+
+
+     
+          
           <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe6641' }}>
 
             Will be launched by end of March
