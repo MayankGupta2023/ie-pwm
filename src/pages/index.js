@@ -183,7 +183,6 @@ export default function Home() {
   Live
 </div>  */}
 
-
 <div 
   className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white"
   style={{ 
@@ -192,16 +191,26 @@ export default function Home() {
     transition: 'transform 2s ease' // Add transition for smoother animation
   }}
   onMouseEnter={(e) => {
-    e.target.style.transform = 'rotateY(360deg)';
-    e.target.textContent = 'After Content'; // Change text content on hover
+    const div = e.target;
+    const span = div.querySelector('span');
+    if (span) {
+      div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
+      span.style.transform = 'rotateY(180deg)'; // Flip the text content
+      span.textContent = 'After Content'; // Change text content on hover
+    }
   }}
   onMouseLeave={(e) => {
-    e.target.style.transform = 'rotateY(0deg)';
-    e.target.textContent = 'Before Content'; // Restore original text content on mouse leave
+    const div = e.target;
+    const span = div.querySelector('span');
+    if (span) {
+      div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
+      span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
+      span.textContent = 'Before Content'; // Restore original text content on mouse leave
+    }
   }}
 >
-  Live
-</div> 
+  <span>Before Content</span>
+</div>
 
 
 
@@ -211,29 +220,121 @@ export default function Home() {
 
 
 
-
-      
-
-
-     
-          
-          <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe6641' }}>
+  {/* <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe6641' }}>
 
             Will be launched by end of March
 
-          </div>
+          </div> */}
 
-          <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe8c4b' }}>
+          <div 
+  className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl px-8 text-white"
+  style={{ 
+    borderRadius: '3.5rem', 
+    backgroundColor: '#fe6641',
+    transition: 'transform 2s ease' // Add transition for smoother animation
+  }}
+  onMouseEnter={(e) => {
+    const div = e.target;
+    const span = div.querySelector('span');
+    if (span) {
+      div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
+      span.style.transform = 'rotateY(180deg)'; // Flip the text content
+      span.textContent = 'After Content'; // Change text content on hover
+    }
+  }}
+  onMouseLeave={(e) => {
+    const div = e.target;
+    const span = div.querySelector('span');
+    if (span) {
+      div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
+      span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
+      span.textContent = 'Before Content'; // Restore original text content on mouse leave
+    }
+  }}
+>
+  <span>Before Content</span>
+</div>
+
+
+
+
+
+
+          {/* <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe8c4b' }}>
 
             Will be launched by end of April
 
-          </div>
+          </div> */}
+          <div 
+  className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl px-8 text-white"
+  style={{ 
+    borderRadius: '3.5rem', 
+    backgroundColor: '#fe8c4b',
+    transition: 'transform 2s ease' // Add transition for smoother animation
+  }}
+  onMouseEnter={(e) => {
+    const div = e.target;
+    const span = div.querySelector('span');
+    if (span) {
+      div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
+      span.style.transform = 'rotateY(180deg)'; // Flip the text content
+      span.textContent = 'After Content'; // Change text content on hover
+    }
+  }}
+  onMouseLeave={(e) => {
+    const div = e.target;
+    const span = div.querySelector('span');
+    if (span) {
+      div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
+      span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
+      span.textContent = 'Before Content'; // Restore original text content on mouse leave
+    }
+  }}
+>
+  <span>Before Content</span>
+</div>
 
-          <div className="text-center  w-80 h-80  bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#2e180b' }}>
+
+
+
+          {/* <div className="text-center  w-80 h-80  bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#2e180b' }}>
 
             Will be launched by end of June
 
-          </div>
+          </div> */}
+          <div 
+  className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl px-8 text-white"
+  style={{ 
+    borderRadius: '3.5rem', 
+    backgroundColor: '#2e180b',
+    transition: 'transform 2s ease' // Add transition for smoother animation
+  }}
+  onMouseEnter={(e) => {
+    const div = e.target;
+    const span = div.querySelector('span');
+    if (span) {
+      div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
+      span.style.transform = 'rotateY(180deg)'; // Flip the text content
+      span.textContent = 'After Content'; // Change text content on hover
+    }
+  }}
+  onMouseLeave={(e) => {
+    const div = e.target;
+    const span = div.querySelector('span');
+    if (span) {
+      div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
+      span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
+      span.textContent = 'Before Content'; // Restore original text content on mouse leave
+    }
+  }}
+>
+  <span>Before Content</span>
+</div>
+
+
+
+
+
 
         </div>
 
