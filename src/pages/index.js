@@ -6,7 +6,7 @@ import styles from "../styles/landing.module.css"
 import Footer from "../components/footer";
 import { motion, useAnimation } from "framer-motion";
 import plus from "../assets/plus.svg"
-import tick from "../assets/tick.svg"
+import tick from "../assets/cross.svg"
 
 export default function Home() {
 

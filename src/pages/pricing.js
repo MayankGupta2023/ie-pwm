@@ -7,6 +7,7 @@ import Switch from 'react-switch';
 import '../styles/pricing.module.css'; // Import any additional styles for styling the switch
 import tick from '../assets/tick.svg';
 import plus from "../assets/plus.svg"
+import cross from "../assets/cross.svg"
 
 
 
@@ -43,7 +44,9 @@ const containerStyle = {
 
 const Pricing = () => {
   const [showMonthlyPlans, setShowMonthlyPlans] = useState(true);
-
+  const [dropicon1, setDropIcon1] = useState(plus.src);
+  const [dropicon2, setDropIcon2] = useState(plus.src);
+  const [dropicon3, setDropIcon3] = useState(plus.src);
   const handleToggleSwitch = () => {
     setShowMonthlyPlans(!showMonthlyPlans);
   };
@@ -68,14 +71,17 @@ const Pricing = () => {
   const [drop3, setDrop3] = useState(false);
 
   const handleDrop1 = () => {
+    dropicon1==plus.src?setDropIcon1(cross.src):setDropIcon1(plus.src);
     setDrop1(!drop1);
   }
 
   const handleDrop2 = () => {
+    dropicon2==plus.src?setDropIcon2(cross.src):setDropIcon2(plus.src);
     setDrop2(!drop2);
   }
 
   const handleDrop3 = () => {
+    dropicon3==plus.src?setDropIcon3(cross.src):setDropIcon3(plus.src);
     setDrop3(!drop3);
   }
 
@@ -142,6 +148,63 @@ const Pricing = () => {
           ))}
         </div>
       </div>
+
+<div className='flex flex-row mr-64 ml-96 pl-32 mt-8'>
+      <motion.div
+         
+              variants={cardVariants}
+              initial="initial"
+              whileHover="hover"
+              className="bg-white px-8 py-4 my-4 mx-2 rounded-3xl shadow-md flex flex-col py-6 w-80 h-80 min-h-fit"
+            >
+              <h3 style={{ color: "#6e4245" }} className="text-lg font-bold text-slate-500 mb-0 flex  items-center justify-start">{"healty"}</h3>
+              <h3 style={{ color: "#333333" }} className="text-5xl font-bold  text-slate-800 mb-0 flex mt-6 mb-6 items-end justify-start">₹ {200} <span style={{ color: "#666666" }} className='text-lg'> &nbsp;  /month</span> </h3>
+              <div className="text-gray-900 mb-4">
+                <ul className="list-disc list-inside ">
+                  <li className='list-none mb-2 ' style={{ color: '#71717a' }}>
+                    <span className='flex gap-4' style={{ color: 'grey' }}> <img src={tick.src} />Credits : {100}</span>
+                  </li>
+                  <li className='list-none' style={{ color: '#71717a' }}>
+                    <span className='flex gap-4' style={{ color: 'grey' }}><img src={tick.src} /> Questions : {200}</span>
+                  </li>
+
+                </ul>
+                <div className="mt-6 mb-2 flex items-center justify-left">
+                  <MakePaymentComponent amount={200} description={"test"}
+                    credits={40} plan={"see"} highlight= {false} />
+                </div>
+
+              </div>
+            </motion.div>
+
+              <motion.div
+         
+              variants={cardVariants}
+              initial="initial"
+              whileHover="hover"
+              className="bg-white px-8 py-4 ml-8 my-4 mx-2 rounded-3xl shadow-md flex flex-col py-6 w-4/12 h-80 min-h-fit"
+            >
+              <h3 style={{ color: "#6e4245" }} className="text-lg font-bold text-slate-500 mb-0 flex  items-center justify-start">{"Customize"}</h3>
+              <h3 style={{ color: "#333333" }} className="text-4xl font-bold  text-slate-800 mb-0 flex mt-6 mb-6 items-end justify-start">Adding Soon<span style={{ color: "#666666" }} className='text-lg'> &nbsp; </span> </h3>
+              <div className="text-gray-900 mb-4">
+                <ul className="list-disc list-inside ">
+                  <li className='list-none mb-2 ' style={{ color: '#71717a' }}>
+                    <span className='flex gap-4' style={{ color: 'grey' }}> <img src={tick.src} />Credits : {100}</span>
+                  </li>
+                  <li className='list-none' style={{ color: '#71717a' }}>
+                    <span className='flex gap-4' style={{ color: 'grey' }}><img src={tick.src} /> Questions : {200}</span>
+                  </li>
+
+                </ul>
+                <div className="mt-6 mb-2 flex items-center justify-left">
+                  <MakePaymentComponent amount={200} description={"test"}
+                    credits={40} plan={"see"} highlight= {false} />
+                </div>
+
+              </div>
+            </motion.div>
+
+            </div>
       <div className='flex justify-center items-center my-8 gap-4'>
         <p>
           Uncertaing about your selection? Direct messgae us, and we will assist you in making choice.
@@ -160,20 +223,20 @@ const Pricing = () => {
         <motion.div
           className="max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ">
           <div className="h-fit p-4 text-lg font-semibold flex justify-center flex-col ">
-            <div style={{ color: '#333333' }} className="h-fit flex gap-6 hover:cursor-pointer" onClick={() => { handleDrop1() }}> <img src={plus.src} />  What is Framer?</div>
+            <div style={{ color: '#333333' }} className="h-fit flex gap-6 hover:cursor-pointer" onClick={() => { handleDrop1() }}> <img src={dropicon1} />  What is Framer?</div>
             {drop1 ? <motion.div style={{ color: '#666666' }} className="  h-fit px-10 text-lg font-semibold flex items-center">
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
             </motion.div> : null}
           </div>
           <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
-            <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit flex gap-6" onClick={() => { handleDrop2() }}> <img src={plus.src} />  Is it easy to learn?</div>
+            <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit flex gap-6" onClick={() => { handleDrop2() }}> <img src={dropicon2} />  Is it easy to learn?</div>
             {drop2 ? <motion.div style={{ color: '#666666' }}
               className="h-fit px-10 text-lg font-semibold flex items-center">
               Framer is fastest tool to build sites with, because you can ship your design immidiatly,insted of rebuilding it in code or second tool.
             </motion.div> : null}
           </div>
           <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
-            <div className="h-fit flex gap-6" onClick={() => { handleDrop3() }}> <img src={plus.src} />  Do i need to code?</div>
+            <div className="h-fit flex gap-6" onClick={() => { handleDrop3() }}> <img src={dropicon3} />  Do i need to code?</div>
             {drop3 ? <motion.div style={{ color: '#666666' }}
 
               className="h-fit px-10 text-lg font-semibold flex items-center">
