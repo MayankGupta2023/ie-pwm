@@ -4,15 +4,54 @@ import { useRouter } from 'next/router';
 import firebase from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import app from '../firebaseConfig';
-import { getFirestore, doc, getDoc,setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { color } from 'framer-motion';
+import style from '../styles/landing.module.css';
 
 const auth = getAuth(app);
 const firestore = getFirestore(app);
-const MakePaymentComponent = ({ amount, description,plan,credits }) => {
+const MakePaymentComponent = ({ amount, description, plan, credits }) => {
   const [user, setUser] = useState(null);
   const router = useRouter();
 const [authid , setAuthid] = useState(null);
-  useEffect(() => {
+
+
+//   useEffect(() => {
+//   const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
+//     if (authUser) {
+//         // If authenticated, get the user document from Firestore
+//         const userDocRef = doc(firestore, 'users', authUser.uid);
+//         const userDocSnap = await getDoc(userDocRef);
+
+//         if (userDocSnap.exists()) {
+//             // If the user document exists, set the user state with the display name
+//             setAuthid(authUser.uid);
+//             setUser({
+//                 uid: authUser.uid,
+//                 email: authUser.email,
+//                 displayName: userDocSnap.data().name,
+//             });
+//         } else {
+//             // If the user document does not exist, set the user state with basic information
+//             setUser({
+//                 uid: authUser.uid,
+//                 email: authUser.email,
+//             });
+//         }
+//     } else {
+//         // If not authenticated, redirect to login
+//         window.location.href = '/login';
+//     }
+// });
+
+// return () => unsubscribe();
+// }, []);
+
+
+
+
+
+const isLogin= async()=>{
   const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
     if (authUser) {
         // If authenticated, get the user document from Firestore
@@ -20,35 +59,43 @@ const [authid , setAuthid] = useState(null);
         const userDocSnap = await getDoc(userDocRef);
 
         if (userDocSnap.exists()) {
-            // If the user document exists, set the user state with the display name
-            setAuthid(authUser.uid);
-            setUser({
-                uid: authUser.uid,
-                email: authUser.email,
-                displayName: userDocSnap.data().name,
-            });
+          // If the user document exists, set the user state with the display name
+          setAuthid(authUser.uid);
+          setUser({
+            uid: authUser.uid,
+            email: authUser.email,
+            displayName: userDocSnap.data().name,
+          });
         } else {
-            // If the user document does not exist, set the user state with basic information
-            setUser({
-                uid: authUser.uid,
-                email: authUser.email,
-            });
+          // If the user document does not exist, set the user state with basic information
+          setUser({
+            uid: authUser.uid,
+            email: authUser.email,
+          });
         }
+        return true;
     } else {
         // If not authenticated, redirect to login
-        window.location.href = '/login';
+        return false;
+       
     }
 });
-
-return () => unsubscribe();
-}, []);
-
+};
 
 
 
 
     const makePayment = async () => {
+
+
+  const inhai = await isLogin();
+
+
+
         //console.log("here...");
+
+        if(inhai){
+
         const res = await initializeRazorpay();
         if (!res) {
           alert("Razorpay SDK Failed to load");
@@ -88,26 +135,26 @@ return () => unsubscribe();
 
 
 
-              const userRef = doc(db, 'users', authid);
-              await setDoc(userRef, { plan,credits,paycurrentDate }, { merge: true });
-              router.push({
-                pathname: '/Working',
-              });
-              // You can perform additional actions here, such as updating the UI, sending a confirmation email, etc.
-          } else {
-              alert("Payment Failed!");
-              // Handle payment failure scenario, you might want to redirect the user to a different page or display an error message.
-          }
-            //alert(response.razorpay_order_id);
-            //alert(response.razorpay_signature);
-          },
-          prefill: {
-            name:"Shivam",
-            email:"admin@instantpaydoc.online",
-            contact:'9853785519'
+          const userRef = doc(db, 'users', authid);
+          await setDoc(userRef, { plan, credits, paycurrentDate }, { merge: true });
+          router.push({
+            pathname: '/Working',
+          });
+          // You can perform additional actions here, such as updating the UI, sending a confirmation email, etc.
+        } else {
+          alert("Payment Failed!");
+          // Handle payment failure scenario, you might want to redirect the user to a different page or display an error message.
+        }
+        //alert(response.razorpay_order_id);
+        //alert(response.razorpay_signature);
+      },
+      prefill: {
+        name: "Shivam",
+        email: "admin@instantpaydoc.online",
+        contact: '9853785519'
 
-          },
-        };
+      },
+    };
 
         const paymentObject = new window.Razorpay(options);
         paymentObject.open();
@@ -117,6 +164,11 @@ return () => unsubscribe();
           cart[1]([]);
           router.push("../pages/Working");
         });
+
+
+      }else{
+        window.location.href = '/login';
+      }
       };
       const initializeRazorpay = () => {
         return new Promise((resolve) => {
@@ -124,29 +176,30 @@ return () => unsubscribe();
           script.src = "https://checkout.razorpay.com/v1/checkout.js";
           // document.body.appendChild(script);
 
-          script.onload = () => {
-            resolve(true);
-          };
-          script.onerror = () => {
-            resolve(false);
-          };
+      script.onload = () => {
+        resolve(true);
+      };
+      script.onerror = () => {
+        resolve(false);
+      };
 
-          document.body.appendChild(script);
-        });
-      }
-      return (
-        <div>
-  <button
-  onClick={() => makePayment()}
-  className="font-medium bg-white border border-teal-500
-   text-teal-500 px-6 py-3 rounded-md mt-4 hover:bg-teal-500 hover:text-white focus:outline-none focus:ring focus:border-blue-300"
->
-  Buy Now
-</button>
+      document.body.appendChild(script);
+    });
+  }
+  return (
+    <div>
+      <button
+        onClick={() => makePayment()}
+
+        className={`font-medium bg-white
+      px-6 py-3 rounded-md mt-4  focus:outline-none ${style.hov}`}
+      >
+        Get Started
+      </button>
 
 
-        </div>
-      );
-    };
+    </div >
+  );
+};
 
 export default MakePaymentComponent
