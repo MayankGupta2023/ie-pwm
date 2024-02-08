@@ -100,25 +100,7 @@ const Pricing = () => {
 
 
 
-{/* <div class="bg-white w-full toggle-switch-container px-6 py-2 mb-8 mr-40 flex justify-end">
-  <div class="bg-yellow-500 p-4 rounded-3xl flex relative">
-    <div class="flex flex-row">
-      <button 
-        class={`toggle-btn text-3xl focus:outline-none text-black relative z-20 mb-4 ${!showMonthlyPlans ? 'bg-white' : ''}`}
-        onClick={() => handleToggleSwitch(false)}
-      >
-        Yearly
-      </button>
 
-      <button 
-        class={`toggle-btn text-3xl focus:outline-none text-black relative z-20 ${showMonthlyPlans ? 'bg-white' : ''}`}
-        onClick={() => handleToggleSwitch(true)}
-      >
-        Monthly
-      </button>
-    </div>
-  </div>
-</div> */}
 
 
 <div class="bg-white w-full toggle-switch-container  mb-8 mr-40 flex justify-end">
@@ -191,7 +173,7 @@ const Pricing = () => {
         </div>
       </div>
 
-<div className='flex flex-row mr-64 ml-96 pl-32 mt-8'>
+<div className='flex flex-row mr-64 ml-64 pl-16 mt-8'>
       <motion.div
          
               variants={cardVariants}
@@ -224,7 +206,7 @@ const Pricing = () => {
               variants={cardVariants}
               initial="initial"
               whileHover="hover"
-              className="bg-white px-8 py-4 ml-8 my-4 mx-2 rounded-3xl shadow-md flex flex-col py-6 w-4/12 h-80 min-h-fit"
+              className="bg-white px-8 py-4 ml-8 my-4 mx-2 rounded-3xl shadow-md flex flex-col py-6 w-1/2 h-80 min-h-fit"
             >
               <h3 style={{ color: "#6e4245" }} className="text-lg font-bold text-slate-500 mb-0 flex  items-center justify-start">{"Customize"}</h3>
               <h3 style={{ color: "#333333" }} className="text-4xl font-bold  text-slate-800 mb-0 flex mt-6 mb-6 items-end justify-start">Adding Soon<span style={{ color: "#666666" }} className='text-lg'> &nbsp; </span> </h3>
