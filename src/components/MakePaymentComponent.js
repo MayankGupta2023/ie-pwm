@@ -12,7 +12,44 @@ const MakePaymentComponent = ({ amount, description,plan,credits }) => {
   const [user, setUser] = useState(null);
   const router = useRouter();
 const [authid , setAuthid] = useState(null);
-  useEffect(() => {
+
+
+//   useEffect(() => {
+//   const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
+//     if (authUser) {
+//         // If authenticated, get the user document from Firestore
+//         const userDocRef = doc(firestore, 'users', authUser.uid);
+//         const userDocSnap = await getDoc(userDocRef);
+
+//         if (userDocSnap.exists()) {
+//             // If the user document exists, set the user state with the display name
+//             setAuthid(authUser.uid);
+//             setUser({
+//                 uid: authUser.uid,
+//                 email: authUser.email,
+//                 displayName: userDocSnap.data().name,
+//             });
+//         } else {
+//             // If the user document does not exist, set the user state with basic information
+//             setUser({
+//                 uid: authUser.uid,
+//                 email: authUser.email,
+//             });
+//         }
+//     } else {
+//         // If not authenticated, redirect to login
+//         window.location.href = '/login';
+//     }
+// });
+
+// return () => unsubscribe();
+// }, []);
+
+
+
+
+
+const isLogin= async()=>{
   const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
     if (authUser) {
         // If authenticated, get the user document from Firestore
@@ -34,21 +71,29 @@ const [authid , setAuthid] = useState(null);
                 email: authUser.email,
             });
         }
+        return true;
     } else {
         // If not authenticated, redirect to login
-        window.location.href = '/login';
+        return false;
+       
     }
 });
-
-return () => unsubscribe();
-}, []);
-
+};
 
 
 
 
     const makePayment = async () => {
+
+
+  const inhai = await isLogin();
+
+
+
         //console.log("here...");
+
+        if(inhai){
+
         const res = await initializeRazorpay();
         if (!res) {
           alert("Razorpay SDK Failed to load");
@@ -117,6 +162,11 @@ return () => unsubscribe();
           cart[1]([]);
           router.push("../pages/Working");
         });
+
+
+      }else{
+        window.location.href = '/login';
+      }
       };
       const initializeRazorpay = () => {
         return new Promise((resolve) => {
