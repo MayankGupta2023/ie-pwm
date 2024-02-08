@@ -49,16 +49,16 @@ const Pricing = () => {
   };
 
   const monthlyPlans = [
-    { title: 'Monthly Plan 1', price: 129, credits: 50, questions: 100 },
-    { title: 'Monthly Plan 2', price: 479, credits: 190, questions: 370 },
-    { title: 'Monthly Plan 3', price: 649, credits: 250, questions: 500 },
+    { title: 'Monthly Plan 1', price: 129, credits: 50, questions: 100 ,highlight:false },
+    { title: 'Monthly Plan 2', price: 479, credits: 190, questions: 370 ,highlight:true},
+    { title: 'Monthly Plan 3', price: 649, credits: 250, questions: 500,highlight:false },
   ];
 
   const yearlyPlans = [
 
-    { title: 'Yearly Plan 1', price: 129, credits: 50, questions: 100 },
-    { title: 'Yearly Plan 2', price: 479, credits: 190, questions: 370 },
-    { title: 'Yearly Plan 3', price: 649, credits: 250, questions: 500 },
+    { title: 'Yearly Plan 1', price: 129, credits: 50, questions: 100,highlight:false },
+    { title: 'Yearly Plan 2', price: 479, credits: 190, questions: 370,highlight:true },
+    { title: 'Yearly Plan 3', price: 649, credits: 250, questions: 500,highlight:false },
   ];
 
   const selectedPlans = showMonthlyPlans ? monthlyPlans : yearlyPlans;
@@ -134,7 +134,7 @@ const Pricing = () => {
                 </ul>
                 <div className="mt-6 mb-2 flex items-center justify-left">
                   <MakePaymentComponent amount={plan.price} description={plan.title}
-                    credits={plan.credits} plan={plan.title} />
+                    credits={plan.credits} plan={plan.title} highlight= {plan.highlight} />
                 </div>
 
               </div>
