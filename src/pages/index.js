@@ -10,6 +10,12 @@ import plus from "../assets/plus.svg"
 
 export default function Home() {
 
+
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleHover = () => {
+    setIsHovered(!isHovered);
+  }
   const [drop1, setDrop1] = useState(false);
   const [drop2, setDrop2] = useState(false);
   const [drop3, setDrop3] = useState(false);
@@ -28,15 +34,15 @@ export default function Home() {
 
 
 
-  const SquarePattern = () => {
-    return (
-      <div className={`grid overflow-hidden ${styles.gridd}`}>
-        {Array.from({ length: 120 }, (_, index) => (
-          <div key={index} className={`h-16 w-16 relative right-8 ${styles.grid_items}`}></div>
-        ))}
-      </div>
-    );
-  };
+  // const SquarePattern = () => {
+  //   return (
+  //     <div className={`grid overflow-hidden ${styles.gridd}`}>
+  //       {Array.from({ length: 120 }, (_, index) => (
+  //         <div key={index} className={`h-16 w-16 relative right-8 ${styles.grid_items}`}></div>
+  //       ))}
+  //     </div>
+  //   );
+  // };
 
 
   return (
@@ -153,13 +159,25 @@ export default function Home() {
         <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center pt-8">Key Features</div>
 
         <div className="mt-8 min-h-fit  py-12 px-8 flex items-center justify-center gap-8 flex-wrap ">
-
-          <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fd3c34' }}>
-
-            Live
-
+          <div
+            className={`text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white transition duration-500 transform ${isHovered ? "rotate-360" : ""
+              }`}
+            style={{
+              borderRadius: "3.5rem",
+              backgroundColor: "#fd3c34",
+              transition: "transform 2s",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "rotateY(360deg)";
+              handleHover();
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "rotateY(0deg)";
+              handleHover();
+            }}
+          >
+            {isHovered ? "Live" : "Absent"}
           </div>
-
           <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe6641' }}>
 
             Will be launched by end of March
@@ -322,19 +340,19 @@ export default function Home() {
         <motion.div
           className="max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ">
           <div className="h-fit p-4 text-lg font-semibold flex justify-center flex-col ">
-            <div style={{ color: '#333333' }} className="h-fit flex gap-6" onClick={() => { handleDrop1() }}> <img src={plus.src} />  What is Framer?</div>
-            {drop1 ? <motion.div style={{ color: '#666666' }} className="h-fit px-10 text-lg font-semibold flex items-center">
+            <div style={{ color: '#333333' }} className="h-fit flex gap-6 hover:cursor-pointer" onClick={() => { handleDrop1() }}> <img src={plus.src} />  What is Framer?</div>
+            {drop1 ? <motion.div style={{ color: '#666666' }} className="  h-fit px-10 text-lg font-semibold flex items-center">
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
             </motion.div> : null}
           </div>
           <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
-            <div style={{ color: '#333333' }} className="h-fit flex gap-6" onClick={() => { handleDrop2() }}> <img src={plus.src} />  Is it easy to learn?</div>
+            <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit flex gap-6" onClick={() => { handleDrop2() }}> <img src={plus.src} />  Is it easy to learn?</div>
             {drop2 ? <motion.div style={{ color: '#666666' }}
               className="h-fit px-10 text-lg font-semibold flex items-center">
               Framer is fastest tool to build sites with, because you can ship your design immidiatly,insted of rebuilding it in code or second tool.
             </motion.div> : null}
           </div>
-          <div style={{ color: '#333333' }} className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
+          <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
             <div className="h-fit flex gap-6" onClick={() => { handleDrop3() }}> <img src={plus.src} />  Do i need to code?</div>
             {drop3 ? <motion.div style={{ color: '#666666' }}
 
