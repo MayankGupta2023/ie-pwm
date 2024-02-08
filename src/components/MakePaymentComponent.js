@@ -10,42 +10,12 @@ import style from '../styles/landing.module.css';
 
 const auth = getAuth(app);
 const firestore = getFirestore(app);
-const MakePaymentComponent = ({ amount, description, plan, credits }) => {
+const MakePaymentComponent = ({ amount, description, plan, credits,highlight }) => {
   const [user, setUser] = useState(null);
   const router = useRouter();
 const [authid , setAuthid] = useState(null);
 
 
-//   useEffect(() => {
-//   const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
-//     if (authUser) {
-//         // If authenticated, get the user document from Firestore
-//         const userDocRef = doc(firestore, 'users', authUser.uid);
-//         const userDocSnap = await getDoc(userDocRef);
-
-//         if (userDocSnap.exists()) {
-//             // If the user document exists, set the user state with the display name
-//             setAuthid(authUser.uid);
-//             setUser({
-//                 uid: authUser.uid,
-//                 email: authUser.email,
-//                 displayName: userDocSnap.data().name,
-//             });
-//         } else {
-//             // If the user document does not exist, set the user state with basic information
-//             setUser({
-//                 uid: authUser.uid,
-//                 email: authUser.email,
-//             });
-//         }
-//     } else {
-//         // If not authenticated, redirect to login
-//         window.location.href = '/login';
-//     }
-// });
-
-// return () => unsubscribe();
-// }, []);
 
 
 
@@ -192,7 +162,7 @@ const isLogin= async()=>{
         onClick={() => makePayment()}
 
         className={`font-medium bg-white
-      px-6 py-3 rounded-md mt-4  focus:outline-none ${style.hov}`}
+      px-6 py-3 rounded-md mt-4  focus:outline-none ${highlight?style.hovdef:style.hov}`}
       >
         Get Started
       </button>
