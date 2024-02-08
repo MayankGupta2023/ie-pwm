@@ -7,7 +7,7 @@ import Switch from 'react-switch';
 import '../styles/pricing.module.css'; // Import any additional styles for styling the switch
 import tick from '../assets/tick.svg';
 import plus from "../assets/plus.svg"
-
+import style from '../styles/landing.module.css';
 
 
 
@@ -61,7 +61,7 @@ const Pricing = () => {
     { title: 'Yearly Plan 3', price: 649, credits: 250, questions: 500 },
   ];
 
-  const selectedPlans = showMonthlyPlans ? monthlyPlans : yearlyPlans;
+  const selectedPlans = showMonthlyPlans ? yearlyPlans:monthlyPlans ;
 
   const [drop1, setDrop1] = useState(false);
   const [drop2, setDrop2] = useState(false);
@@ -93,23 +93,65 @@ const Pricing = () => {
 
 
 
-        <div className="w-full toggle-switch-container px-6 py-2 mb-8 mr-40 flex justify-end">
-          <div>                                                 {  /* this additional div might cause problem in functioning Rohit Tripathi*/}
-            <span className='mr-4 text-3xl'>Yearly</span>
-            <Switch
-              className="custom-switch"
-              onChange={handleToggleSwitch}
-              checked={showMonthlyPlans}
-              onColor="#047857"
-              offColor="#047857"
-              checkedIcon={false}
-              uncheckedIcon={false}
-              height={20}
-              width={40}
-            />
-            <span className='ml-2 text-3xl'>Monthly</span>
-          </div>
-        </div>
+
+{/* <div class="bg-white w-full toggle-switch-container px-6 py-2 mb-8 mr-40 flex justify-end">
+  <div class="bg-yellow-500 p-4 rounded-3xl flex relative">
+    <div class="flex flex-row">
+      <button 
+        class={`toggle-btn text-3xl focus:outline-none text-black relative z-20 mb-4 ${!showMonthlyPlans ? 'bg-white' : ''}`}
+        onClick={() => handleToggleSwitch(false)}
+      >
+        Yearly
+      </button>
+
+      <button 
+        class={`toggle-btn text-3xl focus:outline-none text-black relative z-20 ${showMonthlyPlans ? 'bg-white' : ''}`}
+        onClick={() => handleToggleSwitch(true)}
+      >
+        Monthly
+      </button>
+    </div>
+  </div>
+</div> */}
+
+
+<div class="bg-white w-full toggle-switch-container  mb-8 mr-40 flex justify-end">
+  <div className= {`py-0.5 px-0.5 rounded-full flex relative ${style.pricing}`}>
+    <div class="flex flex-row">
+      <button 
+        class={`toggle-btn text-3xl focus:outline-none text-black relative z-20 p-2 rounded-full ${!showMonthlyPlans ? 'bg-white' : ''}`}
+        onClick={() => handleToggleSwitch(true)}
+      >
+        Monthly
+      </button>
+
+      <div class="px-2"></div>
+
+      <button 
+        class={`toggle-btn text-3xl focus:outline-none text-black relative p-2 z-20 rounded-full ${showMonthlyPlans ? 'bg-white' : ''}`}
+        onClick={() => handleToggleSwitch(true)}
+      >
+        Yearly
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+       
+
+
+
 
         <div className=" flex flex-wrap items-center w-4/5 justify-around h-fit">
           {selectedPlans.map((plan, index) => (
