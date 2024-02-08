@@ -6,7 +6,7 @@ import styles from "../styles/landing.module.css"
 import Footer from "../components/footer";
 import { motion, useAnimation } from "framer-motion";
 import plus from "../assets/plus.svg"
-
+import tick from "../assets/tick.svg"
 
 export default function Home() {
 
@@ -19,16 +19,22 @@ export default function Home() {
   const [drop1, setDrop1] = useState(false);
   const [drop2, setDrop2] = useState(false);
   const [drop3, setDrop3] = useState(false);
-
+  const [dropicon1, setDropIcon1] = useState(plus.src);
+  const [dropicon2, setDropIcon2] = useState(plus.src);
+  const [dropicon3, setDropIcon3] = useState(plus.src);
   const handleDrop1 = () => {
+    dropicon1==plus.src?setDropIcon1(tick.src):setDropIcon1(plus.src);
+    //setDropIcon1(tick.src);
     setDrop1(!drop1);
   }
 
   const handleDrop2 = () => {
+    dropicon2==plus.src?setDropIcon2(tick.src):setDropIcon2(plus.src);
     setDrop2(!drop2);
   }
 
   const handleDrop3 = () => {
+    dropicon3==plus.src?setDropIcon3(tick.src):setDropIcon3(plus.src);
     setDrop3(!drop3);
   }
 
@@ -340,20 +346,20 @@ export default function Home() {
         <motion.div
           className="max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ">
           <div className="h-fit p-4 text-lg font-semibold flex justify-center flex-col ">
-            <div style={{ color: '#333333' }} className="h-fit flex gap-6 hover:cursor-pointer" onClick={() => { handleDrop1() }}> <img src={plus.src} />  What is Framer?</div>
+            <div style={{ color: '#333333' }} className="h-fit flex gap-6 hover:cursor-pointer" onClick={() => { handleDrop1() }}> <img src={dropicon1} />  What is Framer?</div>
             {drop1 ? <motion.div style={{ color: '#666666' }} className="  h-fit px-10 text-lg font-semibold flex items-center">
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
             </motion.div> : null}
           </div>
           <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
-            <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit flex gap-6" onClick={() => { handleDrop2() }}> <img src={plus.src} />  Is it easy to learn?</div>
+            <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit flex gap-6" onClick={() => { handleDrop2() }}> <img src={dropicon2} />  Is it easy to learn?</div>
             {drop2 ? <motion.div style={{ color: '#666666' }}
               className="h-fit px-10 text-lg font-semibold flex items-center">
               Framer is fastest tool to build sites with, because you can ship your design immidiatly,insted of rebuilding it in code or second tool.
             </motion.div> : null}
           </div>
           <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
-            <div className="h-fit flex gap-6" onClick={() => { handleDrop3() }}> <img src={plus.src} />  Do i need to code?</div>
+            <div className="h-fit flex gap-6" onClick={() => { handleDrop3() }}> <img src={dropicon3} />  Do i need to code?</div>
             {drop3 ? <motion.div style={{ color: '#666666' }}
 
               className="h-fit px-10 text-lg font-semibold flex items-center">
