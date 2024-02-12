@@ -20,18 +20,18 @@ export default function Home() {
   const [dropicon2, setDropIcon2] = useState(plus.src);
   const [dropicon3, setDropIcon3] = useState(plus.src);
   const handleDrop1 = () => {
-    dropicon1==plus.src?setDropIcon1(tick.src):setDropIcon1(plus.src);
+    dropicon1 == plus.src ? setDropIcon1(tick.src) : setDropIcon1(plus.src);
     //setDropIcon1(tick.src);
     setDrop1(!drop1);
   }
 
   const handleDrop2 = () => {
-    dropicon2==plus.src?setDropIcon2(tick.src):setDropIcon2(plus.src);
+    dropicon2 == plus.src ? setDropIcon2(tick.src) : setDropIcon2(plus.src);
     setDrop2(!drop2);
   }
 
   const handleDrop3 = () => {
-    dropicon3==plus.src?setDropIcon3(tick.src):setDropIcon3(plus.src);
+    dropicon3 == plus.src ? setDropIcon3(tick.src) : setDropIcon3(plus.src);
     setDrop3(!drop3);
   }
 
@@ -39,7 +39,7 @@ export default function Home() {
   const FlippableCard = () => {
   }
   const SquarePattern = () => {
-  
+
     return (
       <div className={`grid overflow-hidden ${styles.gridd}`}>
         {Array.from({ length: 120 }, (_, index) => (
@@ -96,7 +96,7 @@ export default function Home() {
         </div>
 
         <div className="h-3/5 w-full flex justify-center items-center flex-col">
-          <p className="text-2xl w-1/2 text-center font-semibold" style={{ color: "#888888" }}>Block build with a modular web design concept will easily kickstart your project, and build website & marketing site faster.</p>
+          <p className={`text-2xl w-1/2 text-center font-semibold ${styles.head2}`} style={{ color: "#888888" }}>Block build with a modular web design concept will easily kickstart your project, and build website & marketing site faster.</p>
           <div>
             <button className="text-white bg-black py-2 font-semibold px-4 shadow-2xl rounded-lg">Get Started</button>
             <button className=" ml-4 bg-slate-100  px-4 py-2 rounded-lg mt-10 font-semibold text-black">Learn More</button>
@@ -107,11 +107,11 @@ export default function Home() {
 
       <div className=" h-fit pt-16" >
 
-        <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center">Trusted By Many Learners</div>
+        <div style={{ color: '#333333' }} className={`font-bold text-5xl p-4 text-center ${styles.trusted}`}>Trusted By Many Learners</div>
 
         <div className={`flex h-5/6  py-12 px-32 flex-wrap justify-around items-center  ${styles.b1}`}>
 
-          <div style={{ height: '370px' }} className="  mt-6 w-80 shadow-xl overflow-hidden border-2 rounded-2xl ">
+          <div style={{ height: '370px' }} className="  mt-6 min-w-80 w-80 shadow-xl overflow-hidden border-2 rounded-2xl ">
 
             <div className="h-1/4 w-full p-8">
               Name
@@ -126,7 +126,7 @@ export default function Home() {
 
           </div>
 
-          <div style={{ height: '370px' }} className=" w-80 mt-6 shadow-xl overflow-hidden border-2 rounded-2xl ">
+          <div style={{ height: '370px' }} className=" min-w-80 w-80 mt-6 shadow-xl overflow-hidden border-2 rounded-2xl ">
 
             <div className="h-1/4 w-full p-8">
               Name
@@ -140,7 +140,7 @@ export default function Home() {
 
           </div>
 
-          <div style={{ height: '370px' }} className="  w-80 mt-6 shadow-xl overflow-hidden border-2 rounded-2xl ">
+          <div style={{ height: '370px' }} className="  min-w-80 w-80 mt-6 shadow-xl overflow-hidden border-2 rounded-2xl ">
 
 
             <div className="h-1/4 w-full p-8">
@@ -159,18 +159,18 @@ export default function Home() {
 
       </div>
 
-      <div style={{ backgroundColor: '#fff6f3' }} className="min-h-fit h-screen ">
+      <div style={{ backgroundColor: '#fff6f3' }} className="h-fit  min-h-screen ">
 
         <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center pt-8">Key Features</div>
 
-     
+
         <div className="mt-8 min-h-fit  py-12 px-8 flex items-center justify-center gap-8 flex-wrap ">
-     
-
-  
 
 
-{/* <div 
+
+
+
+          {/* <div 
   className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white"
   style={{ 
     borderRadius: '3.5rem', 
@@ -189,34 +189,34 @@ export default function Home() {
   Live
 </div>  */}
 
-<div 
-  className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white"
-  style={{ 
-    borderRadius: '3.5rem', 
-    backgroundColor: '#fd3c34',
-    transition: 'transform 2s ease' // Add transition for smoother animation
-  }}
-  onMouseEnter={(e) => {
-    const div = e.target;
-    const span = div.querySelector('span');
-    if (span) {
-      div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
-      span.style.transform = 'rotateY(180deg)'; // Flip the text content
-      span.textContent = 'After Content'; // Change text content on hover
-    }
-  }}
-  onMouseLeave={(e) => {
-    const div = e.target;
-    const span = div.querySelector('span');
-    if (span) {
-      div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
-      span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
-      span.textContent = 'Before Content'; // Restore original text content on mouse leave
-    }
-  }}
->
-  <span>Before Content</span>
-</div>
+          <div
+            className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white"
+            style={{
+              borderRadius: '3.5rem',
+              backgroundColor: '#fd3c34',
+              transition: 'transform 2s ease' // Add transition for smoother animation
+            }}
+            onMouseEnter={(e) => {
+              const div = e.target;
+              const span = div.querySelector('span');
+              if (span) {
+                div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
+                span.style.transform = 'rotateY(180deg)'; // Flip the text content
+                span.textContent = 'After Content'; // Change text content on hover
+              }
+            }}
+            onMouseLeave={(e) => {
+              const div = e.target;
+              const span = div.querySelector('span');
+              if (span) {
+                div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
+                span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
+                span.textContent = 'Before Content'; // Restore original text content on mouse leave
+              }
+            }}
+          >
+            <span>Before Content</span>
+          </div>
 
 
 
@@ -226,40 +226,40 @@ export default function Home() {
 
 
 
-  {/* <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe6641' }}>
+          {/* <div className="text-center  w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-3xl px-8 text-white " style={{ borderRadius: '3.5rem', backgroundColor: '#fe6641' }}>
 
             Will be launched by end of March
 
           </div> */}
 
-          <div 
-  className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl px-8 text-white"
-  style={{ 
-    borderRadius: '3.5rem', 
-    backgroundColor: '#fe6641',
-    transition: 'transform 2s ease' // Add transition for smoother animation
-  }}
-  onMouseEnter={(e) => {
-    const div = e.target;
-    const span = div.querySelector('span');
-    if (span) {
-      div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
-      span.style.transform = 'rotateY(180deg)'; // Flip the text content
-      span.textContent = 'After Content'; // Change text content on hover
-    }
-  }}
-  onMouseLeave={(e) => {
-    const div = e.target;
-    const span = div.querySelector('span');
-    if (span) {
-      div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
-      span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
-      span.textContent = 'Before Content'; // Restore original text content on mouse leave
-    }
-  }}
->
-  <span>Before Content</span>
-</div>
+          <div
+            className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl px-8 text-white"
+            style={{
+              borderRadius: '3.5rem',
+              backgroundColor: '#fe6641',
+              transition: 'transform 2s ease' // Add transition for smoother animation
+            }}
+            onMouseEnter={(e) => {
+              const div = e.target;
+              const span = div.querySelector('span');
+              if (span) {
+                div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
+                span.style.transform = 'rotateY(180deg)'; // Flip the text content
+                span.textContent = 'After Content'; // Change text content on hover
+              }
+            }}
+            onMouseLeave={(e) => {
+              const div = e.target;
+              const span = div.querySelector('span');
+              if (span) {
+                div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
+                span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
+                span.textContent = 'Before Content'; // Restore original text content on mouse leave
+              }
+            }}
+          >
+            <span>Before Content</span>
+          </div>
 
 
 
@@ -271,34 +271,34 @@ export default function Home() {
             Will be launched by end of April
 
           </div> */}
-          <div 
-  className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl px-8 text-white"
-  style={{ 
-    borderRadius: '3.5rem', 
-    backgroundColor: '#fe8c4b',
-    transition: 'transform 2s ease' // Add transition for smoother animation
-  }}
-  onMouseEnter={(e) => {
-    const div = e.target;
-    const span = div.querySelector('span');
-    if (span) {
-      div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
-      span.style.transform = 'rotateY(180deg)'; // Flip the text content
-      span.textContent = 'After Content'; // Change text content on hover
-    }
-  }}
-  onMouseLeave={(e) => {
-    const div = e.target;
-    const span = div.querySelector('span');
-    if (span) {
-      div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
-      span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
-      span.textContent = 'Before Content'; // Restore original text content on mouse leave
-    }
-  }}
->
-  <span>Before Content</span>
-</div>
+          <div
+            className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl px-8 text-white"
+            style={{
+              borderRadius: '3.5rem',
+              backgroundColor: '#fe8c4b',
+              transition: 'transform 2s ease' // Add transition for smoother animation
+            }}
+            onMouseEnter={(e) => {
+              const div = e.target;
+              const span = div.querySelector('span');
+              if (span) {
+                div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
+                span.style.transform = 'rotateY(180deg)'; // Flip the text content
+                span.textContent = 'After Content'; // Change text content on hover
+              }
+            }}
+            onMouseLeave={(e) => {
+              const div = e.target;
+              const span = div.querySelector('span');
+              if (span) {
+                div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
+                span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
+                span.textContent = 'Before Content'; // Restore original text content on mouse leave
+              }
+            }}
+          >
+            <span>Before Content</span>
+          </div>
 
 
 
@@ -308,34 +308,34 @@ export default function Home() {
             Will be launched by end of June
 
           </div> */}
-          <div 
-  className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl px-8 text-white"
-  style={{ 
-    borderRadius: '3.5rem', 
-    backgroundColor: '#2e180b',
-    transition: 'transform 2s ease' // Add transition for smoother animation
-  }}
-  onMouseEnter={(e) => {
-    const div = e.target;
-    const span = div.querySelector('span');
-    if (span) {
-      div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
-      span.style.transform = 'rotateY(180deg)'; // Flip the text content
-      span.textContent = 'After Content'; // Change text content on hover
-    }
-  }}
-  onMouseLeave={(e) => {
-    const div = e.target;
-    const span = div.querySelector('span');
-    if (span) {
-      div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
-      span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
-      span.textContent = 'Before Content'; // Restore original text content on mouse leave
-    }
-  }}
->
-  <span>Before Content</span>
-</div>
+          <div
+            className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl px-8 text-white"
+            style={{
+              borderRadius: '3.5rem',
+              backgroundColor: '#2e180b',
+              transition: 'transform 2s ease' // Add transition for smoother animation
+            }}
+            onMouseEnter={(e) => {
+              const div = e.target;
+              const span = div.querySelector('span');
+              if (span) {
+                div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
+                span.style.transform = 'rotateY(180deg)'; // Flip the text content
+                span.textContent = 'After Content'; // Change text content on hover
+              }
+            }}
+            onMouseLeave={(e) => {
+              const div = e.target;
+              const span = div.querySelector('span');
+              if (span) {
+                div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
+                span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
+                span.textContent = 'Before Content'; // Restore original text content on mouse leave
+              }
+            }}
+          >
+            <span>Before Content</span>
+          </div>
 
 
 
@@ -355,34 +355,34 @@ export default function Home() {
       </div>
 
 
-      <div className={`h-screen ${styles.back}`}>
+      <div className={`min-h-screen h-fit ${styles.back}`}>
 
-        <div style={{ color: '#333' }} className={`font-bold text-5xl p-8 text-center`}>Enhance Learning Beyond Tradition with Innovative Features</div>
+        <div style={{ color: '#333' }} className={`font-bold text-5xl p-8 text-center ${styles.enhance}`}>Enhance Learning Beyond Tradition with Innovative Features</div>
 
-        <div className="grid grid-cols-3 grid-rows-2 h-5/6">
+        <div className={`grid grid-cols-3 grid-rows-2 h-5/6 ${styles.gid}`}>
 
-          <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Answered Notes</div>
+          <div className={`flex flex-col px-20 justify-center ${styles.res} `}>
+            <div className={`text-3xl font-bold ${styles.subhead}`}>Answered Notes</div>
             <div>Top-notch chapter summeries comming to your needs</div>
           </div>
-          <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Interactive Content</div>
+          <div className={`flex flex-col px-20 justify-center ${styles.res} `}>
+            <div className={`text-3xl font-bold ${styles.subhead}`}>Interactive Content</div>
             <div>Interective elements to make learning fun and effective</div>
           </div>
-          <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Offline Access</div>
+          <div className={`flex flex-col px-20 justify-center ${styles.res} `}>
+            <div className={`text-3xl font-bold ${styles.subhead}`}>Offline Access</div>
             <div>Access your learning material without an internet connection</div>
           </div>
-          <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Language Support</div>
+          <div className={`flex flex-col px-20 justify-center ${styles.res} `}>
+            <div className={`text-3xl font-bold ${styles.subhead}`}>Language Support</div>
             <div>Break language barrier and learn it. Opt language you're comfortable with.</div>
           </div>
-          <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Custom Notes</div>
+          <div className={`flex flex-col px-20 justify-center ${styles.res} `}>
+            <div className={`text-3xl font-bold ${styles.subhead}`}>Custom Notes</div>
             <div>Ypur notes ypur way. Customise your learning with us.</div>
           </div>
-          <div className="   flex flex-col px-20 justify-center">
-            <div className="text-3xl font-bold">Subject Specific Content</div>
+          <div className={`flex flex-col px-20 justify-center ${styles.res} `}>
+            <div className={`text-3xl font-bold ${styles.subhead}`}>Subject Specific Content</div>
             <div>Dive into extensive database connection business studies and progeamm.</div>
           </div>
 
@@ -398,9 +398,9 @@ export default function Home() {
 
 
 
-      <div className="h-screen w-full flex px-12 py-16 ">
+      <div className={`h-screen w-full flex px-12 py-16 ${styles.wassapp}`}>
 
-        <div className="w-1/2 flex flex-col justify-center items-center gap-8">
+        <div className={`w-1/2 flex flex-col justify-center items-center gap-8 ${styles.wassapp_left}`}>
           <div className=" w-96 font-bold text-5xl">Get your notes via WhatsApp</div>
           <div className="   text-xl text-stone-500 font-semibold">
             <p className="w-96">
@@ -415,8 +415,8 @@ export default function Home() {
 
         </div>
 
-        <div className="w-1/2 h-screen ">
-          <img className="h-full w-full" src="https://framerusercontent.com/images/dAJW9yDkvqMtYUWnpXJiJ2wKsA.jpg?scale-down-to=1024" />
+        <div className={`w-1/2 h-screen ${styles.wassapp_right}`}>
+          <img className={`h-full w-full ${styles.wassapp_img}`} src="https://framerusercontent.com/images/dAJW9yDkvqMtYUWnpXJiJ2wKsA.jpg?scale-down-to=1024" />
         </div>
 
       </div>
@@ -429,7 +429,7 @@ export default function Home() {
 
         <div className={`flex h-5/6  py-12 px-32 flex-wrap justify-center items-center  ${styles.b1}`}>
 
-          <div style={{ height: '430px' }} className="  my-6  w-80 shadow-xl overflow-hidden border-2 rounded-2xl ">
+          <div style={{ height: '430px' }} className="  my-6 w-80  min-w-80 shadow-xl overflow-hidden border-2 rounded-2xl ">
             <div className="h-1/2 w-full">
               <img className="h-full w-full" />
             </div>
@@ -444,7 +444,7 @@ export default function Home() {
 
           </div>
 
-          <div style={{ height: '430px' }} className=" w-80 my-6 mx-4  shadow-xl overflow-hidden border-2 rounded-2xl ">
+          <div style={{ height: '430px' }} className=" min-w-80 w-80 my-6 mx-4  shadow-xl overflow-hidden border-2 rounded-2xl ">
             <div className="h-1/2 w-full">
               <img className="h-full w-full" />
             </div>
@@ -459,7 +459,7 @@ export default function Home() {
 
           </div>
 
-          <div style={{ height: '430px' }} className="  w-80 my-6  shadow-xl overflow-hidden border-2 rounded-2xl ">
+          <div style={{ height: '430px' }} className="  min-w-80 w-80 my-6  shadow-xl overflow-hidden border-2 rounded-2xl ">
             <div className="h-1/2 w-full">
               <img className="h-full w-full" />
             </div>
@@ -481,10 +481,10 @@ export default function Home() {
 
       <div className="h-screen w-full flex flex-col gap-32 pt-30 items-center justify-center">
 
-        <div className="font-bold text-5xl text-zinc-800">Frequently Asked Questions</div>
+        <div className={`font-bold text-center text-5xl text-zinc-800 ${styles.head}`}>Frequently Asked Questions</div>
 
         <motion.div
-          className="max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ">
+          className={`max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ${styles.framer}`}>
           <div className="h-fit p-4 text-lg font-semibold flex justify-center flex-col ">
             <div style={{ color: '#333333' }} className="h-fit flex gap-6 hover:cursor-pointer" onClick={() => { handleDrop1() }}> <img src={dropicon1} />  What is Framer?</div>
             {drop1 ? <motion.div style={{ color: '#666666' }} className="  h-fit pt-4 px-10 text-lg font-semibold flex items-center">
@@ -509,7 +509,7 @@ export default function Home() {
               className="h-fit pt-4 px-10 text-lg font-semibold flex items-center">
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
             </motion.div> : null}
-        
+
           </div>
 
         </motion.div>
@@ -522,7 +522,7 @@ export default function Home() {
 
         <div className="h-full flex flex-col items-center justify-center gap-8">
 
-          <div className="text-white text-6xl font-bold">Sign up today.</div>
+          <div className={`text-white text-center text-6xl font-bold ${styles.sign}`}>Sign up today.</div>
 
           <div className="flex gap-6">
             <button className="text-black bg-slate-100 font-semibold py-2 px-4 shadow-2xl rounded-lg">Learn more</button>

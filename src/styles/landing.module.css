@@ -113,3 +113,107 @@
     background-color: #ffb84d;
 }
 
+
+/* reasponsive */
+
+
+@media (min-width:90px) and ( max-width:1108px){
+    .res{
+        padding: 0;
+        padding-left: 30px;
+        padding-right: 30px;
+    }
+}
+
+@media (max-width:980px)  {
+    .gid {
+       grid-template-columns: repeat(2,1fr);
+       grid-template-rows: repeat(3,1fr);
+       
+    }
+}
+
+@media (max-width:500px) {
+    .gid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+
+    }
+
+    .wassapp{
+        flex-direction: column;
+    }
+
+    .wassapp_left{
+        width: 100%;
+    }
+
+    .wassapp_right{
+        padding-top: 40px;
+        width: 100%;
+    }
+
+    .wassapp_img{
+        height: 250px;
+        width: 250px;
+    }
+}
+
+@media (max-width:600px){
+
+    .head{
+        font-size: 2.4rem;
+        width: 100vw;
+        padding-top: 50px;
+       
+    }
+
+    .head2{
+        font-size: 1.2rem;
+        width: 80%;
+    }
+
+    .trusted{
+        font-size: 2rem;
+    }
+
+    .enhance{
+        font-size: 2.2rem;
+    }
+
+    .subhead{
+        font-size: 1.5rem;
+    }
+
+    .framer{
+        width: 90%;
+    }
+
+    .sign{
+        font-size: 2.5rem;
+    }
+
+}
+
+/* Navbar responsive */
+
+@media (max-width:500px){
+    .nav{
+        
+        position: absolute;
+        right: 0;
+        top: 60px;
+        background-color: white;
+        border: 1px solid grey;
+        padding: 20px;
+        flex-direction: column;
+        gap:20px;
+        align-items: center;
+        width: 100%;
+    }
+
+    .menu{
+        display: block;
+    }
+}
+

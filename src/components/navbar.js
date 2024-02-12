@@ -5,7 +5,11 @@ import Link from 'next/link';
 import logo from '../assets/logo.png';
 import styles from '../styles/landing.module.css';
 import app from '../firebaseConfig';
+import menu from '../assets/menu.svg'
+import cross from '../assets/cross2.svg'
+
 const Navbar = () => {
+  const [bars, setBars] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const auth = getAuth(app);
 
@@ -33,7 +37,7 @@ const Navbar = () => {
 
       </div>
 
-      <div className=' text-base flex justify-around min-w-80 '>
+      <div className={bars ? 'hidden' : `text-base flex justify-around min-w-80 ${styles.nav}`}>
         <Link href="/">Features</Link>
         <Link href="/pricing">Pricing</Link>
         <Link href="/pricing">Contact</Link>
@@ -46,6 +50,21 @@ const Navbar = () => {
           <Link href="/login">Login</Link>
         )} */}
       </div>
+
+      <div className={`hidden mr-6 ${styles.menu}`}>
+        <button onClick={() => {
+          setBars(!bars);
+          console.log(bars);
+        }} >
+          {bars ?
+            <img src={menu.src} />
+            :
+            <img src={cross.src} />
+
+          }
+        </button>
+      </div>
+
     </div>
   );
 };
