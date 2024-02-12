@@ -18,12 +18,13 @@ const DropdownButton = () => {
             <button
                 onClick={toggleDropdown}
                 type="button"
-                className="inline-flex justify-center items-center w-32 text-xs px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                className="  inline-flex justify-center items-center w-40  px-4 py-2 border border-gray-300 rounded-md shadow-sm bg-white text-lg font-semibold text-gray-700 hover:bg-gray-50 "
                 id="options-menu"
                 aria-haspopup="true"
                 aria-expanded="true"
+                style={{ background: '' }}
             >
-                {selectedItem ? selectedItem : 'Select an item'}
+                {selectedItem ? selectedItem : 'Select Subject'}
             </button>
 
             {isOpen && (
