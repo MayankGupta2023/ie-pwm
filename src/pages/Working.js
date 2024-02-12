@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from '../components/navbar'
+import Navbar from '../components/navbar2'
 import DropdownButton1 from '../components/dropdown1'
 import DropdownButton2 from '../components/dropdown2'
 import DropdownButton3 from '../components/dropdown3'
@@ -55,7 +55,7 @@ const Working = () => {
     return (
         <div>
             <div className='h-20 fixed l-0 t-0 w-full z-50 '>
-                <Navbar />
+              <Navbar />
             </div>
 
             <div className='h-20'>
