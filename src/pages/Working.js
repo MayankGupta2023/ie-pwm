@@ -1,6 +1,9 @@
 import React from 'react'
 import Navbar from '../components/navbar'
-import DropdownButton from '../components/dropdown_button'
+import DropdownButton1 from '../components/dropdown1'
+import DropdownButton2 from '../components/dropdown2'
+import DropdownButton3 from '../components/dropdown3'
+
 import { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import { getAuth } from 'firebase/auth';
@@ -46,57 +49,73 @@ const Working = () => {
 
     return (
         <div>
-            <div className='h-20 fixed l-0 t-0 w-full '>
+            <div className='h-20 fixed l-0 t-0 w-full z-50 '>
                 <Navbar />
             </div>
 
-            <div className='h-screen  flex justify-center items-center pt-8'>
+            <div className='h-20'>
+
+            </div>
+
+            <div className='h-20 text-5xl font-inter font-semibold text-center flex justify-center items-center '>Get your Notes</div>
+
+            <div className='h-fit  flex justify-center items-center'>
 
 
 
-                <div className='h-4/5 bg-red-600 w-2/3 p-4 flex relative'>
+                <div className='h-fit   w-5/6 p-4 flex relative'>
 
-                    <div className='absolute right-10 top-0'>
+                    {/* <div className='absolute right-10 top-0'>
                         <button className='p-2 font-medium text-xl '>Upgrade</button>
                         <button className='p-2 ml-4 text-2xl'>&#9733;</button>
-                    </div>
+                    </div> */}
 
-                    <div className='w-2/5 bg-yellow-400 pt-1'>
+                    <div className='w-2/6 h-screen    pt-10'>
 
-                        <h2 className="text-xl font-semibold mb-2 text-gray-800">
+                        {/* <h2 className="text-xl font-semibold mb-2 text-gray-800">
                             Welcome, {user ? user.displayName || user.email : 'Guest'}!
-                        </h2>
+                        </h2> */}
 
-                        <div className='w-full h-fit gap-1 flex pt-4 flex-wrap'>
-                            <DropdownButton />
-                            <DropdownButton />
-                            <DropdownButton />
+                        <div className='w-full h-fit gap-8 flex pt-4 flex-wrap flex-col'>
+                            <div>
+                                <DropdownButton1 />
+                            </div>
+
+                            <div className='flex justify-between pr-8 flex-wrap gap-6'>
+                                <DropdownButton2 />
+                                <DropdownButton3 />
+                            </div>
 
                         </div>
 
-                        <div className='mt-8'>
-                            <button className='px-4 py-2 bg-white rounded bg-blue-400 text-white '>Chapter-wise-notes</button>
-                            <button className='px-4 py-2 bg-lime-500 rounded ml-2 text-white'>FAQ</button>
+
+
+                        <div className='mt-8   flex justify-around items-center'>
+                            <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Get Topic-wise Notes</button>
+
+                            <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterTopic" name="enterTopic" value='Enter topic or Notes'></input>
                         </div>
 
-                        <div className='mt-8'>
-                            <input className='w-full px-2 py-1 border-2 border-gray-400 rounded ' type="text" id="enterTopic" name="enterTopic" value='Enter topic or Notes'></input>
+                        <div className='mt-8   flex justify-around items-center'>
+                            <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Ask any Question</button>
+
+                            <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterQuestion" name="enterQuestion" value='Questions'></input>
                         </div>
 
-                        <button className='p-2 text-center text-white w-full bg-purple-500 mt-8 rounded-xl '>Get Topic-wise Notes</button>
+                        <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-8 rounded-lg'>Get Chapter-Wise Notes</button>
 
-                        <div className='mt-8'>
-                            <input className='w-full px-2 py-1 border-2 border-gray-400 rounded ' type="text" id="ask" name="ask" value='Ask a question'></input>
-                        </div>
+                        <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-8 rounded-lg'>Get FAQs</button>
 
-                        <button className='p-2 text-center text-white w-full bg-red-500 mt-8 rounded-xl '>Submit Question</button>
+
+
+
 
 
 
                     </div>
 
 
-                    <div className='w-3/5 bg-white p-8 '>
+                    <div className='w-4/6 h-screen bg-white p-8 '>
                         <div className='font-bold text-2xl'>Results</div>
                         <div className='mt-4'>Result will appear here based on your selections and queries.</div>
 
