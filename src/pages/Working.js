@@ -81,7 +81,7 @@ const Working = () => {
                                 <DropdownButton1 />
                             </div>
 
-                            <div className='flex justify-between pr-8 flex-wrap gap-6'>
+                            <div className='flex justify-between pr-8 mt-10 flex-wrap gap-6'>
                                 <DropdownButton2 />
                                 <DropdownButton3 />
                             </div>
@@ -90,21 +90,21 @@ const Working = () => {
 
 
 
-                        <div className='mt-8   flex justify-around items-center'>
+                        <div className='mt-16   flex justify-around items-center'>
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Get Topic-wise Notes</button>
 
                             <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterTopic" name="enterTopic" value='Enter topic or Notes'></input>
                         </div>
 
-                        <div className='mt-8   flex justify-around items-center'>
+                        <div className='mt-16   flex justify-around items-center'>
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Ask any Question</button>
 
                             <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterQuestion" name="enterQuestion" value='Questions'></input>
                         </div>
 
-                        <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-8 rounded-lg'>Get Chapter-Wise Notes</button>
+                        <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg'>Get Chapter-Wise Notes</button>
 
-                        <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-8 rounded-lg'>Get FAQs</button>
+                        <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg'>Get FAQs</button>
 
 
 
