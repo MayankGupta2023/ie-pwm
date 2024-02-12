@@ -3,17 +3,22 @@ import Navbar from '../components/navbar'
 import DropdownButton1 from '../components/dropdown1'
 import DropdownButton2 from '../components/dropdown2'
 import DropdownButton3 from '../components/dropdown3'
+import Footer from '../components/footer'
 
 import { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import app from '../firebaseConfig';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
+import menu from '../assets/menu2.svg';
+import styles from '../styles/working.module.css';
+import cross from '../assets/crossw.svg';
 
 const auth = getAuth(app);
 const firestore = getFirestore(app);
 const Working = () => {
     const [user, setUser] = useState(null);
+    const [hamburger, setHamburger] = useState(false);
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
@@ -90,13 +95,13 @@ const Working = () => {
 
 
 
-                        <div className='mt-16   flex justify-around items-center'>
+                        <div className='mt-16   flex gap-4 items-center'>
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Get Topic-wise Notes</button>
 
                             <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterTopic" name="enterTopic" value='Enter topic or Notes'></input>
                         </div>
 
-                        <div className='mt-16   flex justify-around items-center'>
+                        <div className='mt-16   flex gap-4 items-center'>
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Ask any Question</button>
 
                             <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterQuestion" name="enterQuestion" value='Questions'></input>
@@ -124,8 +129,35 @@ const Working = () => {
                     </div>
 
 
+
+
                 </div>
+                <button onClick={() => { setHamburger(true) }} style={{ background: '#fe7544' }} className='fixed h-10 w-10 cursor-pointer right-0 top-20 flex justify-center items-center'>
+
+                    <img src={menu.src} />
+
+                </button>
+
+                <div className={hamburger ? `w-40 flex pt-10 flex-col fixed bg-white border-2 top-20 right-0 ${styles.sidemenu}` : 'hidden'}>
+
+                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-1 </div>
+                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-2 </div>
+                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-3 </div>
+                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-4 </div>
+
+                    <button onClick={() => { setHamburger(false) }} style={{ background: '#fe7544' }} className='fixed h-10 w-10 cursor-pointer right-0 top-20 flex justify-center items-center'>
+
+                        <img src={cross.src} />
+
+                    </button>
+
+
+                </div>
+
             </div>
+
+
+            <Footer />
 
 
 

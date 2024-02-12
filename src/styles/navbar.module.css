@@ -22,3 +22,39 @@
     
 }
 
+
+/* footer responsiveness */
+
+@media (max-width: 980px) {
+    .fot{
+        display: none;
+    }
+
+    .width{
+        width: 33.33%;
+        
+    }
+}
+
+@media (max-width: 850px) {
+
+    .inter{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: fit-content;
+        gap: 40px;
+    }
+
+    .width{
+        justify-content: center;
+        width: 100%;
+            align-items: center;
+    }
+
+    .sub{
+        padding: 0;
+    }
+    
+}
+
