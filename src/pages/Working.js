@@ -115,7 +115,7 @@ const Working = () => {
                     </div>
 
 
-                    <div className='w-4/6 h-screen bg-white p-8 '>
+                    <div className='w-4/6 h-screen bg-white p-8 border-2 border ml-2 '>
                         <div className='font-bold text-2xl'>Results</div>
                         <div className='mt-4'>Result will appear here based on your selections and queries.</div>
 
