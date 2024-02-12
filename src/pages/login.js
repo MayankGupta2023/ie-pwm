@@ -74,6 +74,7 @@ const AuthPage = () => {
         const userRef = doc(db, 'users', user.uid);
         //  await setDoc(userRef, { phoneNumber }, { merge: true });
         if (querySnapshot.size > 0) {
+          localStorage.setItem('isLoggedIn', true);
           // User with the entered phone number exists in the database
           router.push('/Working');
         } else {

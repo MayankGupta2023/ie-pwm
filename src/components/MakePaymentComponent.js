@@ -14,43 +14,20 @@ const MakePaymentComponent = ({ amount, description, plan, credits,highlight }) 
   const [user, setUser] = useState(null);
   const router = useRouter();
 const [authid , setAuthid] = useState(null);
+//const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 
 
+const checkLoggedIn = async() => {
+  const user = auth.currentUser;
+  if (user) {
+    setIsLoggedIn(true);
+  } else {
+    setIsLoggedIn(false);
+  }
+}
 
 
-
-
-const isLogin= async()=>{
-  const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
-    if (authUser) {
-        // If authenticated, get the user document from Firestore
-        const userDocRef = doc(firestore, 'users', authUser.uid);
-        const userDocSnap = await getDoc(userDocRef);
-
-        if (userDocSnap.exists()) {
-          // If the user document exists, set the user state with the display name
-          setAuthid(authUser.uid);
-          setUser({
-            uid: authUser.uid,
-            email: authUser.email,
-            displayName: userDocSnap.data().name,
-          });
-        } else {
-          // If the user document does not exist, set the user state with basic information
-          setUser({
-            uid: authUser.uid,
-            email: authUser.email,
-          });
-        }
-        return true;
-    } else {
-        // If not authenticated, redirect to login
-        return false;
-       
-    }
-});
-};
 
 
 
@@ -58,13 +35,13 @@ const isLogin= async()=>{
     const makePayment = async () => {
 
 
-  const inhai = await isLogin();
+      const isLoggedIn= localStorage.getItem('isLoggedIn');
 
 
 
         //console.log("here...");
 
-        if(inhai){
+        if(isLoggedIn){
 
         const res = await initializeRazorpay();
         if (!res) {
