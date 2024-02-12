@@ -3,6 +3,7 @@ import Navbar from '../components/navbar'
 import DropdownButton1 from '../components/dropdown1'
 import DropdownButton2 from '../components/dropdown2'
 import DropdownButton3 from '../components/dropdown3'
+import Footer from '../components/footer'
 
 import { useEffect, useState } from 'react';
 import firebase from 'firebase/app';
@@ -90,13 +91,13 @@ const Working = () => {
 
 
 
-                        <div className='mt-16   flex justify-around items-center'>
+                        <div className='mt-16   flex gap-4 items-center'>
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Get Topic-wise Notes</button>
 
                             <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterTopic" name="enterTopic" value='Enter topic or Notes'></input>
                         </div>
 
-                        <div className='mt-16   flex justify-around items-center'>
+                        <div className='mt-16   flex gap-4 items-center'>
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Ask any Question</button>
 
                             <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterQuestion" name="enterQuestion" value='Questions'></input>
@@ -126,6 +127,9 @@ const Working = () => {
 
                 </div>
             </div>
+
+
+            <Footer />
 
 
 
