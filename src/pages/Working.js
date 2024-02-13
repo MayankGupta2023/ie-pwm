@@ -140,7 +140,7 @@ const Working = () => {
         const fetchLanguages = async () => {
             setIsLoadingLanguages(true);
             try {
-                const res = await fetch(`/api/get-language?className=${encodeURIComponent(selectedClass)}&subjectName=${encodeURIComponent(selectedSubject)}`);
+                const res = await fetch(`/api/get-language?className=${encodeURIComponent(selectedClass)}&subjectName=${encodeURIComponent(selectedSubject)}&language=${encodeURIComponent(selectedLanguage)}`);
                 const data = await res.json();
                 setLanguages(data.data);
             } catch (error) {
@@ -154,10 +154,71 @@ const Working = () => {
             // Fetch data for the third dropdown when selectedSubject changes
             if (selectedSubject === "Computer Science") {
                 fetchLanguages();
+            } else {
+                fetchChapters();
             }
-            fetchChapters();
+
         }
     }, [selectedSubject]);
+
+
+
+
+
+    useEffect(() => {
+        setSelectedChapter(null);
+
+        const fetchChapters = async () => {
+            setIsLoadingChapter(true);
+            try {
+                const res = await fetch(`/api/get-chapter-names?className=${encodeURIComponent(selectedClass)}&subjectName=${encodeURIComponent(selectedSubject)}&language=${encodeURIComponent(selectedLanguage)}`);
+                const data = await res.json();
+                setChapters(data.data);
+            } catch (error) {
+                console.error("Error fetching Chapters:", error);
+            } finally {
+                setIsLoadingChapter(false);
+            }
+        }
+
+
+
+
+        if (selectedLanguage) {
+            // Fetch data for the third dropdown when selectedSubject changes
+
+            fetchChapters();
+        }
+    }, [selectedLanguage]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return (
         <div>
