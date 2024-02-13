@@ -158,7 +158,7 @@ const Pricing = () => {
             variants={cardVariants}
             initial="initial"
             whileHover="hover"
-            className={`bg-white px-8 py-4 my-4 mx-2 rounded-3xl shadow-md flex flex-col py-6 w-80 min-h-80 h-fit `}
+            className={`bg-white px-8 py-4 my-4 mx-2 rounded-3xl shadow-md flex flex-col py-6 w-96 min-h-80 h-fit `}
           >
             <h3 style={{ color: "#6e4245" }} className="text-lg font-bold text-slate-500 mb-0 flex  items-center justify-start">{"Customize"}</h3>
             <h3 style={{ color: "#333333" }} className={`text-4xl font-bold  text-slate-800 mb-0 flex mt-6 mb-6 items-end justify-start ${style.price}`}>Adding Soon<span style={{ color: "#666666" }} className='text-lg'> &nbsp; </span> </h3>
