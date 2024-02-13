@@ -232,9 +232,9 @@ const Working = () => {
 
             <div className={`h-20 text-5xl font-inter font-semibold text-center flex justify-center font-inter items-center ${styles.notes}`}>Get your Notes</div>
 
-            <div className={`h-fit font-inter flex  justify-center items-center `}>
+            <div className={`h-fit font-inter flex  justify-center items-center ${styles.outbox} `}>
                 <div className={`h-fit w-5/6 p-4 flex relative ${styles.container}`}>
-                    <div className={`w-3/6 h-screen    pt-10 ${styles.left}`}>
+                    <div className={`w-3/6 min-h-screen h-fit pt-10 ${styles.left}`}>
                         <div className='w-full h-fit gap-8 flex pt-4 flex-wrap flex-col'>
                             <div className='flex flex-col gap-6'>
                                 <DropdownButton1
@@ -298,7 +298,7 @@ const Working = () => {
                         <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg'>Get Chapter-Wise Notes</button>
                         <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg'>Get FAQs</button>
                     </div>
-                    <div className={`w-3/6 h-screen bg-white p-8 border-2 border ml-2  ${styles.right}`}>
+                    <div className={`w-3/6 min-h-screen h-fit bg-white p-8 border-2 border ml-2  ${styles.right}`}>
                         <div className='font-bold text-2xl'>Results</div>
                         <div className='mt-4'>Result will appear here based on your selections and queries.</div>
                     </div>
