@@ -101,7 +101,7 @@ const Pricing = () => {
           Choose the right plan for your learning
         </div>
 
-        <div class={`bg-white w-full h-20 toggle-switch-container  mb-8 mr-40 flex justify-end ${style.toggle}`}>
+        <div class={`bg-white w-full  toggle-switch-container  mb-8 mr-40 flex justify-end ${style.toggle}`}>
           <div className={`py-0.5 px-0.5 rounded-full flex relative ${style.pricing}`}>
             <div class="flex flex-row">
               <button
