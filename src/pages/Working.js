@@ -90,7 +90,9 @@ const Working = () => {
 
     useEffect(() => {
 
-
+setSelectedSubject(null);
+setSelectedChapter(null);
+setSelectedLanguage(null);
         const fetchSubjects = async () => {
             setIsLoadingSubjects(true);
             try {
@@ -119,6 +121,8 @@ const Working = () => {
 
 
     useEffect(() => {
+        setSelectedChapter(null);
+setSelectedLanguage(null);
         const fetchChapters = async () => {
             setIsLoadingChapter(true);
             try {
@@ -140,6 +144,7 @@ const Working = () => {
     
 
     useEffect(() => {
+        setSelectedLanguage(null);
         const fetchLanguages = async () => {
             setIsLoadingLanguages(true);
             try {
