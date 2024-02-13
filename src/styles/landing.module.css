@@ -217,3 +217,36 @@
     }
 }
 
+
+/* Pricing */
+
+@media (max-width:500px){
+    .chat{
+        flex-direction: column;
+    }
+
+    .toggle{
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+
+}
+
+@media (max-width:400px) {
+    .price{
+        font-size: 1.6rem;
+    }
+
+    .card{
+        margin: 0;
+        margin-top: 40px;
+
+    }
+
+
+}
+

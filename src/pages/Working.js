@@ -3,6 +3,7 @@ import Navbar from '../components/navbar2';
 import DropdownButton1 from '../components/dropdown1';
 import DropdownButton2 from '../components/dropdown2';
 import DropdownButton3 from '../components/dropdown3';
+import DropdownButton4 from '../components/dropdown4';
 import Footer from '../components/footer';
 import { getAuth } from 'firebase/auth';
 import app from '../firebaseConfig';
@@ -20,13 +21,16 @@ const Working = () => {
     const [selectedClass, setSelectedClass] = useState(null);
     const [selectedChapter, setSelectedChapter] = useState(null);
     const [selectedSubject, setSelectedSubject] = useState(null);
+    const [selectedLanguage, setSelectedLanguage] = useState(null);
     const [secondDropdownItems, setSecondDropdownItems] = useState([]);
     const [isLoadingClasses, setIsLoadingClasses] = useState(false);
     const [isLoadingChapter, setIsLoadingChapter] = useState(false);
     const [isLoadingSubjects, setIsLoadingSubjects] = useState(false);
+    const [isLoadingLanguages, setIsLoadingLanguages] = useState(false);
     const [classes, setClasses] = useState([]);
     const [chapters, setChapters] = useState([]);
     const [subjects, setSubjects] = useState([]);
+    const [languages, setLanguages] = useState([]);
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
             if (authUser) {
@@ -76,14 +80,19 @@ const Working = () => {
     const handleSubjectSelect = (subjectItem) => {
         setSelectedSubject(subjectItem);
     };
-    
+
     const handleChapterSelect = (chapterItem) => {
         setSelectedChapter(chapterItem);
+    };
+    const handleLanguageSelect = (languageItem) => {
+        setSelectedLanguage(languageItem);
     };
 
     useEffect(() => {
 
-
+        setSelectedSubject(null);
+        setSelectedChapter(null);
+        setSelectedLanguage(null);
         const fetchSubjects = async () => {
             setIsLoadingSubjects(true);
             try {
@@ -112,6 +121,8 @@ const Working = () => {
 
 
     useEffect(() => {
+        setSelectedChapter(null);
+        setSelectedLanguage(null);
         const fetchChapters = async () => {
             setIsLoadingChapter(true);
             try {
@@ -124,16 +135,61 @@ const Working = () => {
                 setIsLoadingChapter(false);
             }
         }
-    
+
+
+        const fetchLanguages = async () => {
+            setIsLoadingLanguages(true);
+            try {
+                const res = await fetch(`/api/get-language?className=${encodeURIComponent(selectedClass)}&subjectName=${encodeURIComponent(selectedSubject)}&language=${encodeURIComponent(selectedLanguage)}`);
+                const data = await res.json();
+                setLanguages(data.data);
+            } catch (error) {
+                console.error("Error fetching Languages:", error);
+            } finally {
+                setIsLoadingLanguages(false);
+            }
+        }
+
         if (selectedSubject) {
             // Fetch data for the third dropdown when selectedSubject changes
-            fetchChapters();
+            if (selectedSubject === "Computer Science") {
+                fetchLanguages();
+            } else {
+                fetchChapters();
+            }
+
         }
     }, [selectedSubject]);
-    
 
 
 
+
+
+    useEffect(() => {
+        setSelectedChapter(null);
+
+        const fetchChapters = async () => {
+            setIsLoadingChapter(true);
+            try {
+                const res = await fetch(`/api/get-chapter-names?className=${encodeURIComponent(selectedClass)}&subjectName=${encodeURIComponent(selectedSubject)}&language=${encodeURIComponent(selectedLanguage)}`);
+                const data = await res.json();
+                setChapters(data.data);
+            } catch (error) {
+                console.error("Error fetching Chapters:", error);
+            } finally {
+                setIsLoadingChapter(false);
+            }
+        }
+
+
+
+
+        if (selectedLanguage) {
+            // Fetch data for the third dropdown when selectedSubject changes
+
+            fetchChapters();
+        }
+    }, [selectedLanguage]);
 
 
 
@@ -167,20 +223,20 @@ const Working = () => {
     return (
         <div>
             <div className='h-20 fixed l-0 t-0 w-full z-50 '>
-              <Navbar />
+                <Navbar />
             </div>
 
             <div className='h-20'>
 
             </div>
 
-            <div className='h-20 text-5xl font-inter font-semibold text-center flex justify-center items-center '>Get your Notes</div>
+            <div className={`h-20 text-5xl font-inter font-semibold text-center flex justify-center font-inter items-center ${styles.notes}`}>Get your Notes</div>
 
-            <div className='h-fit  flex justify-center items-center'>
-                <div className='h-fit   w-5/6 p-4 flex relative'>
-                    <div className='w-2/6 h-screen    pt-10'>
+            <div className={`h-fit font-inter flex  justify-center items-center ${styles.outbox} `}>
+                <div className={`h-fit w-5/6 p-4 flex relative ${styles.container}`}>
+                    <div className={`w-3/6 min-h-screen h-fit pt-10 ${styles.left}`}>
                         <div className='w-full h-fit gap-8 flex pt-4 flex-wrap flex-col'>
-                            <div>
+                            <div className='flex flex-col gap-6'>
                                 <DropdownButton1
                                     selectedItem={selectedClass}
                                     secondDropdownItems={classes}
@@ -188,38 +244,61 @@ const Working = () => {
                                     onToggle={() => { }}
                                 />
                                 {isLoadingClasses && <div>Loading classes...</div>}
-                            </div>
-                            <div className='flex justify-between pr-8 mt-10 flex-wrap gap-6'>
-                            <DropdownButton2
+
+                                <DropdownButton2
                                     selectedItem={selectedSubject}
                                     secondDropdownItems={subjects}
                                     onSelect={handleSubjectSelect}
                                     onToggle={() => { }}
                                 />
                                 {isLoadingSubjects && <div>Loading Subjects...</div>}
+
+
+
+
+                                {selectedSubject === "Computer Science" && (
+
+                                    <div>
+                                        <DropdownButton4
+                                            selectedItem={selectedLanguage}
+                                            secondDropdownItems={languages}
+                                            onSelect={handleLanguageSelect}
+                                            onToggle={() => { }}
+                                            hint={"Select Language"}
+                                        />
+                                        {isLoadingLanguages && <div>Loading Languages...</div>}
+                                    </div>
+                                )}
+
+
+
                                 <DropdownButton3
-                                
-                                selectedItem={selectedChapter}
-                                secondDropdownItems={chapters}
-                                onSelect={handleChapterSelect}
-                                onToggle={() => { }}
-                                
+
+                                    selectedItem={selectedChapter}
+                                    secondDropdownItems={chapters}
+                                    onSelect={handleChapterSelect}
+                                    onToggle={() => { }}
+
+
                                 />
-                                    {isLoadingChapter && <div>Loading Chapters...</div>}
+                                {isLoadingChapter && <div>Loading Chapters...</div>}
+
+
+
                             </div>
                         </div>
-                        <div className='mt-16   flex gap-4 items-center'>
+                        <div className={`mt-16   flex gap-4 items-center ${styles.topic}`}>
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Get Topic-wise Notes</button>
                             <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterTopic" name="enterTopic" value='Enter topic or Notes'></input>
                         </div>
-                        <div className='mt-16   flex gap-4 items-center'>
+                        <div className={`mt-16   flex gap-4 items-center ${styles.topic}`}>
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Ask any Question</button>
                             <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterQuestion" name="enterQuestion" value='Questions'></input>
                         </div>
                         <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg'>Get Chapter-Wise Notes</button>
                         <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg'>Get FAQs</button>
                     </div>
-                    <div className='w-4/6 h-screen bg-white p-8 border-2 border ml-2 '>
+                    <div className={`w-3/6 min-h-screen h-fit bg-white p-8 border-2 border ml-2  ${styles.right}`}>
                         <div className='font-bold text-2xl'>Results</div>
                         <div className='mt-4'>Result will appear here based on your selections and queries.</div>
                     </div>
@@ -237,7 +316,10 @@ const Working = () => {
                     </button>
                 </div>
             </div>
-            <Footer />
+
+            <div>
+                <Footer />
+            </div>
         </div>
     );
 }
