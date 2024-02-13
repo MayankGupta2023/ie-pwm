@@ -3,6 +3,7 @@ import Navbar from '../components/navbar2';
 import DropdownButton1 from '../components/dropdown1';
 import DropdownButton2 from '../components/dropdown2';
 import DropdownButton3 from '../components/dropdown3';
+import DropdownButton4 from '../components/dropdown4';
 import Footer from '../components/footer';
 import { getAuth } from 'firebase/auth';
 import app from '../firebaseConfig';
@@ -20,13 +21,16 @@ const Working = () => {
     const [selectedClass, setSelectedClass] = useState(null);
     const [selectedChapter, setSelectedChapter] = useState(null);
     const [selectedSubject, setSelectedSubject] = useState(null);
+    const [selectedLanguage, setSelectedLanguage] = useState(null);
     const [secondDropdownItems, setSecondDropdownItems] = useState([]);
     const [isLoadingClasses, setIsLoadingClasses] = useState(false);
     const [isLoadingChapter, setIsLoadingChapter] = useState(false);
     const [isLoadingSubjects, setIsLoadingSubjects] = useState(false);
+    const [isLoadingLanguages, setIsLoadingLanguages] = useState(false);
     const [classes, setClasses] = useState([]);
     const [chapters, setChapters] = useState([]);
     const [subjects, setSubjects] = useState([]);
+    const [languages, setLanguages] = useState([]);
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
             if (authUser) {
@@ -80,6 +84,9 @@ const Working = () => {
     const handleChapterSelect = (chapterItem) => {
         setSelectedChapter(chapterItem);
     };
+    const handleLanguageSelect = (languageItem) => {
+        setSelectedLanguage(languageItem);
+    };
 
     useEffect(() => {
 
@@ -132,7 +139,25 @@ const Working = () => {
     }, [selectedSubject]);
     
 
-
+    useEffect(() => {
+        const fetchLanguages = async () => {
+            setIsLoadingLanguages(true);
+            try {
+                const res = await fetch(`/api/get-language?className=${encodeURIComponent(selectedClass)}&subjectName=${encodeURIComponent(selectedSubject)}&chapterName=${encodeURIComponent(selectedChapter)}`);
+                const data = await res.json();
+                setLanguages(data.data);
+            } catch (error) {
+                console.error("Error fetching Languages:", error);
+            } finally {
+                setIsLoadingLanguages(false);
+            }
+        }
+    
+        if (selectedChapter) {
+            // Fetch data for the third dropdown when selectedSubject changes
+            fetchLanguages();
+        }
+    }, [selectedChapter]);
 
 
 
@@ -203,9 +228,21 @@ const Working = () => {
                                 secondDropdownItems={chapters}
                                 onSelect={handleChapterSelect}
                                 onToggle={() => { }}
+                       
                                 
                                 />
                                     {isLoadingChapter && <div>Loading Chapters...</div>}
+
+                                    <DropdownButton4
+                                
+                                selectedItem={selectedLanguage}
+                                secondDropdownItems={languages}
+                                onSelect={handleLanguageSelect}
+                                onToggle={() => { }}
+                                hint={"Select Language"}
+                                
+                                />
+                                    {isLoadingLanguages && <div>Loading Languages...</div>}        
                             </div>
                         </div>
                         <div className='mt-16   flex gap-4 items-center'>

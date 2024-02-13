@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const DropdownButton = ({ selectedItem, secondDropdownItems, onSelect, onToggle,hint }) => {
+const DropdownButton = ({ selectedItem, secondDropdownItems, onSelect, onToggle }) => {
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -23,17 +23,18 @@ const DropdownButton = ({ selectedItem, secondDropdownItems, onSelect, onToggle,
                 aria-haspopup="true"
                 aria-expanded="true"
             >
-                {selectedItem ? selectedItem : "Select Chapter"}
+                {selectedItem ? selectedItem : "Select Language"}
             </button>
 
             {isOpen && (
                 <div className="z-10 origin-top-right absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                        {secondDropdownItems.map((item, index) => (
+                    {secondDropdownItems.map((item, index) => (
                             <div key={index} onClick={() => handleItemClick(item)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer">
                                 {item}
                             </div>
                         ))}
+
                     </div>
                 </div>
             )}
