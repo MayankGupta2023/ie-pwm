@@ -3,14 +3,27 @@ import Cors from 'cors';
 import initMiddleware from '../lib/cors'
 import Navbar from '../components/navbar2';
 import DropdownButton1 from '../components/dropdown1';
+import app from '../firebaseConfig';
+import {
+  getAuth,
+  onAuthStateChanged,
+} from 'firebase/auth';
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc
+} from 'firebase/firestore';
+
+
 import DropdownButton2 from '../components/dropdown2';
 import DropdownButton3 from '../components/dropdown3';
 import DropdownButton4 from '../components/dropdown4';
 import Footer from '../components/footer';
-import { getAuth } from 'firebase/auth';
-import app from '../firebaseConfig';
+
+
 import { PDFViewer } from '@react-pdf/renderer';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+
 import menu from '../assets/menu2.svg';
 import styles from '../styles/working.module.css';
 import cross from '../assets/crossw.svg';
@@ -23,7 +36,7 @@ const cors = initMiddleware(
     })
   );
 const Working = () => {
-    
+    const [currentUser, setCurrentUser] = useState(null);
     const [user, setUser] = useState(null);
     const [hamburger, setHamburger] = useState(false);
     const [selectedClass, setSelectedClass] = useState(null);
@@ -41,6 +54,7 @@ const Working = () => {
     const [chapters, setChapters] = useState([]);
     const [subjects, setSubjects] = useState([]);
     const [languages, setLanguages] = useState([]);
+    const [credits, setCurrentCredits] = useState('');
 
     const [notes, setNotes] = useState(0);
     const [topics, setTopics] = useState(0);
@@ -251,6 +265,36 @@ const[resfaqs, setResFaqs] = useState('');
 
 console.log("use effect called")
 
+
+const decrementCredits = async () => {
+    try {
+        const db = getFirestore(app);
+        const userRef = doc(db, 'users', currentUser.uid);
+        const docSnap = await getDoc(userRef);
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+    
+          
+         console.log("here");
+          var credits = userData.credits;
+          credits--;
+       
+          await setDoc(userRef, {credits}, { merge: true });
+        }
+        
+       
+
+        console.log('Credits decremented successfully.');
+    } catch (error) {
+        console.error('Error decrementing credits:', error);
+    }
+};
+
+
+
+
+
+
         const fetchPdf = async () => {
           try {
            
@@ -301,8 +345,18 @@ console.log("use effect called")
   
               setResFaqs(modifiedData)
          
+
+
+
+ await decrementCredits();
+
+
+
+
+
+
            //   setResFaqs(data.message);
-                console.log(data);
+              
               console.error('Response is not a PDF');
             }
     
@@ -350,6 +404,13 @@ console.log("use effect called")
 
 
 
+      useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          setCurrentUser(user);
+        });
+    
+        return () => unsubscribe();
+      }, []);
 
 
 
