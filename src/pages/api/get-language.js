@@ -4,7 +4,7 @@ export default async function handler(req, res) {
     const { className, subjectName,chapterName } = req.query;
     try {
         const data = await fetchDataFromGoogleSheet();
-        const ger = data.filter(row => row[0] === className && row[1] === subjectName && row[2] === chapterName);
+        const ger = data.filter(row => row[0] === className && row[1] === subjectName );
         if (ger.length > 0) {
             const  arr=[ger[0][3]];
            // return ger[0][3]; // Extract language (fourth column)

@@ -135,20 +135,12 @@ setSelectedLanguage(null);
                 setIsLoadingChapter(false);
             }
         }
-    
-        if (selectedSubject) {
-            // Fetch data for the third dropdown when selectedSubject changes
-            fetchChapters();
-        }
-    }, [selectedSubject]);
-    
 
-    useEffect(() => {
-        setSelectedLanguage(null);
+
         const fetchLanguages = async () => {
             setIsLoadingLanguages(true);
             try {
-                const res = await fetch(`/api/get-language?className=${encodeURIComponent(selectedClass)}&subjectName=${encodeURIComponent(selectedSubject)}&chapterName=${encodeURIComponent(selectedChapter)}`);
+                const res = await fetch(`/api/get-language?className=${encodeURIComponent(selectedClass)}&subjectName=${encodeURIComponent(selectedSubject)}`);
                 const data = await res.json();
                 setLanguages(data.data);
             } catch (error) {
@@ -158,11 +150,17 @@ setSelectedLanguage(null);
             }
         }
     
-        if (selectedChapter) {
+        if (selectedSubject) {
             // Fetch data for the third dropdown when selectedSubject changes
-            fetchLanguages();
+            if(selectedSubject === "Computer Science"){
+                fetchLanguages();
+            }
+            fetchChapters();
         }
-    }, [selectedChapter]);
+    }, [selectedSubject]);
+    
+
+ 
 
 
 
@@ -219,7 +217,7 @@ setSelectedLanguage(null);
                                 />
                                 {isLoadingClasses && <div>Loading classes...</div>}
                             </div>
-                            <div className='flex justify-between pr-8 mt-10 flex-wrap gap-6'>
+                            <div className='flex justify-between pr-8  flex-wrap gap-6'>
                             <DropdownButton2
                                     selectedItem={selectedSubject}
                                     secondDropdownItems={subjects}
@@ -227,6 +225,26 @@ setSelectedLanguage(null);
                                     onToggle={() => { }}
                                 />
                                 {isLoadingSubjects && <div>Loading Subjects...</div>}
+
+
+       
+
+                                {selectedSubject === "Computer Science" && (
+                                    
+   <div>                             
+    <DropdownButton4
+        selectedItem={selectedLanguage}
+        secondDropdownItems={languages}
+        onSelect={handleLanguageSelect}
+        onToggle={() => { }}
+        hint={"Select Language"}
+    />
+      {isLoadingLanguages && <div>Loading Languages...</div>}   
+    </div>
+)}
+
+
+
                                 <DropdownButton3
                                 
                                 selectedItem={selectedChapter}
@@ -238,16 +256,8 @@ setSelectedLanguage(null);
                                 />
                                     {isLoadingChapter && <div>Loading Chapters...</div>}
 
-                                    <DropdownButton4
                                 
-                                selectedItem={selectedLanguage}
-                                secondDropdownItems={languages}
-                                onSelect={handleLanguageSelect}
-                                onToggle={() => { }}
-                                hint={"Select Language"}
-                                
-                                />
-                                    {isLoadingLanguages && <div>Loading Languages...</div>}        
+                                         
                             </div>
                         </div>
                         <div className='mt-16   flex gap-4 items-center'>
