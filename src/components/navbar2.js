@@ -42,7 +42,7 @@ const Navbar = () => {
        
      <Link href="/pricing">Contact</Link>
 
-        <Link href="/pricing">Profile</Link>
+        <Link href="/profile">Profile</Link>
 
         {/* {isLoggedIn ? (
           <button onClick={handleLogout}>Logout</button>

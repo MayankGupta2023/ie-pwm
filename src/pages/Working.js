@@ -1,21 +1,42 @@
 import React, { useEffect, useState } from 'react';
+import Cors from 'cors';
+import initMiddleware from '../lib/cors'
 import Navbar from '../components/navbar2';
 import DropdownButton1 from '../components/dropdown1';
+import app from '../firebaseConfig';
+import {
+  getAuth,
+  onAuthStateChanged,
+} from 'firebase/auth';
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc
+} from 'firebase/firestore';
+
+
 import DropdownButton2 from '../components/dropdown2';
 import DropdownButton3 from '../components/dropdown3';
 import DropdownButton4 from '../components/dropdown4';
 import Footer from '../components/footer';
-import { getAuth } from 'firebase/auth';
-import app from '../firebaseConfig';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
+
+
+import { PDFViewer } from '@react-pdf/renderer';
+
 import menu from '../assets/menu2.svg';
 import styles from '../styles/working.module.css';
 import cross from '../assets/crossw.svg';
 
 const auth = getAuth(app);
 const firestore = getFirestore(app);
-
+const cors = initMiddleware(
+    Cors({
+      methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    })
+  );
 const Working = () => {
+    const [currentUser, setCurrentUser] = useState(null);
     const [user, setUser] = useState(null);
     const [hamburger, setHamburger] = useState(false);
     const [selectedClass, setSelectedClass] = useState(null);
@@ -23,14 +44,31 @@ const Working = () => {
     const [selectedSubject, setSelectedSubject] = useState(null);
     const [selectedLanguage, setSelectedLanguage] = useState(null);
     const [secondDropdownItems, setSecondDropdownItems] = useState([]);
+    const [pdfUrl, setPdfUrl] = useState(null);
     const [isLoadingClasses, setIsLoadingClasses] = useState(false);
     const [isLoadingChapter, setIsLoadingChapter] = useState(false);
     const [isLoadingSubjects, setIsLoadingSubjects] = useState(false);
     const [isLoadingLanguages, setIsLoadingLanguages] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const [classes, setClasses] = useState([]);
     const [chapters, setChapters] = useState([]);
     const [subjects, setSubjects] = useState([]);
     const [languages, setLanguages] = useState([]);
+    const [credits, setCurrentCredits] = useState('');
+
+    const [notes, setNotes] = useState(0);
+    const [topics, setTopics] = useState(0);
+    const [mindmap, setMindMap] = useState(0);
+    const [faqs, setFaqs] = useState(0);
+const[resfaqs, setResFaqs] = useState('');
+    const [questions, setQuestions] = useState(0);
+
+
+
+
+
+
+
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
             if (authUser) {
@@ -87,6 +125,37 @@ const Working = () => {
     const handleLanguageSelect = (languageItem) => {
         setSelectedLanguage(languageItem);
     };
+
+
+
+    const handleNotesClick = () => {
+        setFaqs(0);
+        setQuestions(0);
+        setTopics(0);
+        setMindMap(0);
+       
+       setNotes(1);
+    };
+
+    const handleFAQSClick = () => {
+        setFaqs(1);
+        setQuestions(0);
+        setTopics(0);
+        setMindMap(0);
+       setNotes(0);
+    };
+
+
+
+    const handleQuestionClick = () => {
+        setFaqs(0);
+        setQuestions(1);
+        setTopics(0);
+        setMindMap(0);
+       setNotes(0);
+    };
+
+
 
     useEffect(() => {
 
@@ -192,6 +261,129 @@ const Working = () => {
     }, [selectedLanguage]);
 
 
+    useEffect(() => {
+
+console.log("use effect called")
+
+
+const decrementCredits = async () => {
+    try {
+        const db = getFirestore(app);
+        const userRef = doc(db, 'users', currentUser.uid);
+        const docSnap = await getDoc(userRef);
+        if (docSnap.exists()) {
+          const userData = docSnap.data();
+    
+          
+         console.log("here");
+          var credits = userData.credits;
+          credits--;
+       
+          await setDoc(userRef, {credits}, { merge: true });
+        }
+        
+       
+
+        console.log('Credits decremented successfully.');
+    } catch (error) {
+        console.error('Error decrementing credits:', error);
+    }
+};
+
+
+
+
+
+
+        const fetchPdf = async () => {
+          try {
+           
+            setIsLoading(true); // Set loading state to true
+            console.log(typeof(selectedSubject));
+            const requestData = {
+                selectedClass: selectedClass,
+                selectedSubject: selectedSubject,
+                selectedChapter: selectedChapter,
+                selectedLanguage: selectedLanguage,
+               notes: notes,
+                topics:topics,
+               mindmap: mindmap,
+                faqs:faqs,
+                question: questions,
+              };
+              console.log(requestData);
+              const requestBody = JSON.stringify(requestData);
+    
+            const response = await fetch('/api/get-notes', {
+              method: 'POST',
+              body: requestBody,
+              headers: {
+                'Content-Type': 'application/json'
+            }
+            });
+    
+            if (!response.ok) {
+              throw new Error('Failed to fetch PDF');
+            }
+    
+            const contentType = response.headers.get('Content-Type');
+            if (contentType && contentType.includes('application/pdf')) {
+              // If response content type is PDF, create URL for PDF
+              const blob = await response.blob();
+              setPdfUrl(URL.createObjectURL(blob));
+            } else {
+              // If response content type is not PDF, log error
+              const responseData = await response.json();
+              let modifiedData = responseData.message;
+
+              // Add new lines where \n is present
+              modifiedData = modifiedData.replace(/\n/g, '<br>');
+  
+              // Make text bold where **---** is present
+              modifiedData = modifiedData.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+  
+              setResFaqs(modifiedData)
+         
+
+
+
+ await decrementCredits();
+
+
+
+
+
+
+           //   setResFaqs(data.message);
+              
+             // console.error('Response is not a PDF');
+            }
+    
+            setIsLoading(false);
+            setFaqs(0) 
+            setQuestions(0);
+        setTopics(0);
+        setMindMap(0);
+       setNotes(0);// Update loading state
+          } catch (error) {
+            console.error('Error fetching PDF:', error);
+            setIsLoading(false); // Update loading state even on error
+          }
+        };
+        if (selectedChapter && selectedSubject && selectedClass) {
+            fetchPdf();
+        }
+        
+       
+    
+        return () => {
+          // Clean up the URL object to avoid memory leaks
+          URL.revokeObjectURL(pdfUrl)
+          
+          
+    };
+      }, [topics, mindmap, faqs, questions,notes]);
 
 
 
@@ -203,6 +395,7 @@ const Working = () => {
 
 
 
+    
 
 
 
@@ -211,9 +404,13 @@ const Working = () => {
 
 
 
-
-
-
+      useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+          setCurrentUser(user);
+        });
+    
+        return () => unsubscribe();
+      }, []);
 
 
 
@@ -291,16 +488,31 @@ const Working = () => {
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Get Topic-wise Notes</button>
                             <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterTopic" name="enterTopic" value='Enter topic or Notes'></input>
                         </div>
-                        <div className={`mt-16   flex gap-4 items-center ${styles.topic}`}>
+                        <div className='mt-16   flex gap-4 items-center'>
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg '>Ask any Question</button>
                             <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterQuestion" name="enterQuestion" value='Questions'></input>
                         </div>
                         <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg'>Get Chapter-Wise Notes</button>
-                        <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg'>Get FAQs</button>
+                        <button style={{ background: "#fe7544" }}   onClick={handleFAQSClick} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg'>Get FAQs</button>
                     </div>
                     <div className={`w-3/6 min-h-screen h-fit bg-white p-8 border-2 border ml-2  ${styles.right}`}>
                         <div className='font-bold text-2xl'>Results</div>
-                        <div className='mt-4'>Result will appear here based on your selections and queries.</div>
+                        <div className='mt-4'>
+  {isLoading ? (
+    <p>Loading PDF...</p>
+  ) : pdfUrl ? (
+    <PDFViewer style={{ width: '100%', height: '100vh' }}>
+      <iframe src={pdfUrl} style={{ width: '100%', height: '100%' }} />
+    </PDFViewer>
+  ) : resfaqs?(
+    
+    <p dangerouslySetInnerHTML={{ __html: resfaqs }} />
+
+  ):
+    (
+        <p>Your Results will appear here on the basis of your query</p>
+  )}
+</div>
                     </div>
                 </div>
                 <button onClick={() => { setHamburger(true) }} style={{ background: '#fe7544' }} className='fixed h-10 w-10 cursor-pointer right-0 top-20 flex justify-center items-center'>
