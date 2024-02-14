@@ -247,6 +247,37 @@
 
     }
 
+    .getnotes{
+        font-size: 2rem;
+        text-align: center;
+        padding: 0px 10px;
+    }
+
+    .hesitate{
+        font-size: 1.2rem;
+            text-align: center;
+            padding: 0px 40px;
+
+    }
+
+    .wassapp_left{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .wassapp{
+        padding-left:0px ;
+        padding-right: 0px;
+    }
+
+    .wass_but{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
 
 }
 

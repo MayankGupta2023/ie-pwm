@@ -77,7 +77,7 @@ const Footer = () => {
 
                 <div className={`text-2xl font-bold pl-16  w-32 ${styles.sub}`}>Subscribe</div>
 
-                <div className='text-gray-500 flex flex-col pl-16 gap-8'>
+                <div className={`text-gray-500 flex flex-col pl-16 gap-8 ${styles.sub2}`}>
                     <p>Sign up for our Best deals</p>
 
                     <input className='p-4 bg-gray-200 border-2 max-w-72 rounded-xl mr-4' type='email' placeholder='email@instantedudoc' />
