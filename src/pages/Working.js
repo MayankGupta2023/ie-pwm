@@ -232,8 +232,8 @@ const Working = () => {
 
             <div className={`h-20 text-5xl font-inter font-semibold text-center flex justify-center font-inter items-center ${styles.notes}`}>Get your Notes</div>
 
-            <div className={`h-fit font-inter flex  justify-center items-center ${styles.outbox} `}>
-                <div className={`h-fit w-5/6 p-4 flex relative ${styles.container}`}>
+            <div className={`h-fit font-inter flex justify-center items-center ${styles.outbox} `}>
+                <div className={`h-fit w-5/6 pt-4 flex relative ${styles.container}`}>
                     <div className={`w-3/6 min-h-screen h-fit pt-10 ${styles.left}`}>
                         <div className='w-full h-fit gap-8 flex pt-4 flex-wrap flex-col'>
                             <div className='flex flex-col gap-6'>

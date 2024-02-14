@@ -401,13 +401,15 @@ export default function Home() {
       <div className={`h-screen w-full flex px-12 py-16 ${styles.wassapp}`}>
 
         <div className={`w-1/2 flex flex-col justify-center items-center gap-8 ${styles.wassapp_left}`}>
-          <div className=" w-96 font-bold text-5xl">Get your notes via WhatsApp</div>
+          <div className={`w-96 font-bold text-5xl ${styles.getnotes}`}>Get your notes via WhatsApp</div>
           <div className="   text-xl text-stone-500 font-semibold">
-            <p className="w-96">
+            <p className={`w-96 ${styles.hesitate}`}>
               Never hesitate to ask questions, even if you're not on a web browser, whenever it suits you.
             </p>
-            <button className="text-white bg-black py-2 font-semibold px-4 shadow-2xl rounded-lg text-base">Get Started</button>
-            <button className=" ml-4 bg-slate-100  px-4 py-2 rounded-lg mt-10 font-semibold text-black text-base">Learn More</button>
+            <div className={styles.wass_but}>
+              <button className="text-white bg-black py-2 font-semibold mt-10 px-4 shadow-2xl rounded-lg text-base">Get Started</button>
+              <button className=" ml-4 bg-slate-100  px-4 py-2 rounded-lg mt-10 font-semibold text-black text-base">Learn More</button>
+            </div>
 
           </div>
 
@@ -415,7 +417,7 @@ export default function Home() {
 
         </div>
 
-        <div className={`w-1/2 h-screen ${styles.wassapp_right}`}>
+        <div className={`w-1/2 h-screen flex justify-center align-center ${styles.wassapp_right}`}>
           <img className={`h-full w-full ${styles.wassapp_img}`} src="https://framerusercontent.com/images/dAJW9yDkvqMtYUWnpXJiJ2wKsA.jpg?scale-down-to=1024" />
         </div>
 
