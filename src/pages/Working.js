@@ -357,7 +357,7 @@ const decrementCredits = async () => {
 
            //   setResFaqs(data.message);
               
-              console.error('Response is not a PDF');
+             // console.error('Response is not a PDF');
             }
     
             setIsLoading(false);
