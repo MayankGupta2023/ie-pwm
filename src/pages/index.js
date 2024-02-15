@@ -7,6 +7,7 @@ import Footer from "../components/footer";
 import { motion, useAnimation } from "framer-motion";
 import plus from "../assets/plus.svg"
 import tick from "../assets/cross.svg"
+import tech from "../assets/trusred.png"
 
 export default function Home() {
 
@@ -216,7 +217,7 @@ export default function Home() {
             }}
           >
             <span className="text-2xl">Introducingng V1 for students – concise chapter summaries, precise Q&A, targeted notes, and exam-ready FAQs. Elevate your learning effortlessly.
-</span>
+            </span>
           </div>
 
 
@@ -259,8 +260,8 @@ export default function Home() {
               }
             }}
           >
-            <span className="text-xl">Introducing V2 – 
-Professional Edition. It encompasses V1 features, now tailored for programming, customizable notes, law, business case studies, and research. Elevate your professional knowledge effortlessly.</span>
+            <span className="text-xl">Introducing V2 –
+              Professional Edition. It encompasses V1 features, now tailored for programming, customizable notes, law, business case studies, and research. Elevate your professional knowledge effortlessly.</span>
           </div>
 
 
@@ -299,8 +300,8 @@ Professional Edition. It encompasses V1 features, now tailored for programming, 
               }
             }}
           >
-            <span className="text-2xl">Introducing V3 – 
-Your Book, Your Control. Upload and personalize your study material effortlessly. Tailor your learning journey with V3.</span>
+            <span className="text-2xl">Introducing V3 –
+              Your Book, Your Control. Upload and personalize your study material effortlessly. Tailor your learning journey with V3.</span>
           </div>
 
 
@@ -338,7 +339,7 @@ Your Book, Your Control. Upload and personalize your study material effortlessly
             }}
           >
             <span className="text-lg">Enter Version 4 (V4) – Craft Your Own Book. Seamlessly generate a custom book by referencing multiple titles from our extensive database. Enjoy ownership with copyrights vested in the user who creates the book. Empower your learning with V4's personalized approach.
-</span>
+            </span>
           </div>
 
 
@@ -351,9 +352,15 @@ Your Book, Your Control. Upload and personalize your study material effortlessly
 
       </div>
 
-      <div className="h-60">
+      <div className="h-screen  flex justify-center align-center flex-col gap-8 px-8">
 
-        <div style={{ color: '#333333' }} className="font-bold text-5xl p-4 text-center">Trusted by</div>
+        <div style={{ color: '#333333' }} className=" font-bold text-5xl p-4 text-center">Trusted by</div>
+
+        <div className="h-fit bg-red-200 w-full">
+
+          <img className="h-fit" src={tech.src} />
+
+        </div>
 
 
       </div>
@@ -444,7 +451,7 @@ Your Book, Your Control. Upload and personalize your study material effortlessly
 
 
               <div className="text-2xl font-semibold">Blogs</div>
-            
+
 
               <div className="text-stone-500">Learn about hosting build scale and reliability.</div>
               <button className="w-fit px-4 py-2 bg-black text-white rounded-lg">Read More</button>
