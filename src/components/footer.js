@@ -9,7 +9,7 @@ const Footer = () => {
     return (
 
 
-        <footer className={`flex w-full h-full pt-20 font-sans tracking-tight font-medium ${styles.inter}`}>
+        <footer className={`flex w-full h-full pt-20 font-sans tracking-tight  font-medium ${styles.inter}`}>
 
             <div className={`h-full w-1/4 ${styles.fot}`}>
                 <div className={`h-4/5 flex flex-col gap-4   items-center `}>
@@ -23,7 +23,7 @@ const Footer = () => {
                 </div>
             </div>
 
-        <div className={`h-full w-1/4 flex ${styles.width} ${styles.cnul}`}>
+            <div className={`h-full w-1/4 flex ${styles.width} ${styles.cnul}`}>
 
                 <div className='h-full w-1/2  flex items-center flex-col  gap-4 '>
 
@@ -59,7 +59,7 @@ const Footer = () => {
 
             </div>
 
-            <div className={`h-full w-1/4 flex items-end flex-col  gap-4 ${styles.width} ${styles.width2}`}>
+            <div className={`h-full w-1/4 flex items-end flex-col gap-4  ${styles.width2}`}>
 
                 <div className='text-2xl font-bold  w-32'>Support</div>
 
@@ -71,17 +71,17 @@ const Footer = () => {
                 </div>
 
 
-            </div> 
-            
+            </div>
 
-            <div className={`h-full w-1/4 flex flex-col  gap-4 ${styles.width}`}>
 
-                <div className={`text-2xl font-bold pl-16  w-32 ${styles.sub}`}>Subscribe</div>
+            <div className={`h-full w-1/4 flex flex-col gap-4 ${styles.width2}`}>
+
+                <div className={`text-2xl font-bold pl-16 w-32 ${styles.sub}`}>Subscribe</div>
 
                 <div className={`text-gray-500 flex flex-col pl-16 gap-8 ${styles.sub2}`}>
                     <p>Sign up for our Best deals</p>
 
-                    <input className='p-4 bg-gray-200 border-2 max-w-72 rounded-xl mr-4' type='email' placeholder='email@instantedudoc' />
+                    <input className={`p-4 bg-gray-200 border-2 max-w-72 rounded-xl mr-4 ${styles.mail}`} type='email' placeholder='email@instantedudoc' />
 
 
 
