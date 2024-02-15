@@ -32,10 +32,11 @@ const Navbar = () => {
 
   return (
     <div style={{ color: 'rgb(102, 102, 102)' }} className={`h-full bg-white flex justify-between tracking-tight pl-4 pr-2 items-center font-medium  rounded-l font-inter ${styles.b1}`}>
-      <div className='flex text-black gap-4 items-center text-3xl'>
-        <img src={logo.src} alt='logo' className={`h-12 ${styles.logo}`} />
-
-      </div>
+        <a href='/' >
+  <div className='flex text-black gap-4 items-center text-3xl'>
+    <img src={logo.src} alt='logo' className={`h-12 ${styles.logo}`} />
+  </div>
+</a>
 
       <div className={bars ? 'hidden' : `text-base flex  justify-around min-w-80 ${styles.nav}`}>
         <Link href="/">Upgrade</Link>
