@@ -109,11 +109,11 @@ const [email, setEmail] = useState('');
                 <div className={`text-gray-500 flex flex-col pl-16 gap-8 ${styles.sub2}`}>
                     <p className={styles.deals}>Sign up for our Best deals</p>
 
-                    <input className={`p-4 bg-gray-200 border-2 max-w-72 rounded-xl mr-4 ${styles.mail}`} type='email' placeholder='email@instantedudoc' value={email}  onChange={handleInputChange}  />
+                    <input className={`p-4 text-sm bg-gray-200 border-2 max-w-72 rounded-xl mr-4 ${styles.mail}`} type='email' placeholder='email@instantedudoc' value={email}  onChange={handleInputChange}  />
 
                     <button className={`py-2 bg-black w-48 ml-2 font-inter text-white rounded-2xl text-xl ${styles.sub3}`}
                     onClick={handleContact}
-                    ><span className='font-inter'>Contact</span></button>
+                    ><span className='font-inter text-sm'>Contact</span></button>
 
                     <div className={`flex flex-col ${styles.ram}`} >Developed by RAM</div>
 
