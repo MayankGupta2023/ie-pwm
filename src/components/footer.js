@@ -23,7 +23,7 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className={`h-full w-1/4 flex ${styles.width} ${styles.cnul}`}>
+        <div className={`h-full w-1/4 flex ${styles.width} ${styles.cnul}`}>
 
                 <div className='h-full w-1/2  flex items-center flex-col  gap-4 '>
 
@@ -59,7 +59,7 @@ const Footer = () => {
 
             </div>
 
-            <div className={`h-full w-1/4 flex items-end flex-col   gap-4 ${styles.width} ${styles.width2}`}>
+            <div className={`h-full w-1/4 flex items-end flex-col  gap-4 ${styles.width} ${styles.width2}`}>
 
                 <div className='text-2xl font-bold  w-32'>Support</div>
 
@@ -71,7 +71,8 @@ const Footer = () => {
                 </div>
 
 
-            </div>
+            </div> 
+            
 
             <div className={`h-full w-1/4 flex flex-col  gap-4 ${styles.width}`}>
 
@@ -83,6 +84,8 @@ const Footer = () => {
                     <input className='p-4 bg-gray-200 border-2 max-w-72 rounded-xl mr-4' type='email' placeholder='email@instantedudoc' />
 
 
+
+                    <div className='flex flex-col' >Developed by RAM</div>
 
 
                 </div>
