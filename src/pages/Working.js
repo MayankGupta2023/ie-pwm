@@ -528,18 +528,8 @@ const Working = () => {
                         </div>
                     </div>
                 </div>
-                <button onClick={() => { setHamburger(true) }} style={{ background: '#fe7544' }} className='fixed h-10 w-10 cursor-pointer right-0 top-20 flex justify-center items-center'>
-                    <img src={menu.src} />
-                </button>
-                <div className={hamburger ? `w-40 flex pt-10 flex-col fixed bg-white border-2 top-20 right-0 ${styles.sidemenu}` : 'hidden'}>
-                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-1 </div>
-                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-2 </div>
-                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-3 </div>
-                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-4 </div>
-                    <button onClick={() => { setHamburger(false) }} style={{ background: '#fe7544' }} className='fixed h-10 w-10 cursor-pointer right-0 top-20 flex justify-center items-center'>
-                        <img src={cross.src} />
-                    </button>
-                </div>
+               
+       
             </div>
 
             <div>
