@@ -6,15 +6,14 @@ import Link from 'next/link';
 import logo from '../assets/logo.png';
 import styles from '../styles/landing.module.css';
 import app from '../firebaseConfig';
-import menu from '../assets/menu.svg';
-import cross from '../assets/cross2.svg';
+import menu from '../assets/menu.svg'
+import cross from '../assets/cross2.svg'
 
 const Navbar = () => {
-  const [bars, setBars] = useState(false);
+  const [bars, setBars] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const auth = getAuth(app);
   const router = useRouter();
-
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setIsLoggedIn(!!user);
@@ -22,6 +21,8 @@ const Navbar = () => {
 
     return () => unsubscribe();
   }, []);
+
+  // console.log(bars)
 
   const handleLogout = async () => {
     try {
@@ -31,13 +32,23 @@ const Navbar = () => {
       console.error('Error logging out:', error);
     }
   };
-
-  const handleLogoClick = () => {
-    router.push('/');
+  const handleLogoClick = async () => {
+    try {
+      Router.push('/');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
   };
 
   const handleClick = () => {
-    setBars(!bars);
+    // Check if the viewport width is less than 640px using media query
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
+
+    if (isMobile) {
+      console.log('Button clicked on a mobile device (viewport width < 640px)');
+      setBars(!bars);
+      // Add your desired logic or additional code here
+    }
   };
 
   return (
@@ -48,11 +59,16 @@ const Navbar = () => {
         </div>
       </a>
 
-      <div className={`text-base flex justify-around min-w-80 ${styles.nav} ${bars ? '' : styles.navhide}`} onClick={handleClick}>
+
+      <div className={bars ? `${styles.navhide} sm:text-base sm:flex sm:justify-around sm:min-w-80  ` : `text-base flex justify-around min-w-80 ${styles.nav}`}
+        onClick={handleClick}
+      >
         <Link href="/">Features</Link>
         <Link href="/pricing">Pricing</Link>
         <Link href="/pricing">Contact</Link>
+
         <Link href="/Working">Get Notes</Link>
+
         {/* {isLoggedIn ? (
           <button onClick={handleLogout}>Logout</button>
         ) : (
@@ -60,11 +76,20 @@ const Navbar = () => {
         )} */}
       </div>
 
-      <div className={`hidden sm:block mr-6 ${styles.menu}`}>
-        <button onClick={handleClick}>
-          {bars ? <img src={cross.src} /> : <img src={menu.src} />}
+      <div className={`hidden mr-6 ${styles.menu}`}>
+        <button onClick={() => {
+          setBars(!bars);
+          console.log(bars);
+        }} >
+          {bars ?
+            <img src={menu.src} />
+            :
+            <img src={cross.src} />
+
+          }
         </button>
       </div>
+
     </div>
   );
 };

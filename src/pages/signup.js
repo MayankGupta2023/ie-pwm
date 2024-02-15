@@ -33,7 +33,7 @@ const Signup = ({ phoneNumber }) => {
     email: '',
     occupation: '',
     whereyouheardaboutus: 'social',
-    bday: '',
+    social: '',
     agreeTerms: true,
 
   });
@@ -91,7 +91,7 @@ const Signup = ({ phoneNumber }) => {
 
   return (
     <div >
-      <div className={`h-64 ${styles.navbar}`}>
+      <div className={`h-16 fixed top-0 left-0 z-50 bg-white w-full `}>
         <Navbar />
       </div>
       <motion.div
@@ -99,7 +99,7 @@ const Signup = ({ phoneNumber }) => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.5 }}
-        className="m-auto p-10 rounded-md  max-w-md w-full items-center"
+        className="m-auto mt-16 p-10 rounded-md  max-w-md w-full items-center"
       >
         <form
           onSubmit={handleSubmit}
@@ -162,12 +162,12 @@ const Signup = ({ phoneNumber }) => {
           </div>
 
           <div className="my-6">
-            <label className="block flex flex-col">
-              Birth Date:
+          <label className="block flex flex-col">
+              Social Media link
               <input
-                type="date"
-                name="bday"
-                value={formData.bday}
+                type="text"
+                name="social"
+                value={formData.social}
                 onChange={handleChange}
                 className="w-full px-4 py-3 border rounded-md focus:outline-none focus:ring focus:border-blue-300"
               />
