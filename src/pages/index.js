@@ -359,7 +359,7 @@ export default function Home() {
 
         <div style={{ color: '#333' }} className={`font-bold text-5xl p-8 text-center ${styles.enhance}`}>Enhance Learning Beyond Tradition with Innovative Features</div>
 
-        <div className={`grid grid-cols-3 grid-rows-2 h-5/6 ${styles.gid}`}>
+        <div className={`pb-8 pt-8 grid grid-cols-3 gap-y-28 grid-rows-2 h-5/6 ${styles.gid}`}>
 
           <div className={`flex flex-col px-20 justify-center ${styles.res} `}>
             <div className={`text-3xl font-bold ${styles.subhead}`}>Answered Notes</div>

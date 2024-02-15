@@ -137,6 +137,7 @@
     .gid {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(6, 1fr);
+        row-gap: 30px;
 
     }
 
@@ -178,7 +179,7 @@
     }
 
     .enhance{
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .subhead{
