@@ -11,7 +11,7 @@ const cors = initMiddleware(
   export default async function handler(req, res) {
 
     const { selectedClass, selectedSubject,selectedChapter,selectedLanguage,notes,topics,mindmap,faqs,questions } = req.body;
-   // await cors(req, res);
+    await cors(req, res);
   
     try {
       
