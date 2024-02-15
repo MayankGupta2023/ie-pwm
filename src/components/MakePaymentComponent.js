@@ -66,7 +66,7 @@ const checkLoggedIn = async() => {
         //console.log(data);
         var options = {
           key: process.env.RAZORPAY_KEY, // Enter the Key ID generated from the Dashboard
-          name: "Instant PayDoc",
+          name: "Instant EduDoc",
           currency: data.currency,
           amount: amount,
           order_id: data.id,
