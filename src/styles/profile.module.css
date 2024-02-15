@@ -1,0 +1,16 @@
+@media (max-width:500px){
+    .container{
+
+        width: 90%;
+        flex-direction: column;
+        height: fit-content;
+    }
+
+    .outbox{
+        text-align: left;
+        width: 100%;
+        padding-top: 10px;
+        justify-content: left;
+        padding-left: 50px;
+    }
+}

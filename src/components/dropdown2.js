@@ -14,7 +14,7 @@ const DropdownButton = ({ selectedItem, secondDropdownItems, onSelect, onToggle 
     };
 
     return (
-        <div className="relative inline-block text-left">
+        <div className="relative inline-block font-inter  text-left">
             <button
                 onClick={toggleDropdown}
                 type="button"
@@ -27,7 +27,7 @@ const DropdownButton = ({ selectedItem, secondDropdownItems, onSelect, onToggle 
             </button>
 
             {isOpen && (
-                <div className="z-10 origin-top-right absolute left-0 w-44  mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <div className="z-10 origin-top-right font-medium absolute left-0 w-44  mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                         {secondDropdownItems.map((item, index) => (
                             <div key={index} onClick={() => handleItemClick(item)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer">

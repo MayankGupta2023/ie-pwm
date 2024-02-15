@@ -137,6 +137,7 @@
     .gid {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(6, 1fr);
+        row-gap: 30px;
 
     }
 
@@ -178,7 +179,7 @@
     }
 
     .enhance{
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .subhead{
@@ -192,6 +193,8 @@
     .sign{
         font-size: 2.5rem;
     }
+
+    
 
 }
 
@@ -236,7 +239,7 @@
 
 }
 
-@media (max-width:400px) {
+@media (max-width:431px) {
     .price{
         font-size: 1.6rem;
     }
@@ -245,6 +248,45 @@
         margin: 0;
         margin-top: 40px;
 
+    }
+
+    .getnotes{
+        font-size: 2rem;
+        text-align: center;
+        padding: 0px 10px;
+    }
+
+    .hesitate{
+        font-size: 1.2rem;
+            text-align: center;
+            padding: 0px 40px;
+
+    }
+
+    .wassapp_left{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        
+    }
+
+    .wassapp{
+        padding-left:0px ;
+        padding-right: 0px;
+    }
+
+    .wass_but{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .chat2{
+        font-size: 1.4rem;
+    }
+
+    .framer2{
+        padding-right: 0;
     }
 
 

@@ -103,8 +103,8 @@ const AuthPage = () => {
 
 
   return (
-    <div className="flex flex-col justify-center h-screen  bg-white">
-      <div className={`h-64 ${styles.navbar}`}>
+    <div className="flex flex-col justify-center h-fit bg-white">
+      <div className={`h-16 fixed top-0 left-0 z-50 bg-white w-full `}>
         <Navbar />
       </div>
       <motion.div
@@ -112,7 +112,7 @@ const AuthPage = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="bg-white mt-10 m-auto p-10 rounded-md shadow-md shadow-black max-w-md h-full w-full items-center"
+        className=" mt-32  p-10 rounded-md min-w-96 shadow-md shadow-black w-1/2 m-auto h-fit items-center"
       >
         {/* Country Code Selection */}
         <div className="mb-6">
@@ -188,7 +188,7 @@ const AuthPage = () => {
           </button>
         )}
       </motion.div>
-      <div>
+      <div className={styles.fooooter}>
         <Footer />
       </div>
     </div>

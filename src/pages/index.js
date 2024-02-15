@@ -363,7 +363,7 @@ Your Book, Your Control. Upload and personalize your study material effortlessly
 
         <div style={{ color: '#333' }} className={`font-bold text-5xl p-8 text-center ${styles.enhance}`}>Enhance Learning Beyond Tradition with Innovative Features</div>
 
-        <div className={`grid grid-cols-3 grid-rows-2 h-5/6 ${styles.gid}`}>
+        <div className={`pb-8 pt-8 grid grid-cols-3 gap-y-28 grid-rows-2 h-5/6 ${styles.gid}`}>
 
           <div className={`flex flex-col px-20 justify-center ${styles.res} `}>
             <div className={`text-3xl font-bold ${styles.subhead}`}>Answered Notes</div>
@@ -405,13 +405,15 @@ Your Book, Your Control. Upload and personalize your study material effortlessly
       <div className={`h-screen w-full flex px-12 py-16 ${styles.wassapp}`}>
 
         <div className={`w-1/2 flex flex-col justify-center items-center gap-8 ${styles.wassapp_left}`}>
-          <div className=" w-96 font-bold text-5xl">Get your notes via WhatsApp</div>
+          <div className={`w-96 font-bold text-5xl ${styles.getnotes}`}>Get your notes via WhatsApp</div>
           <div className="   text-xl text-stone-500 font-semibold">
-            <p className="w-96">
+            <p className={`w-96 ${styles.hesitate}`}>
               Never hesitate to ask questions, even if you're not on a web browser, whenever it suits you.
             </p>
-            <button className="text-white bg-black py-2 font-semibold px-4 shadow-2xl rounded-lg text-base">Get Started</button>
-            <button className=" ml-4 bg-slate-100  px-4 py-2 rounded-lg mt-10 font-semibold text-black text-base">Learn More</button>
+            <div className={styles.wass_but}>
+              <button className="text-white bg-black py-2 font-semibold mt-10 px-4 shadow-2xl rounded-lg text-base">Get Started</button>
+              <button className=" ml-4 bg-slate-100  px-4 py-2 rounded-lg mt-10 font-semibold text-black text-base">Learn More</button>
+            </div>
 
           </div>
 
@@ -419,7 +421,7 @@ Your Book, Your Control. Upload and personalize your study material effortlessly
 
         </div>
 
-        <div className={`w-1/2 h-screen ${styles.wassapp_right}`}>
+        <div className={`w-1/2 h-screen flex justify-center align-center ${styles.wassapp_right}`}>
           <img className={`h-full w-full ${styles.wassapp_img}`} src="https://framerusercontent.com/images/dAJW9yDkvqMtYUWnpXJiJ2wKsA.jpg?scale-down-to=1024" />
         </div>
 
@@ -487,15 +489,15 @@ Your Book, Your Control. Upload and personalize your study material effortlessly
 
       </div>
 
-      <div className="h-screen w-full flex flex-col gap-32 pt-30 items-center justify-center">
+      <div className="h-5/6 pb-4 w-full min-h-fit flex flex-col gap-32 pt-30 items-center justify-center">
 
         <div className={`font-bold text-center text-5xl text-zinc-800 ${styles.head}`}>Frequently Asked Questions</div>
 
         <motion.div
-          className={`max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ${styles.framer}`}>
+          className={`h-1/2 h-fit w-3/5 bg-stone-100 rounded-2xl ${styles.framer}`}>
           <div className="h-fit p-4 text-lg font-semibold flex justify-center flex-col ">
             <div style={{ color: '#333333' }} className="h-fit flex gap-6 hover:cursor-pointer" onClick={() => { handleDrop1() }}> <img src={dropicon1} />  What is Framer?</div>
-            {drop1 ? <motion.div style={{ color: '#666666' }} className="  h-fit pt-4 px-10 text-lg font-semibold flex items-center">
+            {drop1 ? <motion.div style={{ color: '#666666' }} className={`h-fit px-10 text-lg font-semibold flex items-center ${styles.framer2}`}>
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
             </motion.div> : null}
             <br></br>
@@ -504,7 +506,7 @@ Your Book, Your Control. Upload and personalize your study material effortlessly
           <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
             <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit flex gap-6" onClick={() => { handleDrop2() }}> <img src={dropicon2} />  Is it easy to learn?</div>
             {drop2 ? <motion.div style={{ color: '#666666' }}
-              className="h-fit pt-4 px-10 text-lg font-semibold flex items-center">
+              className={`h-fit px-10 text-lg font-semibold flex items-center ${styles.framer2}`}>
               Framer is fastest tool to build sites with, because you can ship your design immidiatly,insted of rebuilding it in code or second tool.
             </motion.div> : null}
             <br></br>
@@ -514,7 +516,7 @@ Your Book, Your Control. Upload and personalize your study material effortlessly
             <div className="h-fit flex gap-6" onClick={() => { handleDrop3() }}> <img src={dropicon3} />  Do i need to code?</div>
             {drop3 ? <motion.div style={{ color: '#666666' }}
 
-              className="h-fit pt-4 px-10 text-lg font-semibold flex items-center">
+              className={`h-fit px-10 text-lg font-semibold flex items-center ${styles.framer2}`}>
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
             </motion.div> : null}
 
