@@ -17,7 +17,7 @@ const Footer = () => {
                     <div className='flex gap-2 items-center'>
                         <img src={logo.src} alt='logo' className='h-12 ' /><span className='font-extrabold text-2xl tracking-tighter pr-2'>Instant EduDoc</span>
                     </div>
-                    <p className='text-gray-500 pl-16 text-sm pr-4'>Never hesitate to ask questions, even if you're not on a web browser, whenever it suits you.</p>
+                    <p className='text-gray-500 pl-20 pr-4 xl:pl-32 text-sm xl:pr-12'>Never hesitate to ask questions, even if you're not on a web browser, whenever it suits you.</p>
 
 
                 </div>
@@ -59,7 +59,7 @@ const Footer = () => {
 
             </div>
 
-            <div className={`h-full w-1/4 flex items-end flex-col   gap-4 ${styles.width}`}>
+            <div className={`h-full w-1/4 flex items-end flex-col   gap-4 ${styles.width} ${styles.width2}`}>
 
                 <div className='text-2xl font-bold  w-32'>Support</div>
 

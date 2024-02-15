@@ -112,7 +112,7 @@ const AuthPage = () => {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className=" mt-32  p-10 rounded-md min-w-96 shadow-md shadow-black w-1/2 m-auto h-fit items-center"
+        className=" mt-32  py-10 px-8   rounded-md min-w-96 shadow-md shadow-black w-96 m-auto h-fit items-center"
       >
         {/* Country Code Selection */}
         <div className="mb-6">
@@ -182,9 +182,9 @@ const AuthPage = () => {
           <button
             type="button"
             onClick={handleSendOtp}
-            className="bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
+            className="mt-4 bg-blue-600 text-white px-8 py-4 rounded-full hover:bg-blue-700 focus:outline-none focus:ring focus:border-blue-300"
           >
-            Get OTP 
+            Get OTP
           </button>
         )}
       </motion.div>
