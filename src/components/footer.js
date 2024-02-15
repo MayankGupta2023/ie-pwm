@@ -111,9 +111,9 @@ const [email, setEmail] = useState('');
 
                     <input className={`p-4 bg-gray-200 border-2 max-w-72 rounded-xl mr-4 ${styles.mail}`} type='email' placeholder='email@instantedudoc' value={email}  onChange={handleInputChange}  />
 
-                    <button className={`py-2 bg-black w-48 ml-2  text-white rounded-2xl text-xl ${styles.sub3}`}
+                    <button className={`py-2 bg-black w-48 ml-2 font-inter text-white rounded-2xl text-xl ${styles.sub3}`}
                     onClick={handleContact}
-                    >Contact</button>
+                    ><span className='font-inter'>Contact</span></button>
 
                     <div className={`flex flex-col ${styles.ram}`} >Developed by RAM</div>
 
