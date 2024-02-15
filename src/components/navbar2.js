@@ -48,7 +48,8 @@ const Navbar = () => {
 
 
       <div className={bars ? 'hidden' : `text-base flex  justify-around min-w-80 ${styles.nav}`}>
-      <Link href="/index">Home</Link>
+      <Link href="/
+      ">Home</Link>
  <Link href="/pricing">Upgrade</Link>
         <Link href="/pricing">Contact</Link>
        <Link href="/Working">Profile</Link>
