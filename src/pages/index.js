@@ -194,7 +194,7 @@ export default function Home() {
             style={{
               borderRadius: '3.5rem',
               backgroundColor: '#fd3c34',
-              transition: 'transform 2s ease' // Add transition for smoother animation
+              transition: 'transform 1s ease-in-out' // Add transition for smoother animation
             }}
             onMouseEnter={(e) => {
               const div = e.target;
@@ -202,7 +202,7 @@ export default function Home() {
               if (span) {
                 div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
                 span.style.transform = 'rotateY(180deg)'; // Flip the text content
-                span.textContent = 'After Content'; // Change text content on hover
+                span.textContent = 'Live'; // Change text content on hover
               }
             }}
             onMouseLeave={(e) => {
@@ -211,11 +211,12 @@ export default function Home() {
               if (span) {
                 div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
                 span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
-                span.textContent = 'Before Content'; // Restore original text content on mouse leave
+                span.textContent = 'Introducing V1 for students – concise chapter summaries, precise Q&A, targeted notes, and exam-ready FAQs. Elevate your learning effortlessly.'; // Restore original text content on mouse leave
               }
             }}
           >
-            <span>Before Content</span>
+            <span className="text-2xl">Introducingng V1 for students – concise chapter summaries, precise Q&A, targeted notes, and exam-ready FAQs. Elevate your learning effortlessly.
+</span>
           </div>
 
 
@@ -237,7 +238,7 @@ export default function Home() {
             style={{
               borderRadius: '3.5rem',
               backgroundColor: '#fe6641',
-              transition: 'transform 2s ease' // Add transition for smoother animation
+              transition: 'transform 1s ease-in-out' // Add transition for smoother animation
             }}
             onMouseEnter={(e) => {
               const div = e.target;
@@ -245,7 +246,7 @@ export default function Home() {
               if (span) {
                 div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
                 span.style.transform = 'rotateY(180deg)'; // Flip the text content
-                span.textContent = 'After Content'; // Change text content on hover
+                span.textContent = 'Upcoming'; // Change text content on hover
               }
             }}
             onMouseLeave={(e) => {
@@ -254,11 +255,12 @@ export default function Home() {
               if (span) {
                 div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
                 span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
-                span.textContent = 'Before Content'; // Restore original text content on mouse leave
+                span.textContent = ' Introducing V2 – Professional Edition.It encompasses V1 features, now tailored for programming, customizable notes, law, business case studies, and research. Elevate your professional knowledge effortlessly.'; // Restore original text content on mouse leave
               }
             }}
           >
-            <span>Before Content</span>
+            <span className="text-xl">Introducing V2 – 
+Professional Edition. It encompasses V1 features, now tailored for programming, customizable notes, law, business case studies, and research. Elevate your professional knowledge effortlessly.</span>
           </div>
 
 
@@ -276,7 +278,7 @@ export default function Home() {
             style={{
               borderRadius: '3.5rem',
               backgroundColor: '#fe8c4b',
-              transition: 'transform 2s ease' // Add transition for smoother animation
+              transition: 'transform 1s ease-in-out' // Add transition for smoother animation
             }}
             onMouseEnter={(e) => {
               const div = e.target;
@@ -284,7 +286,7 @@ export default function Home() {
               if (span) {
                 div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
                 span.style.transform = 'rotateY(180deg)'; // Flip the text content
-                span.textContent = 'After Content'; // Change text content on hover
+                span.textContent = 'Upcoming'; // Change text content on hover
               }
             }}
             onMouseLeave={(e) => {
@@ -293,11 +295,12 @@ export default function Home() {
               if (span) {
                 div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
                 span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
-                span.textContent = 'Before Content'; // Restore original text content on mouse leave
+                span.textContent = 'Introducing V3 – Your Book, Your Control. Upload and personalize your study material effortlessly. Tailor your learning journey with V3.'; // Restore original text content on mouse leave
               }
             }}
           >
-            <span>Before Content</span>
+            <span className="text-2xl">Introducing V3 – 
+Your Book, Your Control. Upload and personalize your study material effortlessly. Tailor your learning journey with V3.</span>
           </div>
 
 
@@ -313,7 +316,7 @@ export default function Home() {
             style={{
               borderRadius: '3.5rem',
               backgroundColor: '#2e180b',
-              transition: 'transform 2s ease' // Add transition for smoother animation
+              transition: 'transform 1s ease-in-out' // Add transition for smoother animation
             }}
             onMouseEnter={(e) => {
               const div = e.target;
@@ -321,7 +324,7 @@ export default function Home() {
               if (span) {
                 div.style.transform = 'rotateY(180deg)'; // Flip the card on hover
                 span.style.transform = 'rotateY(180deg)'; // Flip the text content
-                span.textContent = 'After Content'; // Change text content on hover
+                span.textContent = 'Upcoming'; // Change text content on hover
               }
             }}
             onMouseLeave={(e) => {
@@ -330,11 +333,12 @@ export default function Home() {
               if (span) {
                 div.style.transform = 'rotateY(0deg)'; // Restore the card's original state
                 span.style.transform = 'rotateY(0deg)'; // Restore the text content's original state
-                span.textContent = 'Before Content'; // Restore original text content on mouse leave
+                span.textContent = 'Enter Version 4 (V4) – Craft Your Own Book Seamlessly generate a custom book by referencing multiple titles from our extensive database. Enjoy ownership with copyrights vested in the user who creates the book. Empower your learning with V4 personalized approach.';
               }
             }}
           >
-            <span>Before Content</span>
+            <span className="text-lg">Enter Version 4 (V4) – Craft Your Own Book. Seamlessly generate a custom book by referencing multiple titles from our extensive database. Enjoy ownership with copyrights vested in the user who creates the book. Empower your learning with V4's personalized approach.
+</span>
           </div>
 
 
@@ -433,11 +437,15 @@ export default function Home() {
 
           <div style={{ height: '430px' }} className="  my-6 w-80  min-w-80 shadow-xl overflow-hidden border-2 rounded-2xl ">
             <div className="h-1/2 w-full">
-              <img className="h-full w-full" />
+              <img src="https://i.pinimg.com/originals/71/28/3b/71283bb49db55cfee5bb6acd1389c465.jpg" className="h-full w-full" />
             </div>
             <div className="flex flex-col justify-around align-start px-12 h-1/2  ">
 
+
+
               <div className="text-2xl font-semibold">Blogs</div>
+            
+
               <div className="text-stone-500">Learn about hosting build scale and reliability.</div>
               <button className="w-fit px-4 py-2 bg-black text-white rounded-lg">Read More</button>
 
@@ -448,7 +456,7 @@ export default function Home() {
 
           <div style={{ height: '430px' }} className=" min-w-80 w-80 my-6 mx-4  shadow-xl overflow-hidden border-2 rounded-2xl ">
             <div className="h-1/2 w-full">
-              <img className="h-full w-full" />
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5vnfGZ83-140sbZpN3s-mqH2YPu6B8_VDhC7vrTkue_KPluOdQhgtyLAnanJvPtP0S6A&usqp=CAU" className="h-full w-full" />
             </div>
             <div className="flex flex-col justify-around align-start px-12 h-1/2  ">
 
@@ -463,7 +471,7 @@ export default function Home() {
 
           <div style={{ height: '430px' }} className="  min-w-80 w-80 my-6  shadow-xl overflow-hidden border-2 rounded-2xl ">
             <div className="h-1/2 w-full">
-              <img className="h-full w-full" />
+              <img src="https://i.pinimg.com/736x/7d/83/85/7d8385ae30bdbe7f883c12467f123ab1.jpg" className="h-full w-full" />
             </div>
             <div className="flex flex-col justify-around align-start px-12 h-1/2  ">
 
