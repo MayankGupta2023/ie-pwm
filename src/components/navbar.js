@@ -73,7 +73,7 @@ const Navbar = () => {
       >
         <Link href="/">Features</Link>
         <Link href="/pricing">Pricing</Link>
-        <Link href="/pricing">Contact</Link>
+        <Link href="#footer">Contact</Link>
 
         <Link href="/Working">Get Notes</Link>
 

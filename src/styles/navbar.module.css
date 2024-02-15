@@ -90,6 +90,8 @@
 
     .sub3{
         width: 100%;
+        font-size: medium;
+        font-family: inter,sans;
         margin-left: 80px;
         margin-top: 10px;
     }

@@ -7,7 +7,7 @@ import Footer from "../components/footer";
 import { motion, useAnimation } from "framer-motion";
 import plus from "../assets/plus.svg"
 import tick from "../assets/cross.svg"
-import tech from "../assets/trusred.png"
+import tech from "../assets/trusted.jpg"
 
 export default function Home() {
 
@@ -88,7 +88,7 @@ export default function Home() {
 
       <div className={`h-screen pt-20 ${styles.orange_grad_top}`}>
 
-        <div className="h-2/5 flex w-full justify-center items-end font-black text-5xl text-center px-24">
+        <div className={`h-2/5 flex w-full justify-center items-end font-black text-5xl text-center px-24 ${styles.headout}`}>
 
           <p className={styles.head}>
             Explore AI-driven <span style={{ color: '#bf5252' }}>enhancement</span> through our Note Builder Kickstart
@@ -191,7 +191,7 @@ export default function Home() {
 </div>  */}
 
           <div
-            className="text-center w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white"
+            className="text-center px-4 w-80 h-80 bg-red-200 justify-center items-center font-bold flex text-5xl text-white"
             style={{
               borderRadius: '3.5rem',
               backgroundColor: '#fd3c34',
@@ -216,7 +216,7 @@ export default function Home() {
               }
             }}
           >
-            <span className="text-lg">Introducingng V1 for students – concise chapter summaries, precise Q&A, targeted notes, and exam-ready FAQs. Elevate your learning effortlessly.
+            <span className="text-lg ">Introducingng V1 for students – concise chapter summaries, precise Q&A, targeted notes, and exam-ready FAQs. Elevate your learning effortlessly.
             </span>
           </div>
 
@@ -356,9 +356,11 @@ export default function Home() {
 
         <div style={{ color: '#333333' }} className=" font-bold text-5xl p-4 text-center">Trusted by</div>
 
-        <div className="h-fit w-full">
+        <div className=" flex flex-wrap gap-12 justify-center item-center h-fit w-full">
 
-          <img className="h-fit" src={tech.src} />
+          <img className="h-40 w-60" src={tech.src} />
+          <img className="h-40 w-60" src={tech.src} />
+          <img className="h-40 w-60" src={tech.src} />
 
         </div>
 
@@ -366,7 +368,7 @@ export default function Home() {
       </div>
 
 
-      <div className={`min-h-screen h-fit ${styles.back}`}>
+      <div className={` h-fit ${styles.back}`}>
 
         <div style={{ color: '#333' }} className={`font-bold text-5xl p-8 text-center ${styles.enhance}`}>Enhance Learning Beyond Tradition with Innovative Features</div>
 

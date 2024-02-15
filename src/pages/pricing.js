@@ -191,7 +191,7 @@ const Pricing = () => {
 
       </div>
       <div className={`flex justify-center  font-inter items-center my-8 gap-4 text-center px-10 ${style.chat}`}>
-        <p className={`text-sm  min-w-96 w-1/2 ${style.chat2}`}>
+        <p className={`text-sm leading-8 min-w-96 w-1/2 ${style.chat2}`}>
           Uncertaing about your selection? Direct message us, and we will assist you in making choice.
 
         </p>
