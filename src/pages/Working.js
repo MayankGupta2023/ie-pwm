@@ -62,7 +62,7 @@ const Working = () => {
     const [faqs, setFaqs] = useState(0);
     const [resfaqs, setResFaqs] = useState('');
     const [questions, setQuestions] = useState(0);
-
+    const [fetchPdfTrigger, setFetchPdfTrigger] = useState(false);
 
 
 
@@ -138,11 +138,15 @@ const Working = () => {
     };
 
     const handleFAQSClick = () => {
+         if(selectedChapter && selectedSubject && selectedClass){
+      
         setFaqs(1);
         setQuestions(0);
         setTopics(0);
         setMindMap(0);
         setNotes(0);
+        setFetchPdfTrigger(prev => !prev);   
+         }
     };
 
 
@@ -261,7 +265,7 @@ const Working = () => {
     }, [selectedLanguage]);
 
 
-    useEffect(() => {
+    useEffect( () => {
 
         console.log("use effect called")
 
@@ -292,87 +296,96 @@ const Working = () => {
 
 
 
+        const checkAvailablecredits = async () => {
+            try {
+                const db = getFirestore(app);
+                const userRef = doc(db, 'users', currentUser.uid);
+                const docSnap = await getDoc(userRef);
+                if (docSnap.exists()) {
+                    const userData = docSnap.data();
+
+
+                    console.log("here");
+                    var credits = userData.credits;
+                    if(credits>0){
+                        return true;
+                    }else{
+                        console.log("Not enough credits");
+                        return false;
+                    }
+
+                }
+
+
+
+               
+            } catch (error) {
+                console.error('Error decrementing credits:', error);
+            }
+        };
+
+
+
+
+
 
 
 
         const fetchPdf = async () => {
-            try {
-
-                setIsLoading(true); // Set loading state to true
-                console.log(typeof (selectedSubject));
-                const requestData = {
-                    selectedClass: selectedClass,
-                    selectedSubject: selectedSubject,
-                    selectedChapter: selectedChapter,
-                    selectedLanguage: selectedLanguage,
-                    notes: notes,
-                    topics: topics,
-                    mindmap: mindmap,
-                    faqs: faqs,
-                    question: questions,
-                };
-                console.log(requestData);
-                const requestBody = JSON.stringify(requestData);
-
-                const response = await fetch('/api/get-notes', {
-                    method: 'POST',
-                    body: requestBody,
-                    headers: {
-                        'Content-Type': 'application/json'
+            if (await checkAvailablecredits()) {
+                try {
+                    setIsLoading(true);
+                    const requestData = {
+                        selectedClass: selectedClass,
+                        selectedSubject: selectedSubject,
+                        selectedChapter: selectedChapter,
+                        selectedLanguage: selectedLanguage,
+                        notes: notes,
+                        topics: topics,
+                        mindmap: mindmap,
+                        faqs: faqs,
+                        question: questions,
+                    };
+                    const requestBody = JSON.stringify(requestData);
+                    const response = await fetch('/api/get-notes', {
+                        method: 'POST',
+                        body: requestBody,
+                        headers: {
+                            'Content-Type': 'application/json'
+                        }
+                    });
+        
+                    if (!response.ok) {
+                        throw new Error('Failed to fetch PDF');
                     }
-                });
-
-                if (!response.ok) {
-                    throw new Error('Failed to fetch PDF');
+        
+                    const contentType = response.headers.get('Content-Type');
+                    if (contentType && contentType.includes('application/pdf')) {
+                        const blob = await response.blob();
+                        setPdfUrl(URL.createObjectURL(blob));
+                    } else {
+                        const responseData = await response.json();
+                        let modifiedData = responseData.message;
+                        modifiedData = modifiedData.replace(/\n/g, '<br>');
+                        modifiedData = modifiedData.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                        setResFaqs(modifiedData);
+                        await decrementCredits();
+                        setIsLoading(false);
+                    }
+                } catch (error) {
+                    console.error('Error fetching PDF:', error);
+                    setIsLoading(false);
                 }
-
-                const contentType = response.headers.get('Content-Type');
-                if (contentType && contentType.includes('application/pdf')) {
-                    // If response content type is PDF, create URL for PDF
-                    const blob = await response.blob();
-                    setPdfUrl(URL.createObjectURL(blob));
-                } else {
-                    // If response content type is not PDF, log error
-                    const responseData = await response.json();
-                    let modifiedData = responseData.message;
-
-                    // Add new lines where \n is present
-                    modifiedData = modifiedData.replace(/\n/g, '<br>');
-
-                    // Make text bold where **---** is present
-                    modifiedData = modifiedData.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-
-                    setResFaqs(modifiedData)
-
-
-
-
-                    await decrementCredits();
-
-
-
-
-
-
-                    //   setResFaqs(data.message);
-
-                    // console.error('Response is not a PDF');
-                }
-
-                setIsLoading(false);
-                setFaqs(0)
-                setQuestions(0);
-                setTopics(0);
-                setMindMap(0);
-                setNotes(0);// Update loading state
-            } catch (error) {
-                console.error('Error fetching PDF:', error);
-                setIsLoading(false); // Update loading state even on error
+            } else {
+                alert("You don't have enough credits to access this feature. Please buy credits to continue.");
             }
         };
+        
         if (selectedChapter && selectedSubject && selectedClass) {
-            fetchPdf();
+           
+                fetchPdf();
+                setFetchPdfTrigger(false);
+          
         }
 
 
@@ -383,7 +396,7 @@ const Working = () => {
 
 
         };
-    }, [topics, mindmap, faqs, questions, notes]);
+    }, [fetchPdfTrigger,topics, mindmap, faqs, questions, notes]);
 
 
 
@@ -515,18 +528,8 @@ const Working = () => {
                         </div>
                     </div>
                 </div>
-                <button onClick={() => { setHamburger(true) }} style={{ background: '#fe7544' }} className='fixed h-10 w-10 cursor-pointer right-0 top-20 flex justify-center items-center'>
-                    <img src={menu.src} />
-                </button>
-                <div className={hamburger ? `w-40 flex pt-10 flex-col fixed bg-white border-2 top-20 right-0 ${styles.sidemenu}` : 'hidden'}>
-                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-1 </div>
-                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-2 </div>
-                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-3 </div>
-                    <div style={{ color: '#333333' }} className='text-center cursor-pointer text-lg font-inter font-medium pt-4 '> Item-4 </div>
-                    <button onClick={() => { setHamburger(false) }} style={{ background: '#fe7544' }} className='fixed h-10 w-10 cursor-pointer right-0 top-20 flex justify-center items-center'>
-                        <img src={cross.src} />
-                    </button>
-                </div>
+               
+       
             </div>
 
             <div>

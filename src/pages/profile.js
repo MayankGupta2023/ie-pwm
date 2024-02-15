@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Navbar from '../components/navbar2';
 import app from '../firebaseConfig';
+import styles from '../styles/profile.module.css';
 import {
-  getAuth,
+  getAuth,signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
+
 import {
   getFirestore,
   doc,
@@ -31,6 +33,25 @@ const Profile = () => {
     return () => unsubscribe();
   }, []);
 
+
+
+  const handleLogout = async () => {
+    console.log('Logging out...');
+    try {
+      await signOut(auth);
+     
+      alert('You have been logged out.');
+      router.push('/');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
+
+  const handleUpgrade = async () => {
+    console.log('Logging out...');
+  router.push('/pricing');
+  };
   useEffect(() => {
     if (!currentUser) {
       console.error('User is not authenticated.');
@@ -67,7 +88,7 @@ const Profile = () => {
 
   return (
     <div className="relative">
-      <div className="Navbar">
+      <div className={`h-16 fixed top-0 left-0 z-50 bg-white w-full `}>
         <Navbar />
       </div>
       {isLoading ? (
@@ -82,9 +103,9 @@ const Profile = () => {
             Help
           </button>
           {/* Rest of your profile content */}
-          <div className="w-1/2 h-2/5 bg-white flex flex-row justify-center items-center border border-gray-200 rounded-2xl">
+          <div className={`w-1/2 min-h-fit h-2/5 bg-white flex flex-row justify-center items-center border border-gray-200 rounded-2xl ${styles.container}`}>
             {/* First div */}
-            <div className="mx-auto w-1/2 h-full bg-white flex justify-center items-center rounded-2xl">
+            <div className={`mx-auto w-1/2 h-full bg-white flex justify-center items-center rounded-2xl ${styles.outbox}`}>
               <div className="flex flex-col">
                 <div className="mb-4">
                   <p className="font-medium mb-1">Full Name</p>
@@ -102,7 +123,7 @@ const Profile = () => {
             </div>
             <div className="h-full border-l border-gray-400"></div>
             {/* Second div */}
-            <div className="mx-auto w-1/2 h-full bg-white flex justify-center items-center rounded-2xl">
+            <div className={`mx-auto w-1/2 h-full bg-white flex justify-center items-center rounded-2xl ${styles.outbox}`}>
               <div className="flex flex-col">
                 <div className="mb-4">
                   <p className="font-medium mb-1">Email</p>
@@ -121,14 +142,16 @@ const Profile = () => {
             </div>
           </div>
           {/* Buttons for login and logout */}
-          <div className="absolute bottom-20 flex justify-center w-full">
+          <div className="absolute bottom-16 flex justify-center w-full">
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mr-4"
+              onClick={(e) => handleUpgrade(e)}  
+              
               style={{ backgroundColor: '#fe7544' }}
             >
               Upgrade Now
             </button>
-            <button className="bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xl ">
+            <button className="bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xl "onClick={(e) => handleLogout(e)}>
               Logout
             </button>
           </div>
