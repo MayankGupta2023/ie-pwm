@@ -4,9 +4,10 @@ import Navbar from '../components/navbar2';
 import app from '../firebaseConfig';
 import styles from '../styles/profile.module.css';
 import {
-  getAuth,
+  getAuth,signOut,
   onAuthStateChanged,
 } from 'firebase/auth';
+
 import {
   getFirestore,
   doc,
@@ -32,6 +33,25 @@ const Profile = () => {
     return () => unsubscribe();
   }, []);
 
+
+
+  const handleLogout = async () => {
+    console.log('Logging out...');
+    try {
+      await signOut(auth);
+     
+      alert('You have been logged out.');
+      router.push('/');
+    } catch (error) {
+      console.error('Error logging out:', error);
+    }
+  };
+
+
+  const handleUpgrade = async () => {
+    console.log('Logging out...');
+  router.push('/pricing');
+  };
   useEffect(() => {
     if (!currentUser) {
       console.error('User is not authenticated.');
@@ -125,11 +145,13 @@ const Profile = () => {
           <div className="absolute bottom-16 flex justify-center w-full">
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-xl mr-4"
+              onClick={(e) => handleUpgrade(e)}  
+              
               style={{ backgroundColor: '#fe7544' }}
             >
               Upgrade Now
             </button>
-            <button className="bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xl ">
+            <button className="bg-black hover:bg-red-700 text-white font-bold py-2 px-4 rounded-xl "onClick={(e) => handleLogout(e)}>
               Logout
             </button>
           </div>
