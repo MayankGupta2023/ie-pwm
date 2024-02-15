@@ -66,6 +66,8 @@ const Pricing = () => {
     { title: 'Yearly Plan 1', price: 129, credits: 50, questions: 100, highlight: false },
     { title: 'Yearly Plan 2', price: 479, credits: 190, questions: 370, highlight: true },
     { title: 'Yearly Plan 3', price: 649, credits: 250, questions: 500, highlight: false },
+    { title: 'Try', price: 200, credits: 100, questions: 200, highlight: false },
+
   ];
 
   const selectedPlans = showMonthlyPlans ? yearlyPlans : monthlyPlans;
