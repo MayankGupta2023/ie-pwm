@@ -188,33 +188,33 @@ const Pricing = () => {
 
 
       </div>
-      <div className={`flex justify-center items-center my-8 gap-4 text-center px-10 ${style.chat}`}>
-        <p>
-          Uncertaing about your selection? Direct messgae us, and we will assist you in making choice.
+      <div className={`flex justify-center  font-inter items-center my-8 gap-4 text-center px-10 ${style.chat}`}>
+        <p className={`text-3xl  min-w-96 w-1/2 ${style.chat2}`}>
+          Uncertaing about your selection? Direct message us, and we will assist you in making choice.
 
         </p>
-        <button style={{ backgroundColor: "#3cba81" }} className='py-2 px-4 bg-green-400 text-white rounded-lg'>
+        <button style={{ backgroundColor: "#3cba81" }} className='py-2 w-32 px-4 bg-green-400 text-white rounded-lg'>
           Chat Now
         </button>
       </div>
 
 
-      <div className="h-5/6 py-32 w-full flex flex-col gap-32  items-center justify-center">
+      <div className="h-5/6 py-32 pb-4 min-h-fit w-full flex flex-col gap-32  items-center justify-center">
 
         <div className={`font-bold text-center text-5xl text-zinc-800 ${style.head}`}>Frequently Asked Questions</div>
 
         <motion.div
           className={`max-h-1/2 w-3/5 bg-stone-100 rounded-2xl ${style.framer}`}>
-          <div className="h-fit p-4 text-lg font-semibold flex justify-center flex-col ">
+          <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
             <div style={{ color: '#333333' }} className="h-fit flex gap-6 hover:cursor-pointer" onClick={() => { handleDrop1() }}> <img src={dropicon1} />  What is Framer?</div>
-            {drop1 ? <motion.div style={{ color: '#666666' }} className="  h-fit px-10 text-lg font-semibold flex items-center">
+            {drop1 ? <motion.div style={{ color: '#666666' }} className={`h-fit px-10 text-lg font-semibold flex items-center ${style.framer2}`}>
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
             </motion.div> : null}
           </div>
           <div className="h-fit  p-4 text-lg font-semibold flex justify-center flex-col">
             <div style={{ color: '#333333' }} className=" hover:cursor-pointer h-fit flex gap-6" onClick={() => { handleDrop2() }}> <img src={dropicon2} />  Is it easy to learn?</div>
             {drop2 ? <motion.div style={{ color: '#666666' }}
-              className="h-fit px-10 text-lg font-semibold flex items-center">
+              className={`h-fit px-10 text-lg font-semibold flex items-center ${style.framer2}`}>
               Framer is fastest tool to build sites with, because you can ship your design immidiatly,insted of rebuilding it in code or second tool.
             </motion.div> : null}
           </div>
@@ -222,7 +222,7 @@ const Pricing = () => {
             <div className="h-fit flex gap-6" onClick={() => { handleDrop3() }}> <img src={dropicon3} />  Do i need to code?</div>
             {drop3 ? <motion.div style={{ color: '#666666' }}
 
-              className="h-fit px-10 text-lg font-semibold flex items-center">
+              className={`h-fit px-10 text-lg font-semibold flex items-center ${style.framer2}`}>
               Framer is web builder for creative pros. Be sure to check out framer.com to learn more.
             </motion.div> : null}
           </div>

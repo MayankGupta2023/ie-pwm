@@ -137,6 +137,7 @@
     .gid {
         grid-template-columns: repeat(1, 1fr);
         grid-template-rows: repeat(6, 1fr);
+        row-gap: 30px;
 
     }
 
@@ -178,7 +179,7 @@
     }
 
     .enhance{
-        font-size: 2.2rem;
+        font-size: 2rem;
     }
 
     .subhead{
@@ -238,7 +239,7 @@
 
 }
 
-@media (max-width:400px) {
+@media (max-width:431px) {
     .price{
         font-size: 1.6rem;
     }
@@ -278,6 +279,14 @@
         display: flex;
         justify-content: center;
         align-items: center;
+    }
+
+    .chat2{
+        font-size: 1.4rem;
+    }
+
+    .framer2{
+        padding-right: 0;
     }
 
 
