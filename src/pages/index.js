@@ -555,7 +555,7 @@ export default function Home() {
 
       </div>
 
-      <div className="h-96">
+      <div id="footer" className="h-96">
         <Footer />
       </div>
 

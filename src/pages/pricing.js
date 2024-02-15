@@ -234,7 +234,7 @@ const Pricing = () => {
 
 
       </div>
-      <div className="mt-auto">
+      <div id="footer" className="mt-auto">
         <Footer />
       </div>
     </div>
