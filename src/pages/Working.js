@@ -498,12 +498,12 @@ const Working = () => {
                             </div>
                         </div>
                         <div className={`mt-16   flex gap-4 items-center ${styles.topic}`}>
-                            <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg shadow-xl bg-white'>Get Topic-wise Notes</button>
-                            <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterTopic" name="enterTopic" value='Enter topic or Notes'></input>
+                            <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-56 rounded-lg shadow-xl bg-white'>Get Topic-wise Notes</button>
+                            <input className=' px-2 py-1 border-b-4 h-10 border-black  ' type="text" id="enterTopic" name="enterTopic" value='Enter topic or Notes'></input>
                         </div>
                         <div className={`mt-16   flex gap-4 items-center ${styles.topic}`}>
-                            <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-44  rounded-lg shadow-xl bg-white '>Ask any Question</button>
-                            <input className=' px-2 py-1 border-2 h-10 border-gray-400 rounded ' type="text" id="enterQuestion" name="enterQuestion" value='Questions'></input>
+                            <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-56  rounded-lg shadow-xl bg-white '>Ask any Question</button>
+                            <input className=' px-2 py-1 border-b-4 h-10 border-black  ' type="text" id="enterTopic" name="enterTopic" value='Enter topic or Notes'></input>
                         </div>
                         <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg shadow-xl bg-white'>Get Chapter-Wise Notes</button>
                         <button style={{ background: "#fe7544" }} onClick={handleFAQSClick} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg shadow-xl bg-white'>Get FAQs</button>
