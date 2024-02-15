@@ -27,10 +27,10 @@ const DropdownButton = ({ selectedItem, secondDropdownItems, onSelect, onToggle 
             </button>
 
             {isOpen && (
-                <div className="origin-top-right font-medium  absolute left-0 w-44 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
+                <div  className="origin-top-right font-medium  absolute left-0 w-44 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none z-10">
                     <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                         {secondDropdownItems.map((item, index) => (
-                            <div key={index} onClick={() => handleItemClick(item)} className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer">
+                            <div key={index} onClick={() => handleItemClick(item)} className="block px-4 py-2 text-sm text-gray-500  hover:bg-gray-100 hover:text-gray-900 cursor-pointer">
                                 {item}
                             </div>
                         ))}
