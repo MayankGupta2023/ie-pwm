@@ -43,7 +43,7 @@ const containerStyle = {
 };
 
 const Pricing = () => {
-  const [showMonthlyPlans, setShowMonthlyPlans] = useState(true);
+  const [showMonthlyPlans, setShowMonthlyPlans] = useState(false);
   const [dropicon1, setDropIcon1] = useState(plus.src);
   const [dropicon2, setDropIcon2] = useState(plus.src);
   const [dropicon3, setDropIcon3] = useState(plus.src);
@@ -52,10 +52,10 @@ const Pricing = () => {
   };
 
   const monthlyPlans = [
-    { title: 'Monthly Plan 1', price: 129, credits: 50, questions: 100, highlight: false },
-    { title: 'Monthly Plan 2', price: 479, credits: 190, questions: 370, highlight: true },
-    { title: 'Monthly Plan 3', price: 649, credits: 250, questions: 500, highlight: false },
-    { title: 'Try', price: 200, credits: 100, questions: 200, highlight: false },
+    { title: 'Starter Spark', price: 129, credits: 50, questions: 100, highlight: false },
+    { title: 'Genius Nexus', price: 479, credits: 190, questions: 370, highlight: true },
+    { title: 'Mindscape Master', price: 649, credits: 250, questions: 500, highlight: false },
+    { title: 'Try', price: 219, credits: 60, questions: 120, highlight: false },
 
 
 
@@ -66,7 +66,7 @@ const Pricing = () => {
     { title: 'Yearly Plan 1', price: 129, credits: 50, questions: 100, highlight: false },
     { title: 'Yearly Plan 2', price: 479, credits: 190, questions: 370, highlight: true },
     { title: 'Yearly Plan 3', price: 649, credits: 250, questions: 500, highlight: false },
-    { title: 'Try', price: 200, credits: 100, questions: 200, highlight: false },
+    { title: 'Try', price: 219, credits: 100, questions: 200, highlight: false },
 
   ];
 
@@ -136,7 +136,7 @@ const Pricing = () => {
               className={`bg-white px-8 py-4 my-4 mx-2 rounded-3xl shadow-md flex flex-col py-6 w-80 min-h-80 h-fit ${style.card}`}
             >
               <h3 style={{ color: "#6e4245" }} className={`text-lg font-bold text-slate-500 mb-0 flex  items-center justify-start ${style.title}`}>{plan.title}</h3>
-              <h3 style={{ color: "#333333" }} className={`text-5xl font-bold  text-slate-800 mb-0 flex mt-6 mb-6 items-end justify-start ${style.price}`}>₹ {plan.price} <span style={{ color: "#666666" }} className='text-lg'> &nbsp;  /month</span> </h3>
+              <h3 style={{ color: "#333333" }} className={`text-5xl font-bold  text-slate-800 mb-0 flex mt-6 mb-6 items-end justify-start ${style.price}`}>₹ {plan.price} <span style={{ color: "#666666" }} className='text-lg'> &nbsp; {index==3?<span>only</span>: <span>/month</span> }</span> </h3>
               <div className="text-gray-900 mb-4">
                 <ul className="list-disc list-inside ">
                   <li className='list-none mb-2 ' style={{ color: '#71717a' }}>

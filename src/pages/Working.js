@@ -508,9 +508,9 @@ const Working = () => {
                         <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg shadow-xl bg-white'>Get Chapter-Wise Notes</button>
                         <button style={{ background: "#fe7544" }} onClick={handleFAQSClick} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg shadow-xl bg-white'>Get FAQs</button>
                     </div>
-                    <div className={`w-3/6 min-h-screen h-fit bg-white p-8 border-2 border ml-2  ${styles.right}`}>
+                    <div className={`w-3/6 min-h-screen  bg-white p-8 border-2 border ml-2  ${styles.right}`}>
                         <div className='font-bold text-2xl'>Results</div>
-                        <div className='mt-4'>
+                        <div className='mt-4 h-screen w-full'>
                             {isLoading ? (
                                 <p>Loading PDF...</p>
                             ) : pdfUrl ? (
@@ -524,8 +524,8 @@ const Working = () => {
                             ) :
                                 (
                                     // <PDFViewer pdfUrl="https://drive.google.com/file/d/1BxMV35FcHYVKhWDYrJv8ohuWvvMROXna/view?usp=sharing" />
-                                    <div class="pdf-container">
-                                    <iframe className='ml-8 h-96 w-96'  src="https://drive.google.com/file/d/1BxMV35FcHYVKhWDYrJv8ohuWvvMROXna/preview" frameborder="0"></iframe>
+                                    <div className="pdf-container h-full w-full">
+                                    <iframe className=' h-full w-full'  src="https://drive.google.com/file/d/1BxMV35FcHYVKhWDYrJv8ohuWvvMROXna/preview" frameborder="0"></iframe>
                                   </div>
                                 )}
                         </div>
