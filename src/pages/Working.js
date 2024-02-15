@@ -21,8 +21,8 @@ import DropdownButton3 from '../components/dropdown3';
 import DropdownButton4 from '../components/dropdown4';
 import Footer from '../components/footer';
 
+import PDFViewer from '../components/pdfViewer';
 
-import { PDFViewer } from '@react-pdf/renderer';
 
 import menu from '../assets/menu2.svg';
 import styles from '../styles/working.module.css';
@@ -523,7 +523,8 @@ const Working = () => {
 
                             ) :
                                 (
-                                    <p>Your Results will appear here on the basis of your query</p>
+                                    // <PDFViewer pdfUrl="https://drive.google.com/file/d/1BxMV35FcHYVKhWDYrJv8ohuWvvMROXna/view?usp=sharing" />
+                                    <iframe src="https://drive.google.com/file/d/1BxMV35FcHYVKhWDYrJv8ohuWvvMROXna/preview" height="1000" width="450" />
                                 )}
                         </div>
                     </div>
