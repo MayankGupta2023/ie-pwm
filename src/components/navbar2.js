@@ -65,7 +65,7 @@ const Navbar = () => {
       >
         <Link href="/">Home</Link>
         <Link href="/pricing">Upgrade</Link>
-        <Link href="">Contact</Link>
+        <Link href="#footer">Contact</Link>
 
         <Link href="/profile">Profile</Link>
 

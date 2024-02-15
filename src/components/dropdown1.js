@@ -14,11 +14,11 @@ const DropdownButton = ({ selectedItem, secondDropdownItems, onSelect, onToggle 
     };
 
     return (
-        <div className="relative inline-block  text-left">
+        <div className="relative inline-block text-left">
             <button
                 onClick={toggleDropdown}
                 type="button"
-                className="inline-flex justify-center items-center w-44 px-4 py-2   bg-white text-lg font-semibold text-gray-700 hover:bg-gray-50"
+                className="inline-flex shadow-lg justify-center border-2 border-black rounded-xl items-center w-44 px-4 py-2   bg-white text-lg font-semibold text-gray-700 hover:bg-gray-50"
                 id="options-menu"
                 aria-haspopup="true"
                 aria-expanded="true"

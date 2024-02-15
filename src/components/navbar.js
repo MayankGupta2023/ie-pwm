@@ -9,6 +9,14 @@ import app from '../firebaseConfig';
 import menu from '../assets/menu.svg'
 import cross from '../assets/cross2.svg'
 
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+} from 'firebase/firestore';
+
 const Navbar = () => {
   const [bars, setBars] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);

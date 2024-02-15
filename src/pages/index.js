@@ -216,7 +216,7 @@ export default function Home() {
               }
             }}
           >
-            <span className="text-2xl">Introducingng V1 for students – concise chapter summaries, precise Q&A, targeted notes, and exam-ready FAQs. Elevate your learning effortlessly.
+            <span className="text-lg">Introducingng V1 for students – concise chapter summaries, precise Q&A, targeted notes, and exam-ready FAQs. Elevate your learning effortlessly.
             </span>
           </div>
 
@@ -260,7 +260,7 @@ export default function Home() {
               }
             }}
           >
-            <span className="text-xl">Introducing V2 –
+            <span className="text-lg">Introducing V2 –
               Professional Edition. It encompasses V1 features, now tailored for programming, customizable notes, law, business case studies, and research. Elevate your professional knowledge effortlessly.</span>
           </div>
 
@@ -300,7 +300,7 @@ export default function Home() {
               }
             }}
           >
-            <span className="text-2xl">Introducing V3 –
+            <span className="text-lg">Introducing V3 –
               Your Book, Your Control. Upload and personalize your study material effortlessly. Tailor your learning journey with V3.</span>
           </div>
 
@@ -352,11 +352,11 @@ export default function Home() {
 
       </div>
 
-      <div className="h-screen  flex justify-center align-center flex-col gap-8 px-8">
+      <div className="max-h-screen h-fit py-16 flex justify-center align-center flex-col gap-8 px-8">
 
         <div style={{ color: '#333333' }} className=" font-bold text-5xl p-4 text-center">Trusted by</div>
 
-        <div className="h-fit bg-red-200 w-full">
+        <div className="h-fit w-full">
 
           <img className="h-fit" src={tech.src} />
 
@@ -409,7 +409,7 @@ export default function Home() {
 
 
 
-      <div className={`h-screen w-full flex px-12 py-16 ${styles.wassapp}`}>
+      <div className={`h-fit  w-full flex px-12 py-16 ${styles.wassapp}`}>
 
         <div className={`w-1/2 flex flex-col justify-center items-center gap-8 ${styles.wassapp_left}`}>
           <div className={`w-96 font-bold text-5xl ${styles.getnotes}`}>Get your notes via WhatsApp</div>

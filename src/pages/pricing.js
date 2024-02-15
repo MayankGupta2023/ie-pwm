@@ -191,11 +191,11 @@ const Pricing = () => {
 
       </div>
       <div className={`flex justify-center  font-inter items-center my-8 gap-4 text-center px-10 ${style.chat}`}>
-        <p className={`text-3xl  min-w-96 w-1/2 ${style.chat2}`}>
+        <p className={`text-sm  min-w-96 w-1/2 ${style.chat2}`}>
           Uncertaing about your selection? Direct message us, and we will assist you in making choice.
 
         </p>
-        <button style={{ backgroundColor: "#3cba81" }} className='py-2 w-32 px-4 bg-green-400 text-white rounded-lg'>
+        <button style={{ backgroundColor: "#3cba81" }} className='py-1 w-32 px-4 bg-green-400 text-white rounded-lg'>
           Chat Now
         </button>
       </div>

@@ -18,7 +18,7 @@ const DropdownButton = ({ selectedItem, secondDropdownItems, onSelect, onToggle,
             <button
                 onClick={toggleDropdown}
                 type="button"
-                className="inline-flex justify-center items-center w-44 px-4 py-2  bg-white text-lg font-semibold text-gray-700 hover:bg-gray-50"
+                className="inline-flex border-black border-2 shadow-lg rounded-xl justify-center items-center w-44 px-4 py-2  bg-white text-lg font-semibold text-gray-700 hover:bg-gray-50"
                 id="options-menu"
                 aria-haspopup="true"
                 aria-expanded="true"
