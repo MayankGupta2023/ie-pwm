@@ -114,7 +114,7 @@ export default function Home() {
           <div style={{ height: '370px' }} className="  mt-6 min-w-80 w-80 shadow-xl overflow-hidden border-2 rounded-2xl ">
 
             <div className="h-1/4 w-full p-8">
-              Name
+              Eva Elle
 
             </div>
 
