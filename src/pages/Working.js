@@ -524,7 +524,9 @@ const Working = () => {
                             ) :
                                 (
                                     // <PDFViewer pdfUrl="https://drive.google.com/file/d/1BxMV35FcHYVKhWDYrJv8ohuWvvMROXna/view?usp=sharing" />
-                                    <iframe src="https://drive.google.com/file/d/1BxMV35FcHYVKhWDYrJv8ohuWvvMROXna/preview" height="1000" width="450" />
+                                    <div class="pdf-container">
+                                    <iframe className='ml-8 h-96 w-96'  src="https://drive.google.com/file/d/1BxMV35FcHYVKhWDYrJv8ohuWvvMROXna/preview" frameborder="0"></iframe>
+                                  </div>
                                 )}
                         </div>
                     </div>

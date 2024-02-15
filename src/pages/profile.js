@@ -24,16 +24,21 @@ const Profile = () => {
   const [isLoading, setIsLoading] = useState(false);
   const auth = getAuth(app);
   const router = useRouter();
+  const firestore = getFirestore(app);
+ 
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setCurrentUser(user);
+    const unsubscribe = auth.onAuthStateChanged(async (authUser) => {
+      setCurrentUser(authUser);
+        if (!authUser) {
+           
+
+          window.location.href = '/login';
+        } 
     });
 
     return () => unsubscribe();
-  }, []);
-
-
+}, []);
 
   const handleLogout = async () => {
     console.log('Logging out...');
