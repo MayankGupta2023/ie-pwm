@@ -38,7 +38,7 @@ const cors = initMiddleware(
       
 
 console.log('formData:', formData);
-      const response = await fetch('https://instant-edudoc.onrender.com/generate_notes', {
+      const response = await fetch('https://testing-mjbcb2fuvq-em.a.run.app/generate_notes', {
         method: 'POST',
       
    body: formData,
