@@ -11,15 +11,15 @@ const cors = initMiddleware(
 
 export default async function handler(req, res) {
     // Call CORS middleware
-    await cors(req, res);
+  //  await cors(req, res);
     const assetsFolderPath = path.join(__dirname, 'assets');
     if (!fs.existsSync(assetsFolderPath)) {
         fs.mkdirSync(assetsFolderPath);
     }
-    console.log("here");
+
     const { selectedClass, selectedSubject, selectedChapter, selectedLanguage, notes, topics, mindmap, faqs, questions } = req.body;
 
-    console.log(req.body);
+  
     try {
         const formData = new FormData();
         formData.append('class', selectedClass);
@@ -44,7 +44,6 @@ export default async function handler(req, res) {
             formData.append('question', questions);
         }
 
-        console.log('formData:', formData);
         const response = await fetch('https://testing-mjbcb2fuvq-em.a.run.app/generate_notes', {
             method: 'POST',
             body: formData,
@@ -71,7 +70,7 @@ export default async function handler(req, res) {
             res.status(200).json({ pdf: true, success: true });
         } else {
             const data = await response.json();
-            console.log("vadia ")
+           
             res.status(200).json({data , pdf : false});
         }
     } catch (error) {
