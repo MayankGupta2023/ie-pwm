@@ -129,25 +129,27 @@ const Working = () => {
 
 
     const handleNotesClick = () => {
-        setFaqs(0);
-        setQuestions(0);
-        setTopics(0);
-        setMindMap(0);
-
-        setNotes(1);
+        if (selectedChapter && selectedSubject && selectedClass) {
+            setFaqs(0);
+            setQuestions(0);
+            setTopics(0);
+            setMindMap(0);
+            setNotes(1);
+            setFetchPdfTrigger(prev => !prev);  
+        }
     };
-
+    
     const handleFAQSClick = () => {
-         if(selectedChapter && selectedSubject && selectedClass){
-      
-        setFaqs(1);
-        setQuestions(0);
-        setTopics(0);
-        setMindMap(0);
-        setNotes(0);
-        setFetchPdfTrigger(prev => !prev);   
-         }
+        if (selectedChapter && selectedSubject && selectedClass) {
+            setFaqs(1);
+            setQuestions(0);
+            setTopics(0);
+            setMindMap(0);
+            setNotes(0);
+            setFetchPdfTrigger(prev => !prev);   
+        }
     };
+    
 
 
 
@@ -359,13 +361,25 @@ const Working = () => {
                         throw new Error('Failed to fetch PDF');
                     }
         
-                    const contentType = response.headers.get('Content-Type');
-                    if (contentType && contentType.includes('application/pdf')) {
-                        const blob = await response.blob();
-                        setPdfUrl(URL.createObjectURL(blob));
-                    } else {
-                        const responseData = await response.json();
-                        let modifiedData = responseData.message;
+                    const responseData = await response.json();
+                    if(responseData.pdf){
+setResFaqs(null);
+
+setPdfUrl(true);
+
+setIsLoading(false);
+
+
+
+                    }
+
+
+
+
+
+        else {
+                       setPdfUrl(null)
+                        let modifiedData = responseData.data.message;
                         modifiedData = modifiedData.replace(/\n/g, '<br>');
                         modifiedData = modifiedData.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
                         setResFaqs(modifiedData);
@@ -392,7 +406,7 @@ const Working = () => {
 
         return () => {
             // Clean up the URL object to avoid memory leaks
-            URL.revokeObjectURL(pdfUrl)
+           
 
 
         };
@@ -505,18 +519,18 @@ const Working = () => {
                             <button style={{ background: "#fe7544" }} className='p-2 px-1 text-center text-white w-56  rounded-lg shadow-xl bg-white '>Ask any Question</button>
                             <input className=' px-2 py-1 border-b-4 h-10 border-black  ' type="text" id="enterTopic" name="enterTopic" placeholder="Enter your topic here" ></input>
                         </div>
-                        <button style={{ background: "#fe7544" }} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg shadow-xl bg-white'>Get Chapter-Wise Notes</button>
+                        <button style={{ background: "#fe7544" }} onClick={handleNotesClick} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg shadow-xl bg-white'>Get Chapter-Wise Notes</button>
                         <button style={{ background: "#fe7544" }} onClick={handleFAQSClick} className='font-inter font-semibold text-white py-2 w-full text-center mt-16 rounded-lg shadow-xl bg-white'>Get FAQs</button>
                     </div>
                     <div className={`w-3/6 min-h-screen  bg-white p-8 border-2 border ml-2  ${styles.right}`}>
                         <div className='font-bold text-2xl'>Results</div>
                         <div className='mt-4 h-screen w-full'>
-                            {isLoading ? (
+                        {isLoading ? (
                                 <p>Loading PDF...</p>
                             ) : pdfUrl ? (
-                                <PDFViewer style={{ width: '100%', height: '100vh' }}>
-                                    <iframe src={pdfUrl} style={{ width: '100%', height: '100%' }} />
-                                </PDFViewer>
+                                <div className="pdf-container h-full w-full">
+                                <iframe className=' h-full w-full'  src="/assets/gen_pdf.pdf" ></iframe>
+                                </div>
                             ) : resfaqs ? (
 
                                 <p dangerouslySetInnerHTML={{ __html: resfaqs }} />
@@ -540,6 +554,7 @@ const Working = () => {
             </div>
         </div>
     );
+
 }
 
 export default Working;
